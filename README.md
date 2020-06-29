@@ -15,7 +15,7 @@ Just install `git`.
 Use this command:
 
 ```bash
-git clone --bare https://github.com/datwaft/dotfiles.git $HOME/.dotfiles
+git clone --bare git@github.com:datwaft/dotfiles.git $HOME/.dotfiles
 ```
 
 > This will clone the contents of the remote repository (the .git link) to the home directory (~) while referencing ~/.dotfiles as the local bare repository (the —seperate-git-dir part).

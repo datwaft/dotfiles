@@ -1,6 +1,8 @@
 # ┌──────────────────────────────────────────────────────────────────────────┐ #
 # │                          Initial Configuration                           │ #
 # └──────────────────────────────────────────────────────────────────────────┘ #
+  # Dotfiles alias
+  alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
   # Initialize environment variables
   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
   export OPENSSL_CONF="/tmp/openssl.cnf"

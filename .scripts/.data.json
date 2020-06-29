@@ -1,0 +1,91 @@
+{
+  "delimiters": {
+    "c": {
+      "type":      "complex",
+      "delimiters": {
+        "1st-left":  "/* ",
+        "nth-left":  " * ",
+        "lst-left":  "\\* ",
+        "1st-right": " *\\",
+        "nth-right": " * ",
+        "lst-right": " */"
+      }
+    },
+    "cpp": {
+      "type":  "simple",
+      "delimiters": {
+        "left":  "//",
+        "right": "//"
+      }
+    },
+    "py":  {
+      "type":  "simple",
+      "delimiters": {
+        "left":  "#",
+        "right": "#"
+      }
+    },
+    "vim": {
+      "type":  "simple",
+      "delimiters": {
+        "left":  "\"",
+        "right": "\""
+      }
+    },
+    "lisp": {
+      "type":  "simple",
+      "delimiters": {
+        "left":  ";;",
+        "right": ";;"
+      }
+    }
+  },
+  "charset": {
+    "double": {
+      "upper-left":  "╔",
+      "upper-right": "╗",
+      "lower-left":  "╚",
+      "lower-right": "╝",
+      "horizontal":  "═",
+      "vertical":    "║"
+    },
+    "simple": {
+      "upper-left":  "┌",
+      "upper-right": "┐",
+      "lower-left":  "└",
+      "lower-right": "┘",
+      "horizontal":  "─",
+      "vertical":    "│"
+    },
+    "textual": {
+      "upper-left":  "+",
+      "upper-right": "+",
+      "lower-left":  "+",
+      "lower-right": "+",
+      "horizontal":  "-",
+      "vertical":    "|"
+    },
+    "complex-textual": {
+      "upper-left":  "=",
+      "upper-right": "=",
+      "lower-left":  "=",
+      "lower-right": "=",
+      "horizontal":  "=",
+      "vertical":    "="
+    }
+  },
+  "charset-abbreviations": {
+    "d":  "double",
+    "s":  "simple",
+    "t":  "textual",
+    "ct": "complex-textual"
+  },
+  "charset-direction-abbreviations": {
+    "ul": "upper-left",
+    "ur": "upper-right",
+    "ll": "lower-left",
+    "lr": "lower-right",
+    "h":  "horizontal",
+    "v":  "vertical"
+  }
+}

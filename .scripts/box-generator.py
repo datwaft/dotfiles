@@ -21,7 +21,7 @@ import json
 import sys
 import argparse
 
-data = json.load(open(".data.json"))
+data = json.load(open(".box-generator-data.json"))
 chrabbr = data["charset-abbreviations"]
 dirabbr = data["charset-direction-abbreviations"]
 

@@ -18,10 +18,11 @@
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
 
 import json
+import os.path
 import sys
 import argparse
 
-data = json.load(open(".box-generator-data.json"))
+data = json.load(open(os.path.expanduser("~/.scripts/.box-generator-data.json")))
 chrabbr = data["charset-abbreviations"]
 dirabbr = data["charset-direction-abbreviations"]
 

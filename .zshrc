@@ -75,10 +75,13 @@
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
   # Default editor
   export EDITOR='nvim'
+  export VISUAL="$EDITOR"
   # Vi console mode
   set -o vi
   # Using neovim as manpager
   export MANPAGER='nvim +Man!'
+  # Display for WSL
+  export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                    Keyboard Configuration                                    ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

@@ -61,10 +61,11 @@ def title_generator(word):
     return up + '\n' + title_line + '\n' + down
 def banner_generator(word):
     try:
-        result = subprocess.run(['figlet', '-w', str(width - 4 - len(left) -\
-            len(right))] + arguments + [word], stdout=subprocess.PIPE).stdout.decode('utf-8')
+        from pyfiglet import Figlet
+        figlet = Figlet(font=font, width=(width - 4 - len(left) - len(right)))
+        result = figlet.renderText(word)
     except:
-        raise SystemError('figlet must be accessible from $PATH')
+        raise SystemError('Please do "pip3 install pyfiglet"')
     result = result.splitlines()
     up = left + ' ' + box['UL'] + box['H'] * (width - 4 - len(left) - len(right)) + box['UR'] + ' ' + right
     down = left + ' ' + box['DL'] + box['H'] * (width - 4 - len(left) - len(right)) + box['DR'] + ' ' + right
@@ -81,8 +82,8 @@ if __name__ == "__main__":
         help='the width of the title, defaults to \'80\'')
     parser.add_argument('-l', dest='language', type=str, default='vim', choices=DELIMITER,
         help='the language for the delimiters, defaults to \'vim\'')
-    parser.add_argument('-a', dest='arguments', type=str, default='',
-        help='arguments for figlet, defaults to \'\'')
+    parser.add_argument('-f', dest='font', type=str, default='roman',
+        help='font for figlet, defaults to \'roman\'')
     parser.add_argument('-b', action='store_true',
         help='the flag means it is going to use figlet for the banner')
     parser.add_argument('-t', dest='type', type=str, default='t', choices=PARSE,
@@ -93,10 +94,7 @@ if __name__ == "__main__":
     box = CHARSET[PARSE[args.type]]
     left = DELIMITER[args.language]['left']
     right = DELIMITER[args.language]['right']
-    if len(args.arguments) >= 1:
-        arguments = args.arguments.split(' ')
-    else:
-        arguments = []
+    font = args.font
     if args.b:
         print(banner_generator(string))
     else:

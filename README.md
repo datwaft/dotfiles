@@ -6,6 +6,10 @@ The way this repository uses for storing my dotfiles is with a _bare_ repository
 
 ## FAQ (Frequently Asked Questions)
 
+### What are the pre-requisites for this?
+
+Just install `git`.
+
 ### How do I import the dotfiles?
 
 Use this command:
@@ -15,6 +19,24 @@ git clone --separate-git-dir=~/.dotfiles https://github.com/datwaft/dotfiles.git
 ```
 
 > This will clone the contents of the remote repository (the .git link) to the home directory (~) while referencing ~/.dotfiles as the local bare repository (the —seperate-git-dir part).
+
+After that add the alias to the current shell scope:
+
+```
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+```
+
+And after that do a checkout to add the files to the home directory:
+
+```
+dotfiles checkout
+```
+
+And add this to make it ignore files it doesn't have:
+
+```
+dotfiles config --local status.showUntrackedFiles no
+```
 
 **Warning:** Your home directory shouldn't containt any of the dotfiles present inside the directory.
 

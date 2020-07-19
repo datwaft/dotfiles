@@ -35,8 +35,8 @@
     "lisp": {
       "type":  "simple",
       "delimiters": {
-        "left":  ";;",
-        "right": ";;"
+        "left":  ";",
+        "right": ";"
       }
     }
   },

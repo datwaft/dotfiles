@@ -28,31 +28,6 @@
   # figlet alias
   alias banner='figlet -d ~/.fonts -f roman -w 100'
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
-# ║                                    Environment Variables                                     ║ #
-# ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
-  # Java home folder
-  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-  # OpenSSL
-  export OPENSSL_CONF=/tmp/openssl.cnf
-  # Update MANPATH
-  export MANPATH=/usr/local/man:$MANPATH
-  export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-  # Update INFOPATH
-  export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
-# ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
-# ║                                             PATH                                             ║ #
-# ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
-  # Initial
-  export PATH=$PATH:/usr/local/bin
-  export PATH=$PATH:$HOME/bin
-  export PATH=$PATH:$HOME/.local/bin
-  # Go instalation
-  export PATH=$PATH:/usr/local/go/bin
-  # Java instalation
-  export PATH=$PATH:$JAVA_HOME/bin
-  # TexLive
-  export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-linux
-# ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      ZSH Configuration                                       ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #

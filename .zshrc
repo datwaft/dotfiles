@@ -47,7 +47,11 @@
     # Added the plugins:
     #   git
     #   zsh-syntax-highlightning
-    plugins=(git zsh-syntax-highlighting)
+    plugins=(
+      git
+      zsh-syntax-highlighting
+      zsh-autosuggestions
+    )
     # Enabling oh-my-zsh
     source $ZSH/oh-my-zsh.sh
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #

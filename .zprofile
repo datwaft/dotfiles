@@ -24,16 +24,14 @@
     export PATH=$PATH:$HOME/.local/bin
     # Go instalation
     export PATH=$PATH:/usr/local/go/bin
-    # Java instalation
-    export PATH=$PATH:$JAVA_HOME/bin
     # TexLive
     export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-linux
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
   # │                                        Miscelaneous                                        │ #
   # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
     # Java
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/jvm/java-11-openjdk-amd64/jre/lib/amd64/server
+    export JAVA_HOME=/usr/lib/jvm/java-14-oracle
+    export PATH=$PATH:$JAVA_HOME/bin
     # OpenSSL
     export OPENSSL_CONF=/tmp/openssl.cnf
     # Update MANPATH

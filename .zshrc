@@ -27,44 +27,92 @@
   alias :q='exit'
   # figlet alias
   alias banner='figlet -d ~/.fonts -f roman -w 100'
+  # ls
+  alias ls='ls --color=auto'
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
+# ║                                            ZINIT                                             ║ #
+# ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                       Initialization                                       │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # +------------------------------------------------------------------------------------------+ #
+    # |                                          ZINIT                                           | #
+    # +------------------------------------------------------------------------------------------+ #
+      if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+          print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+          command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+          command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+              print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+              print -P "%F{160}▓▒░ The clone has failed.%f%b"
+      fi
+
+      source "$HOME/.zinit/bin/zinit.zsh"
+      autoload -Uz _zinit
+      (( ${+_comps} )) && _comps[zinit]=_zinit
+
+      # Load a few important annexes, without Turbo
+      # (this is currently required for annexes)
+      zinit light-mode for \
+          zinit-zsh/z-a-rust \
+          zinit-zsh/z-a-as-monitor \
+          zinit-zsh/z-a-patch-dl \
+          zinit-zsh/z-a-bin-gem-node
+    # +------------------------------------------------------------------------------------------+ #
+    # |                                        Oh My Zsh                                         | #
+    # +------------------------------------------------------------------------------------------+ #
+      # Load OMZ Git library
+      zinit snippet OMZL::git.zsh
+
+      # Load Git plugin from OMZ
+      zinit snippet OMZP::git
+      zinit cdclear -q # <- forget completions provided up to this moment
+
+      setopt promptsubst
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                          Plugins                                           │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # Autosuggestions
+    zinit light zsh-users/zsh-autosuggestions
+    # Syntax highlighting
+    zinit wait lucid for \
+     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+     blockf \
+        zsh-users/zsh-completions \
+     atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                           Theme                                            │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # Powerlevel10k
+    zinit ice depth=1; zinit light romkatv/powerlevel10k
+    # Configuration
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                        Colorscheme                                         │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    [ -n "$PS1" ] && sh ~/.config/nvim/plugged/snow/shell/snow_dark.sh
+    eval `dircolors ~/.config/nvim/plugged/snow/shell/dircolors`
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                        Miscelaneous                                        │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # LS COLORS
+    zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
+      atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+      atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+    zinit light trapd00r/LS_COLORS
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      ZSH Configuration                                       ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                   Initial Configuration                                    │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Pure initial configuration
-    fpath+=$HOME/.zsh/pure
-    export ZSH="$HOME/.oh-my-zsh"
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                        Colorscheme                                         │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    [ -n "$PS1" ] && sh ~/.nightshell/carbonized-dark
-    eval `dircolors ~/.nightshell/dircolors`
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
   # │                                          Plugins                                           │ #
   # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Added the plugins:
-    #   git
-    #   zsh-syntax-highlightning
     plugins=(
       git
       zsh-syntax-highlighting
       zsh-autosuggestions
     )
-    # Enabling oh-my-zsh
-    source $ZSH/oh-my-zsh.sh
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                           Theme                                            │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Disabling default theme
-    ZSH_THEME=""
-    # Initializing Pure Theme
-    autoload -U promptinit; promptinit
-    # Showing git status as part of prompt
-    zstyle :prompt:pure:git:stash show yes
-    # Enabling Pure Theme
-    prompt pure
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
   # │                                       Configuration                                        │ #
   # └────────────────────────────────────────────────────────────────────────────────────────────┘ #

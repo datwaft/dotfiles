@@ -94,14 +94,6 @@
   # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
     [ -n "$PS1" ] && sh ~/.config/nvim/plugged/snow/shell/snow_dark.sh
     eval `dircolors ~/.config/nvim/plugged/snow/shell/dircolors`
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                        Miscelaneous                                        │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # LS COLORS
-    zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
-      atpull'%atclone' pick"clrs.zsh" nocompile'!' \
-      atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-    zinit light trapd00r/LS_COLORS
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      ZSH Configuration                                       ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

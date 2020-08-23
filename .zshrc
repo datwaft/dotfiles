@@ -124,6 +124,11 @@
   export MANPAGER='nvim +Man!'
   # Display for WSL
   export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
+  # Save history
+  HISTFILE=~/.zsh_history
+  HISTSIZE=10000
+  SAVEHIST=10000
+  setopt appendhistory
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                    Keyboard Configuration                                    ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

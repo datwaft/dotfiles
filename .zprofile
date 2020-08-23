@@ -32,6 +32,11 @@
     # Java
     export JAVA_HOME=/usr/lib/jvm/java-14-oracle
     export PATH=$PATH:$JAVA_HOME/bin
+    # Prolog
+    export SWI_HOME_DIR=/usr/local/lib/swipl/
+    export LD_LIBRARY_PATH=/usr/local/lib/swipl/lib/x86_64-linux/
+    export CLASSPATH=/usr/local/lib/swipl/lib/jpl.jar
+    export LD_PRELOAD=/usr/local/lib/swipl/lib/x86_64-linux/libswipl.so  
     # OpenSSL
     export OPENSSL_CONF=/tmp/openssl.cnf
     # Update MANPATH

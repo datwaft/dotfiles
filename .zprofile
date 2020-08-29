@@ -22,6 +22,8 @@
     export PATH=$PATH:/usr/local/bin
     export PATH=$PATH:$HOME/bin
     export PATH=$PATH:$HOME/.local/bin
+    # Scripts
+    export PATH=$PATH:$HOME/.scripts/
     # Go instalation
     export PATH=$PATH:/usr/local/go/bin
     # TexLive

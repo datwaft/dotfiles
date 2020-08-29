@@ -30,88 +30,59 @@
   # ls
   alias ls='ls --color=auto'
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
-# ║                                            ZINIT                                             ║ #
+# ║                                        Initialization                                        ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                       Initialization                                       │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # +------------------------------------------------------------------------------------------+ #
-    # |                                          ZINIT                                           | #
-    # +------------------------------------------------------------------------------------------+ #
-      if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-          print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-          command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-          command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-              print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-              print -P "%F{160}▓▒░ The clone has failed.%f%b"
-      fi
-
-      source "$HOME/.zinit/bin/zinit.zsh"
-      autoload -Uz _zinit
-      (( ${+_comps} )) && _comps[zinit]=_zinit
-
-      # Load a few important annexes, without Turbo
-      # (this is currently required for annexes)
-      zinit light-mode for \
-          zinit-zsh/z-a-rust \
-          zinit-zsh/z-a-as-monitor \
-          zinit-zsh/z-a-patch-dl \
-          zinit-zsh/z-a-bin-gem-node
-    # +------------------------------------------------------------------------------------------+ #
-    # |                                        Oh My Zsh                                         | #
-    # +------------------------------------------------------------------------------------------+ #
-      # Load OMZ Git library
-      zinit snippet OMZL::git.zsh
-
-      # Load Git plugin from OMZ
-      zinit snippet OMZP::git
-      zinit cdclear -q # <- forget completions provided up to this moment
-
-      setopt promptsubst
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                          Plugins                                           │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Autosuggestions
-    zinit light zsh-users/zsh-autosuggestions
-    # Syntax highlighting
-    zinit wait lucid for \
-     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
-     blockf \
-        zsh-users/zsh-completions \
-     atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                           Theme                                            │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Powerlevel10k
-    zinit ice depth=1; zinit light romkatv/powerlevel10k
-    # Configuration
-    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                        Colorscheme                                         │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    [ -n "$PS1" ] && sh ~/.config/nvim/plugged/snow/shell/snow_dark.sh
-    eval `dircolors ~/.config/nvim/plugged/snow/shell/dircolors`
+  # Powerlevel10k instant prompt
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+  # LS_COLORS
+  . "$HOME/.local/share/lscolors.sh"
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
-# ║                                      ZSH Configuration                                       ║ #
+# ║                                          Oh My Zsh                                           ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                          Plugins                                           │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    plugins=(
-      git
-      zsh-syntax-highlighting
-      zsh-autosuggestions
-    )
-  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
-  # │                                       Configuration                                        │ #
-  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
-    # Changing the date format
-    HIST_STAMPS="yyyy-mm-dd"
-    # Better alias autocompletion
-    setopt completealiases
+  # Initilization
+  export ZSH="$HOME/.oh-my-zsh"
+  # Case insentive completion
+  CASE_SENSITIVE="false"
+  # Hypen insensitive completion
+  HYPHEN_INSENSITIVE="true"
+  # Display red dots whilst waiting for completion
+  COMPLETION_WAITING_DOTS="true"
+  # Faster status check - not marking untracked files as dirty
+  DISABLE_UNTRACKED_FILES_DIRTY="true"
+  # Time stamp
+  HIST_STAMPS="yyyy-mm-dd"
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
+# ║                                      Plugins -> Antigen                                      ║ #
+# ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
+  # Initilization
+  source "$HOME/.zsh/antigen.zsh"
+
+  # Use oh-my-zsh
+  antigen use oh-my-zsh
+
+  # Bundles from default repo
+  antigen bundle git
+  antigen bundle heroku
+  antigen bundle pip
+  antigen bundle lein
+  antigen bundle command-not-found
+
+  # Syntax highlighting bundle.
+  antigen bundle zsh-users/zsh-syntax-highlighting
+
+  # Autosuggestions
+  antigen bundle zsh-users/zsh-autosuggestions
+  ZSH_AUTOSUGGEST_STRATEGY="completion"
+  ZSH_AUTOSUGGEST_USE_ASYNC="true"
+
+  # Theme
+  antigen theme romkatv/powerlevel10k
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+  # Finishing
+  antigen apply
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      User Configuration                                      ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
@@ -134,6 +105,8 @@
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
   # Ability to travel the menu backwards
   bindkey '^[[Z' reverse-menu-complete
+  # Accept autosuggestions
+  bindkey '^ ' autosuggest-accept
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                Program-specific Configuration                                ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

@@ -26,26 +26,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## Step 4: Installing Pure theme
-
-### via NPM
+## Step 4: Installing Antigen
 
 ```bash
-npm install --global pure-prompt
+curl -L git.io/antigen > antigen.zsh
 ```
 
-### Manually
-
-#### 1. Cloning the repo into $HOME/.zsh/pure
+## Step 5: Installing LS_COLORS
 
 ```bash
-mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master | tar xzf - --directory=/tmp/LS_COLORS --strip=1
+( cd /tmp/LS_COLORS && sh install.sh )
 ```
 
-#### 2. Adding the path of the cloned repo to `$fpath` in `$HOME/.zshrc`
-
-```bash
-# .zshrc
-fpath+=$HOME/.zsh/pure
-```

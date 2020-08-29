@@ -69,6 +69,9 @@
   antigen bundle lein
   antigen bundle command-not-found
 
+  # Better completion
+  antigen bundle zsh-users/zsh-completions
+
   # Syntax highlighting bundle.
   antigen bundle zsh-users/zsh-syntax-highlighting
 

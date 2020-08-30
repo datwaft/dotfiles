@@ -29,7 +29,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 ## Step 4: Installing Antigen
 
 ```bash
-curl -L git.io/antigen > antigen.zsh
+curl -L git.io/antigen > "$HOME/.zsh/antigen.zsh"
 ```
 
 ## Step 5: Installing LS_COLORS

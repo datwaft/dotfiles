@@ -38,6 +38,13 @@
         "left":  ";",
         "right": ";"
       }
+    },
+    "html": {
+      "type":  "simple",
+      "delimiters": {
+        "left":  "<!--",
+        "right": "-->"
+      }
     }
   },
   "charset": {

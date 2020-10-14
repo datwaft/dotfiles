@@ -15,7 +15,7 @@
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
   # Begin with tmux
   if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    exec tmux
+    exec tmux new-session -A -s default
   fi
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      Aliases Definition                                      ║ #
@@ -89,11 +89,17 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      User Configuration                                      ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
+  # Colors
+  export TERM="alacritty"
   # Default editor
   export EDITOR='nvim'
   export VISUAL="$EDITOR"
   # Vi console mode
   set -o vi
+  # Enable editting of commands
+  autoload -U edit-command-line
+  zle -N edit-command-line
+  bindkey -M vicmd v edit-command-line
   # Using neovim as manpager
   export MANPAGER='nvim +Man!'
   # Display for WSL

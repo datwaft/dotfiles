@@ -89,38 +89,53 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                      User Configuration                                      ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
-  # Colors
-  export TERM="alacritty"
-  # Default editor
-  export EDITOR='nvim'
-  export VISUAL="$EDITOR"
-  # Vi console mode
-  set -o vi
-  # Vi mode cursor
-  bindkey -v
-  KEYTIMEOUT=5
-  function zle-keymap-select {
-    if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-    elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
-      echo -ne '\e[5 q'
-    fi
-  }
-  zle -N zle-keymap-select
-  zle-line-init() { zle-keymap-select 'beam'}
-  # Enable editting of commands
-  autoload -U edit-command-line
-  zle -N edit-command-line
-  bindkey -M vicmd v edit-command-line
-  # Using neovim as manpager
-  export MANPAGER='nvim +Man!'
-  # Display for WSL
-  export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
-  # Save history
-  HISTFILE=~/.zsh_history
-  HISTSIZE=10000
-  SAVEHIST=10000
-  setopt appendhistory
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                      Local Variables                                       │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # Colors
+    export TERM="alacritty"
+    # Default editor
+    export EDITOR='nvim'
+    export VISUAL="$EDITOR"
+    # Using neovim as manpager
+    export MANPAGER='nvim +Man!'
+    # Display for WSL
+    export DISPLAY=$(/sbin/ip route | awk '/default/ { print $3 }'):0
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                   Vi-Mode Configuration                                    │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # Vi console mode
+    set -o vi
+    # Vi mode cursor
+    bindkey -v
+    KEYTIMEOUT=5
+    function zle-keymap-select {
+      if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
+        echo -ne '\e[1 q'
+      elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
+        echo -ne '\e[5 q'
+      fi
+    }
+    zle -N zle-keymap-select
+    zle-line-init() { zle-keymap-select 'beam'}
+  # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
+  # │                                          History                                           │ #
+  # └────────────────────────────────────────────────────────────────────────────────────────────┘ #
+    # Where to save history
+    export HISTFILE=~/.zsh_history
+    # Size of the history
+    export HISTFILESIZE=1000000000
+    export HISTSIZE=1000000000
+    export SAVEHIST=1000000000
+    # Add timestamp to the history
+    export HISTTIMEFORMAT="[%y-%m-%d %T] "
+    setopt EXTENDED_HISTORY 
+    # History is shared between sessions
+    setopt SHARE_HISTORY
+    # Not show duplicates
+    setopt HIST_FIND_NO_DUPS
+    # Not write duplicates
+    setopt HIST_IGNORE_ALL_DUPS
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                    Keyboard Configuration                                    ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #
@@ -128,6 +143,17 @@
   bindkey '^[[Z' reverse-menu-complete
   # Accept autosuggestions
   bindkey '^ ' autosuggest-accept
+  # Enable editting of commands
+  autoload -U edit-command-line
+  zle -N edit-command-line
+  bindkey -M vicmd v edit-command-line
+  # Use up and down arrows to search on history
+  autoload -U up-line-or-beginning-search
+  autoload -U down-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "^[[A" up-line-or-beginning-search # Up
+  bindkey "^[[B" down-line-or-beginning-search # Down
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                Program-specific Configuration                                ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

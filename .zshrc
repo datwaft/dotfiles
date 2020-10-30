@@ -71,6 +71,7 @@
 
   # Better completion
   antigen bundle zsh-users/zsh-completions
+  antigen bundle gradle/gradle-completion
 
   # Syntax highlighting bundle.
   antigen bundle zsh-users/zsh-syntax-highlighting
@@ -152,8 +153,8 @@
   autoload -U down-line-or-beginning-search
   zle -N up-line-or-beginning-search
   zle -N down-line-or-beginning-search
-  bindkey "^[[A" up-line-or-beginning-search # Up
-  bindkey "^[[B" down-line-or-beginning-search # Down
+  bindkey '^[[A' up-line-or-beginning-search # Up
+  bindkey '^[[B' down-line-or-beginning-search # Down
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                Program-specific Configuration                                ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

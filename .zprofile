@@ -26,6 +26,8 @@
     export PATH=$PATH:$HOME/.scripts/
     # Go instalation
     export PATH=$PATH:/usr/local/go/bin
+    # Gradle
+    export PATH=$PATH:/opt/gradle/gradle-6.7/bin
     # TexLive
     export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
   # ┌────────────────────────────────────────────────────────────────────────────────────────────┐ #
@@ -36,6 +38,8 @@
     # Java
     export JAVA_HOME=/usr/lib/jvm/java-14-oracle
     export PATH=$PATH:$JAVA_HOME/bin
+    # Gradle
+    export GRADLE_HOME=/opt/gradle/gradle-6.7/
     # Prolog
     export SWI_HOME_DIR=/usr/local/lib/swipl/
     export LD_LIBRARY_PATH=/usr/local/lib/swipl/lib/x86_64-linux/

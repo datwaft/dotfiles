@@ -41,10 +41,10 @@
     # Gradle
     export GRADLE_HOME=/opt/gradle/gradle-6.7/
     # Prolog
-    export SWI_HOME_DIR=/usr/local/lib/swipl/
-    export LD_LIBRARY_PATH=/usr/local/lib/swipl/lib/x86_64-linux/
-    export CLASSPATH=/usr/local/lib/swipl/lib/jpl.jar
-    export LD_PRELOAD=/usr/local/lib/swipl/lib/x86_64-linux/libswipl.so  
+    # export SWI_HOME_DIR=/usr/local/lib/swipl/
+    # export LD_LIBRARY_PATH=/usr/local/lib/swipl/lib/x86_64-linux/
+    # export CLASSPATH=/usr/local/lib/swipl/lib/jpl.jar
+    # export LD_PRELOAD=/usr/local/lib/swipl/lib/x86_64-linux/libswipl.so  
     # OpenSSL
     export OPENSSL_CONF=/tmp/openssl.cnf
     # Update MANPATH

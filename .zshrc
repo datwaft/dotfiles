@@ -29,6 +29,12 @@
   alias banner='figlet -d ~/.fonts -f roman -w 100'
   # ls
   alias ls='ls --color=auto'
+  # cmd
+  alias cmd='/mnt/c/Windows/System32/cmd.exe /c'
+  # explorer
+  alias explorer='/mnt/c/Windows/explorer.exe'
+  # SumatraPDF
+  alias SumatraPDF='/mnt/c/Users/David/AppData/Local/SumatraPDF/SumatraPDF.exe'
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════╗ #
 # ║                                        Initialization                                        ║ #
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════╝ #

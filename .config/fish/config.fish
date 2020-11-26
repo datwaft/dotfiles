@@ -95,6 +95,9 @@
   set fish_cursor_insert      line       blink
   set fish_cursor_replace_one underscore blink
   set fish_cursor_visual      block
+  # BobTheFish theme configuration
+  set -g theme_nerd_fonts yes
+  set -g theme_display_virtualenv no
 # ===========
 # Keybindings
 # ===========

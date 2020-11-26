@@ -1,2 +1,7 @@
+# ==========
+# .GITIGNORE
+# ==========
+# Created by: datwaft [github.com/datwaft]
+
+# Ignore self
 .dotfiles
-.vim

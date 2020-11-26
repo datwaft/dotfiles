@@ -4,6 +4,8 @@ The way this repository uses for storing my dotfiles is with a _bare_ repository
 
 > The technique consists in storing a Git bare repository in a "side" folder (like `$HOME/.cfg` or `$HOME/.myconfig`) using a specially crafted alias so that commands are run against that repository and not the usual `.git` local folder, which would interfere with any other Git repositories around.
 
+Also, you can read additional documentation at `.doc` folder.
+
 ## FAQ (Frequently Asked Questions)
 
 ### What are the pre-requisites for this?

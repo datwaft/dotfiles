@@ -1,8 +1,9 @@
+# ==================
 # FISH CONFIGURATION
 # ==================
 # Created by: datwaft [github.com/datwaft]
-# Last updated: 2020-10-31
 
+# =====================
 # Startup configuration
 # =====================
   # Start tmux at startup
@@ -10,6 +11,7 @@
   and not set -q TMUX
     exec tmux new-session -A -s default
   end
+# =======
 # Aliases
 # =======
   # dotfiles alias
@@ -28,6 +30,7 @@
   function swipl
     zsh -c "swipl $argv"
   end
+# ===============
 # Shell variables
 # ===============
   # Configuration variables
@@ -77,6 +80,7 @@
     set -x MANPATH /usr/local/texlive/2020/texmf-dist/doc/man $MANPATH
     # Update INFOPATH
     set -x INFOPATH /usr/local/texlive/2020/texmf-dist/doc/info $INFOPATH
+# =======================
 # Aesthetic configuration
 # =======================
   # Greeting
@@ -96,6 +100,7 @@
   set fish_cursor_insert      line       blink
   set fish_cursor_replace_one underscore blink
   set fish_cursor_visual      block
+# ===========
 # Keybindings
 # ===========
   # Use space key to accept completion
@@ -104,6 +109,7 @@
   function fish_user_key_bindings
     fish_vi_key_bindings
   end
+# =====================
 # Function declarations
 # =====================
   # Auxiliar function to use space key to accept completion
@@ -114,6 +120,7 @@
       commandline -i " "
     end
   end
+# ============
 # Finalization
 # ============
   # Conda

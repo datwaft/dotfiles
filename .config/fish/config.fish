@@ -68,11 +68,6 @@
     set -x PATH $PATH $JAVA_HOME/bin
     # Gradle
     set -x GRADLE_HOME /opt/gradle/gradle-6.7/
-    # Prolog
-    set -x SWI_HOME_DIR /usr/local/lib/swipl/
-    set -x LD_LIBRARY_PATH /usr/local/lib/swipl/lib/x86_64-linux/
-    set -x CLASSPATH /usr/local/lib/swipl/lib/jpl.jar
-    set -x LD_PRELOAD /usr/local/lib/swipl/lib/x86_64-linux/libswipl.so  
     # OpenSSL
     set -x OPENSSL_CONF /tmp/openssl.cnf
     # Update MANPATH

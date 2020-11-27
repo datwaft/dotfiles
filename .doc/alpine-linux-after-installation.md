@@ -23,3 +23,9 @@ adduser datwaft wheel
 ```
 
 After that it's recommended to restart the OS.
+
+## Change root password
+
+```shell
+passwd
+```

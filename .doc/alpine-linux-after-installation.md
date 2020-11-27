@@ -29,3 +29,9 @@ After that it's recommended to restart the OS.
 ```shell
 passwd
 ```
+
+## Installing dependencies
+
+```shell
+sudo apk add ncurses ncurses-dev make cmake mercurial git ninja gettext libtool autoconf automake pkgconfig unzip
+```

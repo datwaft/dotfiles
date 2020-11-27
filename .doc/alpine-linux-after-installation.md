@@ -15,7 +15,7 @@ adduser -h /home/datwaft -s /bin/ash datwaft
 
 ```shell
 # Install sudo
-apk install sudo
+apk add sudo
 # Add group wheel to sudoers group
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 # Add user to wheel group

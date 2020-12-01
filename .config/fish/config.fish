@@ -123,4 +123,5 @@
 # ============
   # Conda
   eval /home/datwaft/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-
+  # Startship
+  starship init fish | source

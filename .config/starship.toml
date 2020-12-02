@@ -46,6 +46,12 @@ style = "bg:red fg:#2c2e34"
 symbol = "rust "
 format = "[](bg:#2c2e34 fg:red)[$symbol$version]($style)[](bg:#2c2e34 fg:red) "
 
+[perl]
+disabled = true
+style = "bg:159 fg:#2c2e34"
+symbol = "perl "
+format = "[](bg:#2c2e34 fg:159)[$symbol$version]($style)[](bg:#2c2e34 fg:159) "
+
 [package]
 style = "bg:#ff8a65 fg:#2c2e34"
 symbol = " "

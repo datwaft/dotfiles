@@ -1,0 +1,43 @@
+[directory]
+style = "bold bg:cyan fg:#2c2e34"
+read_only = " "
+read_only_style = "bold bg:cyan fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:cyan)[$path]($style)[$read_only]($read_only_style)[](bg:#2c2e34 fg:cyan) "
+
+[cmd_duration]
+style = "bold bg:yellow fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:yellow)[$duration]($style)[](bg:#2c2e34 fg:yellow) "
+
+[git_branch]
+style = "bold bg:purple fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:purple)[$symbol$branch]($style)[](bg:#2c2e34 fg:purple) "
+
+[git_status]
+disabled = true
+style = "bold bg:red fg:#2c2e34"
+format = '[](bg:#2c2e34 fg:red)[$all_status$ahead_behind]($style)[](bg:#2c2e34 fg:red) '
+
+[lua]
+style = "bold bg:blue fg:#2c2e34"
+symbol = "lua "
+format = "[](bg:#2c2e34 fg:blue)[$symbol$version]($style)[](bg:#2c2e34 fg:blue) "
+
+[cmake]
+style = "bold bg:blue fg:#2c2e34"
+symbol = "cmake "
+format = "[](bg:#2c2e34 fg:blue)[$symbol$version]($style)[](bg:#2c2e34 fg:blue) "
+
+[nodejs]
+style = "bold bg:green fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:green)[$symbol$version]($style)[](bg:#2c2e34 fg:green) "
+
+[rust]
+disabled = true
+style = "bold bg:red fg:#2c2e34"
+symbol = "rust "
+format = "[](bg:#2c2e34 fg:red)[$symbol$version]($style)[](bg:#2c2e34 fg:red) "
+
+[package]
+style = "bold bg:#ff8a65 fg:#2c2e34"
+symbol = " "
+format = "[](bg:#2c2e34 fg:#ff8a65)[$symbol$version]($style)[](bg:#2c2e34 fg:#ff8a65) "

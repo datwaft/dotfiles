@@ -1,3 +1,12 @@
+[line_break]
+disabled = true
+
+[character]
+format = "$symbol"
+success_symbol = '[](bg:#2c2e34 fg:green)[\$ ](bg:green fg:#2c2e34)[▓▒](bg:#2c2e34 fg:green) '
+vicmd_symbol = '[](bg:#2c2e34 fg:yellow)[V ](bg:yellow fg:#2c2e34)[▓▒](bg:#2c2e34 fg:yellow) '
+error_symbol = '[](bg:#2c2e34 fg:red)[✗ ](bg:red fg:#2c2e34)[▓▒](bg:#2c2e34 fg:red) '
+
 [directory]
 style = "bg:cyan fg:#2c2e34"
 read_only = " "

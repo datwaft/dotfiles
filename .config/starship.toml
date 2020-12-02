@@ -41,3 +41,10 @@ format = "[](bg:#2c2e34 fg:red)[$symbol$version]($style)[](bg:#2c2e34 fg:r
 style = "bold bg:#ff8a65 fg:#2c2e34"
 symbol = " "
 format = "[](bg:#2c2e34 fg:#ff8a65)[$symbol$version]($style)[](bg:#2c2e34 fg:#ff8a65) "
+
+[username]
+show_always = true
+style_root = "bold bg:white fg:#2c2e34"
+style_user = "bold bg:white fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:white)[$user$version]($style)[](bg:#2c2e34 fg:white) "
+

@@ -53,6 +53,7 @@ symbol = "perl "
 format = "[](bg:#2c2e34 fg:159)[$symbol$version]($style)[](bg:#2c2e34 fg:159) "
 
 [package]
+disabled = true
 style = "bg:#ff8a65 fg:#2c2e34"
 symbol = " "
 format = "[](bg:#2c2e34 fg:#ff8a65)[$symbol$version]($style)[](bg:#2c2e34 fg:#ff8a65) "
@@ -63,3 +64,9 @@ style_root = "italic bg:white fg:#2c2e34"
 style_user = "italic bg:white fg:#2c2e34"
 format = "[](bg:#2c2e34 fg:white)[$user$version]($style)[](bg:#2c2e34 fg:white) "
 
+[python]
+style = "bg:green fg:#2c2e34"
+format = "[](bg:#2c2e34 fg:green)[${symbol}${pyenv_prefix}${version}$virtualenv]($style)[](bg:#2c2e34 fg:green) "
+
+[java]
+disabled = true

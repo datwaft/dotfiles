@@ -27,16 +27,19 @@ style = "bg:red fg:#2c2e34"
 format = '[](bg:#2c2e34 fg:red)[$all_status$ahead_behind]($style)[](bg:#2c2e34 fg:red) '
 
 [lua]
+disabled = true
 style = "bg:blue fg:#2c2e34"
 symbol = "lua "
 format = "[](bg:#2c2e34 fg:blue)[$symbol$version]($style)[](bg:#2c2e34 fg:blue) "
 
 [cmake]
+disabled = true
 style = "bg:blue fg:#2c2e34"
 symbol = "cmake "
 format = "[](bg:#2c2e34 fg:blue)[$symbol$version]($style)[](bg:#2c2e34 fg:blue) "
 
 [nodejs]
+disabled = true
 style = "bg:green fg:#2c2e34"
 format = "[](bg:#2c2e34 fg:green)[$symbol$version]($style)[](bg:#2c2e34 fg:green) "
 
@@ -65,6 +68,7 @@ style_user = "italic bg:white fg:#2c2e34"
 format = "[](bg:#2c2e34 fg:white)[$user$version]($style)[](bg:#2c2e34 fg:white) "
 
 [python]
+disabled = true
 style = "bg:green fg:#2c2e34"
 format = "[](bg:#2c2e34 fg:green)[${symbol}${pyenv_prefix}${version}$virtualenv]($style)[](bg:#2c2e34 fg:green) "
 

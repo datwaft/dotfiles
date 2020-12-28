@@ -5,7 +5,7 @@
 ### Installation from bleeding edge
 
 ```shell
-mkdir ~/downloads; cd ~/downloads
+mkdir ~/downloads 2> /dev/null; cd ~/downloads
 git clone https://github.com/fish-shell/fish-shell.git && cd fish-shell
 cmake .
 make

@@ -11,7 +11,7 @@ sudo apt-get install -y libevent-dev ncurses-dev build-essential bison pkg-confi
 Go to <https://github.com/tmux/tmux/releases> and get the latest release like this:
 
 ```shell
-mkdir ~/downloads; cd ~/downloads
+mkdir ~/downloads 2> /dev/null; cd ~/downloads
 wget https://github.com/tmux/tmux/releases/download/3.1c/tmux-3.1c.tar.gz
 tar -zxf tmux-3.1c.tar.gz && cd tmux-3.1c
 ./configure

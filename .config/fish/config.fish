@@ -54,7 +54,7 @@
     # Scripts
     set -x PATH $PATH $HOME/.scripts/
     # Go instalation
-    set -x PATH $PATH /usr/local/go/bin
+    set -x PATH $PATH /usr/local/share/go/bin
     # Gradle
     set -x PATH $PATH /opt/gradle/gradle-6.7/bin
     # TexLive
@@ -122,6 +122,6 @@
 # Finalization
 # ============
   # Conda
-  eval /home/datwaft/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+  eval /usr/local/share/anaconda/bin/conda "shell.fish" "hook" $argv | source
   # Startship
   starship init fish | source

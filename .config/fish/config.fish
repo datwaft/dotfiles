@@ -14,7 +14,6 @@
 # =======
 # Aliases
 # =======
-  # dotfiles alias
   function dotfiles
     /usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" $argv
   end
@@ -27,9 +26,9 @@
   function SumatraPDF
     /mnt/c/Users/David/AppData/Local/SumatraPDF/SumatraPDF.exe $argv
   end
-  function swipl
-    zsh -c "swipl $argv"
-  end
+  alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+  alias ls='lsd'
+  alias l='lsd -l'
 # ===============
 # Shell variables
 # ===============
@@ -57,6 +56,8 @@
     set -x PATH $PATH /usr/local/share/go/bin
     # Gradle
     set -x PATH $PATH /opt/gradle/gradle-6.7/bin
+    # Node
+    set -x PATH $PATH ~/.local/share/nvm/v15.5.0/bin/
     # TexLive
     set -x PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
   # Miscelaneous variables

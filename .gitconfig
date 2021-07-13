@@ -3,3 +3,5 @@
 	email = datwaftx@gmail.com
 [core]
 	editor = nvim
+[credential]
+	helper = cache

@@ -74,7 +74,7 @@
   # ---------------------
   # Neovim home directory
   # ---------------------
-    export NVIM="$HOME/.config/nvim"
+    export NVIM="$HOME/.config/nvim.main"
 # ==================
 # Binaries variables
 # ==================

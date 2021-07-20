@@ -181,6 +181,10 @@
   # FZF
   # ---
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  # ------------------
+  # Go Version Manager
+  # ------------------
+  [[ -s "/home/datwaft/.gvm/scripts/gvm" ]] && source "/home/datwaft/.gvm/scripts/gvm"
 # ===============
 # Theme variables
 # ===============

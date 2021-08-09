@@ -156,6 +156,12 @@
     if [ -d "$GOROOT/bin" ] ; then
       export PATH="$PATH:$GOROOT/bin"
     fi
+  # -------------------
+  # Lua Language Server
+  # -------------------
+    if [ -d "$HOME/.local/bin/lua-language-server/bin/Linux" ] ; then
+      export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/Linux"
+    fi
 # ======================
 # Binaries configuration
 # ======================
@@ -188,13 +194,13 @@
 # ===============
 # Theme variables
 # ===============
-  export FOREGROUND_COLOR="#c5cdd9"
-  export BACKGROUND_COLOR="#2c2e34"
-  export BLACK_COLOR="#3e4249"
-  export RED_COLOR="#ec7279"
-  export GREEN_COLOR="#a0c980"
-  export YELLOW_COLOR="#deb974"
-  export BLUE_COLOR="#6cb6eb"
-  export MAGENTA_COLOR="#d38aea"
-  export CYAN_COLOR="#5dbbc1"
-  export WHITE_COLOR="#c5cdd9"
+  export FOREGROUND_COLOR="#d1d5da"
+  export BACKGROUND_COLOR="#24292e"
+  export BLACK_COLOR="#24292e"
+  export RED_COLOR="#f14c4c"
+  export GREEN_COLOR="#23d18b"
+  export YELLOW_COLOR="#e2e210"
+  export BLUE_COLOR="#3b8eea"
+  export MAGENTA_COLOR="#bc3fbc"
+  export CYAN_COLOR="#29b7da"
+  export WHITE_COLOR="#d1d5da"

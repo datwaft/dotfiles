@@ -37,7 +37,7 @@
   # Chrome
   # ------
     if [ -d "/mnt/c/Program Files/Google/Chrome" ] ; then
-      alias chrome='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
+      alias chrome='"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
     fi
 # ================
 # System variables

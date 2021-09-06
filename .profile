@@ -27,6 +27,13 @@
   # Windows CMD
   # -----------
     alias cmd='/mnt/c/Windows/System32/cmd.exe /c'
+  # ---------
+  # Win32Yank
+  # ---------
+    if [ -x "$(command -v win32yank.exe)" ]; then
+      alias yank='win32yank.exe -i'
+      alias put='win32yank.exe -o'
+    fi
   # ----------
   # SumatraPDF
   # ----------
@@ -122,6 +129,12 @@
     fi
     if [ -d "$HOME/.local/bin" ] ; then
       export PATH="$HOME/.local/bin:$PATH"
+    fi
+  # ------
+  # Python
+  # ------
+    if [ -d "/home/linuxbrew/.linuxbrew/opt/python@3.9/libexec/bin" ] ; then
+      export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.9/libexec/bin:$PATH"
     fi
   # ----
   # Java

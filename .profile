@@ -44,7 +44,7 @@
   # Chrome
   # ------
     if [ -d "/mnt/c/Program Files/Google/Chrome" ] ; then
-      alias chrome='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
+      alias chrome='"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
     fi
 # ================
 # System variables
@@ -160,6 +160,12 @@
     if [ -d "$DENO_INSTALL/bin" ] ; then
       export PATH="$DENO_INSTALL/bin:$PATH"
     fi
+  # ----
+  # Yarn
+  # ----
+    if [ -d "$(yarn global bin)" ] ; then
+      export PATH="$(yarn global bin):$PATH"
+    fi
   # ------
   # Golang
   # ------
@@ -193,17 +199,21 @@
   # --------------------
   # Node Version Manager
   # --------------------
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   # ---
   # FZF
   # ---
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   # ------------------
   # Go Version Manager
   # ------------------
-  [[ -s "/home/datwaft/.gvm/scripts/gvm" ]] && source "/home/datwaft/.gvm/scripts/gvm"
+    [[ -s "/home/datwaft/.gvm/scripts/gvm" ]] && source "/home/datwaft/.gvm/scripts/gvm"
+  # ---------
+  # Prettierd
+  # ---------
+    export PRETTIERD_DEFAULT_CONFIG="$HOME/.prettierrc.json"
 # ===============
 # Theme variables
 # ===============

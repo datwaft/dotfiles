@@ -160,12 +160,6 @@
     if [ -d "$DENO_INSTALL/bin" ] ; then
       export PATH="$DENO_INSTALL/bin:$PATH"
     fi
-  # ----
-  # Yarn
-  # ----
-    if [ -d "$(yarn global bin)" ] ; then
-      export PATH="$(yarn global bin):$PATH"
-    fi
   # ------
   # Golang
   # ------
@@ -217,13 +211,13 @@
 # ===============
 # Theme variables
 # ===============
-  export FOREGROUND_COLOR="#d1d5da"
-  export BACKGROUND_COLOR="#24292e"
-  export BLACK_COLOR="#24292e"
-  export RED_COLOR="#f14c4c"
-  export GREEN_COLOR="#23d18b"
-  export YELLOW_COLOR="#e2e210"
-  export BLUE_COLOR="#3b8eea"
-  export MAGENTA_COLOR="#bc3fbc"
-  export CYAN_COLOR="#29b7da"
-  export WHITE_COLOR="#d1d5da"
+  export FOREGROUND_COLOR="#abb2bf"
+  export BACKGROUND_COLOR="#0e171e"
+  export BLACK_COLOR="#393b44"
+  export RED_COLOR="#c94f6d"
+  export GREEN_COLOR="#97c374"
+  export YELLOW_COLOR="#dbc074"
+  export BLUE_COLOR="#61afef"
+  export MAGENTA_COLOR="#c678dd"
+  export CYAN_COLOR="#63cdcf"
+  export WHITE_COLOR="#dfdfe0"

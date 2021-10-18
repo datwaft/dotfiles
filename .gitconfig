@@ -5,3 +5,5 @@
 	editor = nvim
 [credential]
 	helper = cache
+[pull]
+	rebase = false

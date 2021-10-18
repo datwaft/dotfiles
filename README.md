@@ -25,7 +25,7 @@ git clone --bare git@github.com:datwaft/dotfiles.git $HOME/.dotfiles
 After that add the alias to the current shell scope:
 
 ```
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 And after that do a checkout to add the files to the home directory:

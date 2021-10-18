@@ -1,8 +1,4 @@
 ## System variables
-# Term
-if [ -n "$TMUX" ]; then
-  export TERM="tmux-256color"
-fi
 # Display
 export DISPLAY="$(/sbin/ip route | awk '/default/{ print $3 }'):0"
 # Editor

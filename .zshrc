@@ -1,6 +1,7 @@
 ## Startup configuration
 # Start with tmux
 if [ -x "$(command -v tmux)" ] && [ ! -n "$TMUX" ]; then
+  export TERM="tmux-256color"
   exec tmux new-session -A -s default
 fi
 

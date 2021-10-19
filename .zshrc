@@ -39,15 +39,12 @@ if [ -s "$HOME/.zsh/antigen.zsh" ]; then
   antigen bundle command-not-found
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle zsh-users/zsh-autosuggestions
+  antigen theme robbyrussell
   antigen apply
 else
   echo "Antigen not found."
   echo "Please install using: curl -L git.io/antigen > ~/.zsh/antigen.zsh"
 fi
-
-## Prompt
-# Use starship.rs
-eval "$(starship init zsh)"
 
 ## Vi-Mode configuration
 set -o vi

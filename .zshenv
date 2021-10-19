@@ -86,15 +86,3 @@ else
   alias lsa='ls -A'
   alias la='ls -l -A'
 fi
-
-## Theme
-export FOREGROUND_COLOR="#abb2bf"
-export BACKGROUND_COLOR="#0e171e"
-export BLACK_COLOR="#393b44"
-export RED_COLOR="#c94f6d"
-export GREEN_COLOR="#97c374"
-export YELLOW_COLOR="#dbc074"
-export BLUE_COLOR="#61afef"
-export MAGENTA_COLOR="#c678dd"
-export CYAN_COLOR="#63cdcf"
-export WHITE_COLOR="#dfdfe0" 

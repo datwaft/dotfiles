@@ -25,11 +25,8 @@
 # =====================
 # Environment variables
 # =====================
-  export WINDOWS_USERNAME="$(/mnt/c/Windows/System32/WindowsPowerShell/v1.0//powershell.exe '$env:UserName')"
-  export OS="/mnt/c"
-  export DATA="/mnt/d"
-  export APPDATA="$OS/Users/$WINDOWS_USERNAME/AppData/Roaming"
-  export APPLOCAL="$OS/Users/$WINDOWS_USERNAME/AppData/Local"
+  export WINOS="/mnt/c"
+  export WINDATA="/mnt/d"
 
 # ==============
 # User variables
@@ -106,14 +103,14 @@
   # ----------------
   # Windows Explorer
   # ----------------
-    if [ -x "$OS/Windows/explorer.exe" ]; then
-      alias explorer="$OS/Windows/explorer.exe"
+    if [ -x "$WINOS/Windows/explorer.exe" ]; then
+      alias explorer="$WINOS/Windows/explorer.exe"
     fi
   # -----------
   # Windows CMD
   # -----------
-    if [ -x "$OS/Windows/System32/cmd.exe" ]; then
-      alias cmd="$OS/Windows/System32/cmd.exe /c"
+    if [ -x "$WINOS/Windows/System32/cmd.exe" ]; then
+      alias cmd="$WINOS/Windows/System32/cmd.exe /c"
     fi
   # ---------
   # Win32Yank

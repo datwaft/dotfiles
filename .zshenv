@@ -120,6 +120,12 @@
     if [ -x "$WINOS/Windows/System32/cmd.exe" ]; then
       alias cmd="$WINOS/Windows/System32/cmd.exe /c"
     fi
+  # -------------
+  # Google Chrome
+  # -------------
+    if [ -x "$WINOS/Program Files/Google/Chrome/Application/chrome.exe" ]; then
+      alias chrome="$WINOS/Program\ Files/Google/Chrome/Application/chrome.exe"
+    fi
   # ---------
   # Win32Yank
   # ---------

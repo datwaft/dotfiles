@@ -1,0 +1,1 @@
+datwaft ALL = (root) NOPASSWD: /etc/init.d/dbus

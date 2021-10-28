@@ -11,6 +11,12 @@
       export TERM="tmux-256color"
       exec tmux new-session -A -s default
     fi
+  # --------------
+  # Instant prompt
+  # --------------
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
 
 # =======================
 # Aesthetic configuration
@@ -44,22 +50,29 @@
 # =======
 # Plugins
 # =======
-  if [ -s "$HOME/.zsh/antigen.zsh" ]; then
-    source "$HOME/.zsh/antigen.zsh"
-    antigen use oh-my-zsh
-    antigen bundle git
-    antigen bundle heroku
-    antigen bundle pip
-    antigen bundle lein
-    antigen bundle command-not-found
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle zsh-users/zsh-autosuggestions
-    antigen theme robbyrussell
-    antigen apply
-  else
-    echo "Antigen not found."
-    echo "Please install using: curl -L git.io/antigen > ~/.zsh/antigen.zsh"
-  fi
+  # -------
+  # Listing
+  # -------
+    if [ -s "$HOME/.zsh/antigen.zsh" ]; then
+      source "$HOME/.zsh/antigen.zsh"
+      antigen use oh-my-zsh
+      antigen bundle git
+      antigen bundle heroku
+      antigen bundle pip
+      antigen bundle lein
+      antigen bundle command-not-found
+      antigen bundle zsh-users/zsh-syntax-highlighting
+      antigen bundle zsh-users/zsh-autosuggestions
+      antigen theme romkatv/powerlevel10k
+      antigen apply
+    else
+      echo "Antigen not found."
+      echo "Please install using: curl -L git.io/antigen > ~/.zsh/antigen.zsh"
+    fi
+  # -----
+  # Theme
+  # -----
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ======================
 # VIM-mode configuration

@@ -63,6 +63,12 @@
 # ==================
 # Binaries variables
 # ==================
+  # ----
+  # Java
+  # ----
+    if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
+      export JAVA_HOME="$(brew --prefix)/opt/java"
+    fi
   # --------------------
   # Node Version Manager
   # --------------------

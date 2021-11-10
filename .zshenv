@@ -7,15 +7,21 @@
   # -------
   # Display
   # -------
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+    if grep -q WSL /proc/version; then
+      export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+    fi
   # ------------
   # Pulse server
   # ------------
-    export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')
+    if grep -q WSL /proc/version; then
+      export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')
+    fi
   # -----
   # LibGL
   # -----
-    export LIBGL_ALWAYS_INDIRECT=1
+    if grep -q WSL /proc/version; then
+      export LIBGL_ALWAYS_INDIRECT=1
+    fi
   # ------
   # Editor
   # ------

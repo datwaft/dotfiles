@@ -47,32 +47,26 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: '#0e171c'
-    foreground: '#abb2bf'
-  cursor:
-    text: '#0e171c'
-    cursor: '#abb2bf'
+    background: "#181818"
+    foreground: "#b9b9b9"
   normal:
-    black:   '#393b44'
-    red:     '#c94f6d'
-    green:   '#97c374'
-    yellow:  '#dbc074'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#63cdcf'
-    white:   '#dfdfe0'
+    black: "#252525"
+    red: "#ed4a46"
+    green: "#70b433"
+    yellow: "#dbb32d"
+    blue: "#368aeb"
+    magenta: "#eb6eb7"
+    cyan: "#3fc5b7"
+    white: "#777777"
   bright:
-    black:   '#7f8c98'
-    red:     '#e06c75'
-    green:   '#58cd8b'
-    yellow:  '#ffe37e'
-    blue:    '#84cee4'
-    magenta: '#b8a1e3'
-    cyan:    '#59f0ff'
-    white:   '#fdebc3'
-  indexed_colors:
-    - { index: 16, color: '#ffe37e' }
-    - { index: 17, color: '#e06c75' }
+    black: "#3b3b3b"
+    red: "#ff5e56"
+    green: "#83c746"
+    yellow: "#efc541"
+    blue: "#4f9cfe"
+    magenta: "#ff81ca"
+    cyan: "#56d8c9"
+    white: "#dedede"
 
 bell:
   animation: EaseOutExpo

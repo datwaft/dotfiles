@@ -91,6 +91,14 @@
   fi
   unset __conda_setup
 
+# ===================
+# Pyenv configuration
+# ===================
+  if [ -n "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+  fi
+
 # ======================
 # VIM-mode configuration
 # ======================

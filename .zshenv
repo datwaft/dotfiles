@@ -110,6 +110,14 @@
   # Go Version Manager
   # ------------------
     [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+  # -----
+  # Pyenv
+  # -----
+    if [ -n "$(command -v pyenv)" ]; then
+      eval "$(pyenv init --path)"
+      export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+      export PYENV_ROOT="$(pyenv root)"
+    fi
 
 # =======
 # Aliases

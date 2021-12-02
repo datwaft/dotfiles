@@ -65,6 +65,12 @@
     if [ -d "$HOME/.cargo" ]; then
       export PATH="$PATH:$HOME/.cargo/bin"
     fi
+  # -------------------
+  # Lua Language Server
+  # -------------------
+    if [ -d "$HOME/.local/bin/lua-language-server" ]; then
+      export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/Linux"
+    fi
 
 # ==================
 # Binaries variables

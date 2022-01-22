@@ -45,7 +45,7 @@
 # ==============
 # User variables
 # ==============
-  export NVIM="$HOME/.config/nvim.main"
+  export NVIM="$HOME/.config/nvim.conf"
 
 # =============
 # PATH variable

@@ -133,6 +133,7 @@
   # ------------------
     if [ -d "$HOME/.dotfiles" ]; then
       alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+      alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     fi
   # ----------------
   # Windows Explorer

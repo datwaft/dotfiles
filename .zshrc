@@ -99,6 +99,11 @@
     eval "$(pyenv virtualenv-init -)"
   fi
 
+# ===================
+# Broot configuration
+# ===================
+  source $HOME/.config/broot/launcher/bash/br
+
 # ======================
 # VIM-mode configuration
 # ======================

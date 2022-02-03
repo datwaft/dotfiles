@@ -1,6 +1,7 @@
 [user]
 	name = datwaft
 	email = datwaftx@gmail.com
+	signingKey = CA543AC7BABF282D
 [core]
 	editor = nvim
 [credential]
@@ -14,3 +15,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[commit]
+	gpgsign = true

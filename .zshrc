@@ -104,6 +104,11 @@
 # ===================
   source $HOME/.config/broot/launcher/bash/br
 
+# =================
+# GPG configuration
+# =================
+  export GPG_TTY="$(tty)"
+
 # ======================
 # VIM-mode configuration
 # ======================

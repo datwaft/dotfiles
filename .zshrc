@@ -102,7 +102,9 @@
 # ===================
 # Broot configuration
 # ===================
-  source $HOME/.config/broot/launcher/bash/br
+  if [ -x "$HOME/.config/broot/launcher/bash/br" ]; then
+    source $HOME/.config/broot/launcher/bash/br
+  fi
 
 # =================
 # GPG configuration

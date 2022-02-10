@@ -24,16 +24,16 @@ scrolling:
 
 font:
   normal:
-    family: CaskaydiaCove NF
+    family: BlexMono NF
     style: Regular
   bold:
-    family: CaskaydiaCove NF
+    family: BlexMono NF
     style: Bold
   italic:
-    family: CaskaydiaCove NF
+    family: BlexMono NF
     style: Italic
   bold_italic:
-    family: CaskaydiaCove NF
+    family: BlexMono NF
     style: Bold Italic
   size: 11.0
   offset:

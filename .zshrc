@@ -91,6 +91,13 @@
   fi
   unset __conda_setup
 
+# ====================
+# direnv configuration
+# ====================
+  if [ -n "$(command -v direnv)" ]; then
+    eval "$(direnv hook zsh)"
+  fi
+
 # ===================
 # Pyenv configuration
 # ===================

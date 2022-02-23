@@ -109,7 +109,7 @@
 # ===================
 # Broot configuration
 # ===================
-  if [ -x "$HOME/.config/broot/launcher/bash/br" ]; then
+  if [ -n "$(command -v broot)" ]; then
     source $HOME/.config/broot/launcher/bash/br
   fi
 
@@ -149,7 +149,7 @@
   export SAVEHIST=1000000000
   # Add timestamp to the history
   export HISTTIMEFORMAT="[%y-%m-%d %T] "
-  setopt EXTENDED_HISTORY 
+  setopt EXTENDED_HISTORY
   # History is shared between sessions
   setopt SHARE_HISTORY
   # Not show duplicates

@@ -7,9 +7,13 @@
   # -----------------
   # Start within tmux
   # -----------------
-    if [ -x "$(command -v tmux)" ] && [ ! -n "$TMUX" ]; then
+    if [ -x "$(command -v tmux)" ]; then
       export TERM="tmux-256color"
-      exec tmux new-session -A -s default
+      if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
+        exec tmux new-session -A -s "[vs] $(pwd | md5sum | awk '{print $1}')"
+      elif [ ! -n "$TMUX" ]; then
+        exec tmux new-session -A -s default
+      fi
     fi
   # --------------
   # Instant prompt

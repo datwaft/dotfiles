@@ -10,7 +10,7 @@
     if [ -x "$(command -v tmux)" ]; then
       export TERM="tmux-256color"
       if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
-        exec tmux new-session -A -s "[vs] $(pwd | md5sum | awk '{print $1}')"
+        exec tmux new-session -A -s "vscode-$(pwd | xargs basename)"
       elif [ ! -n "$TMUX" ]; then
         exec tmux new-session -A -s default
       fi

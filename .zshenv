@@ -22,6 +22,10 @@
     if grep -q WSL /proc/version; then
       export LIBGL_ALWAYS_INDIRECT=1
     fi
+  # ---
+  # SSH
+  # ---
+    export SSH_AUTH_SOCK=~/.1password/agent.sock
   # ------
   # Editor
   # ------

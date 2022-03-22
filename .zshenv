@@ -164,16 +164,3 @@
       alias yank="win32yank.exe -i"
       alias put="win32yank.exe -o"
     fi
-  # --------
-  # LSDeluxe
-  # --------
-    if [ -x "$(command -v lsd)" ]; then
-      alias ls='lsd'
-      alias l='lsd -l'
-      alias lsa='lsd -A'
-      alias la='lsd -l -A'
-    else
-      alias l='ls -l'
-      alias lsa='ls -A'
-      alias la='ls -l -A'
-    fi

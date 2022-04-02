@@ -51,6 +51,16 @@
   ZSH_AUTOSUGGEST_STRATEGY="completion"
   ZSH_AUTOSUGGEST_USE_ASYNC="true"
 
+# ==========
+# Completion
+# ==========
+  # Add Brew completions
+  if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+    autoload -Uz compinit
+    compinit
+  fi
+
 # =======
 # Plugins
 # =======

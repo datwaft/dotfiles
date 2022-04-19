@@ -1,22 +1,22 @@
 [user]
-	name = datwaft
-	email = datwaftx@gmail.com
-	signingKey = CA543AC7BABF282D
+  name = datwaft
+  email = datwaftx@gmail.com
+  signingKey = CA543AC7BABF282D
 [core]
-	editor = nvim
+  editor = nvim
 [credential]
-	helper = cache
+  helper = cache
 [pull]
-	rebase = false
+  rebase = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [commit]
-	gpgsign = true
+  gpgsign = true
 [diff]
   tool = difftastic
 [difftool]

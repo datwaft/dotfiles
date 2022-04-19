@@ -4,28 +4,14 @@
 # ================
 # System variables
 # ================
-  # -------
-  # Display
-  # -------
-    if grep -q WSL /proc/version; then
-      export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-    fi
-  # ------------
-  # Pulse server
-  # ------------
-    if grep -q WSL /proc/version; then
-      export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')
-    fi
-  # -----
-  # LibGL
-  # -----
-    if grep -q WSL /proc/version; then
-      export LIBGL_ALWAYS_INDIRECT=1
-    fi
   # ---
   # SSH
   # ---
-    export SSH_AUTH_SOCK=~/.1password/agent.sock
+    if grep -q WSL /proc/version; then
+      export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+    else
+      export SSH_AUTH_SOCK=~/.1password/agent.sock
+    fi
   # ------
   # Editor
   # ------

@@ -40,17 +40,6 @@ dotfiles config --local status.showUntrackedFiles no
 
 **Warning:** Your home directory shouldn't contain any of the dotfiles present inside the directory.
 
-### How do I import the root files?
-
-Use the following command:
-
-```sh
-sudo chown 0 -R ~/.root/
-sudo cp -as ~/.root/. /
-```
-
-This command makes root the owner of the folder `~/.root` and symlinks the whole tree to _root_.
-
 ### Where did you get the information for using your dotfiles like this?
 
 Here: <https://www.atlassian.com/git/tutorials/dotfiles>

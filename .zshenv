@@ -61,6 +61,12 @@
     if [ -d "$HOME/.local/bin/lua-language-server" ]; then
       export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/Linux"
     fi
+  # ----
+  # Deno
+  # ----
+    if [ -d "$HOME/.deno/bin" ]; then
+      export PATH="$HOME/.deno/bin:$PATH"
+    fi
 
 # ==================
 # Binaries variables
@@ -81,6 +87,12 @@
   # Prettierd
   # ---------
     export PRETTIERD_DEFAULT_CONFIG="$HOME/.prettierrc.json"
+  # ----
+  # Deno
+  # ----
+    if [ -d "$HOME/.deno" ]; then
+      export DENO_INSTALL="$HOME/.deno"
+    fi
 
 # ======================
 # Binaries configuration
@@ -124,6 +136,20 @@
     if [ -d "$HOME/.dotfiles" ]; then
       alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
       alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    fi
+  # ---------
+  # LS or LSD
+  # ---------
+    if [ -x "$(command -v lsd)" ]; then
+      alias ls='lsd'
+      alias lsa='lsd -a'
+      alias l='lsd -l'
+      alias la='lsd -la'
+    else
+      alias ls='ls --color=auto'
+      alias lsa='ls --color=auto -a'
+      alias la='ls --color=auto -l'
+      alias la='ls --color=auto -la'
     fi
   # ----------------
   # Windows Explorer

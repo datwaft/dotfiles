@@ -77,10 +77,6 @@
 # ==========
   # Add Custom completions
   FPATH="$HOME/.zsh/completions:$FPATH"
-  # Add Brew completions
-  if type brew &>/dev/null; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
-  fi
 
 # =======
 # Plugins

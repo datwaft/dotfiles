@@ -37,6 +37,32 @@
 # ==============
   export NVIM="$HOME/.config/nvim.conf"
 
+# ==================
+# Binaries variables
+# ==================
+  # ----
+  # Java
+  # ----
+    if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
+      export JAVA_HOME="$(brew --prefix)/opt/java"
+    fi
+  # --------------------
+  # Node Version Manager
+  # --------------------
+    if [ -d "$HOME/.nvm" ]; then
+      export NVM_DIR="$HOME/.nvm"
+    fi
+  # ---------
+  # Prettierd
+  # ---------
+    export PRETTIERD_DEFAULT_CONFIG="$HOME/.prettierrc.json"
+  # ----
+  # Deno
+  # ----
+    if [ -d "$HOME/.deno" ]; then
+      export DENO_INSTALL="$HOME/.deno"
+    fi
+
 # =============
 # PATH variable
 # =============
@@ -64,34 +90,8 @@
   # ----
   # Deno
   # ----
-    if [ -d "$HOME/.deno/bin" ]; then
-      export PATH="$HOME/.deno/bin:$PATH"
-    fi
-
-# ==================
-# Binaries variables
-# ==================
-  # ----
-  # Java
-  # ----
-    if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
-      export JAVA_HOME="$(brew --prefix)/opt/java"
-    fi
-  # --------------------
-  # Node Version Manager
-  # --------------------
-    if [ -d "$HOME/.nvm" ]; then
-      export NVM_DIR="$HOME/.nvm"
-    fi
-  # ---------
-  # Prettierd
-  # ---------
-    export PRETTIERD_DEFAULT_CONFIG="$HOME/.prettierrc.json"
-  # ----
-  # Deno
-  # ----
-    if [ -d "$HOME/.deno" ]; then
-      export DENO_INSTALL="$HOME/.deno"
+    if [ -d "$DENO_INSTALL/bin" ]; then
+      export PATH="$DENO_INSTALL/bin:$PATH"
     fi
 
 # ======================

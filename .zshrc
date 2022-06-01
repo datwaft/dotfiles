@@ -131,22 +131,30 @@
 # ======================
 # VIM-mode configuration
 # ======================
-  set -o vi
+  # Enable vi-mode
+  bindkey -v
+  # Remove switching delay
+  KEYTIMEOUT=5
   # --------------------
   # Cursor configuration
   # --------------------
     # Change cursor depending on mode
-    bindkey -v
-    KEYTIMEOUT=5
     function zle-keymap-select {
-      if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
+      if [[ $KEYMAP == vicmd ]] ||
+         [[ $1 = 'block' ]]; then
         echo -ne '\e[1 q'
-      elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
+      elif [[ $KEYMAP == main ]] ||
+           [[ $KEYMAP == viins ]] ||
+           [[ $KEYMAP = '' ]] ||
+           [[ $1 = 'beam' ]]; then
         echo -ne '\e[5 q'
       fi
     }
     zle -N zle-keymap-select
-    zle-line-init() { zle-keymap-select 'beam'}
+    zle-line-init() { zle-keymap-select 'beam' }
+    # Start with beam shape cursor
+    zle-keymap-select 'beam'
+    preexec() { zle-keymap-select 'beam' }
 
 # =====================
 # History configuration

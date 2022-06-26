@@ -138,13 +138,13 @@
       alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     fi
   # ---------
-  # LS or LSD
+  # ls or exa
   # ---------
-    if [ -x "$(command -v lsd)" ]; then
-      alias ls='lsd'
-      alias lsa='lsd -a'
-      alias l='lsd -l'
-      alias la='lsd -la'
+    if [ -x "$(command -v exa)" ]; then
+      alias ls='exa'
+      alias lsa='exa -a'
+      alias l='exa -l'
+      alias la='exa -la'
     else
       alias ls='ls --color=auto'
       alias lsa='ls --color=auto -a'

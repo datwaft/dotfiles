@@ -28,9 +28,8 @@
   # --------
   # LSCOLORS
   # --------
-  if [ -s "$HOME/.local/share/lscolors.sh" ]; then
-    source "$HOME/.local/share/lscolors.sh"
-  fi
+  eval `dircolors`
+  export LS_COLORS="$LS_COLORS:ow=1;7;34:st=30;44:su=30;41"
 
 # =========
 # Oh My Zsh
@@ -199,3 +198,8 @@
 # ===========================
   # Disable bell
   unsetopt BEEP
+
+# =========
+# Finishing
+# =========
+  source ~/.zshenv

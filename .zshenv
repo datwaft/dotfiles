@@ -7,7 +7,7 @@
   # ---
   # SSH
   # ---
-    if grep -q WSL /proc/version; then
+    if [[ -f /proc/version ]] && grep -q WSL /proc/version; then
       export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
     else
       export SSH_AUTH_SOCK=~/.1password/agent.sock
@@ -102,6 +102,8 @@
   # --------
     if [ -d "/home/linuxbrew" ]; then
       eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    elif [ -d "/opt/homebrew" ]; then
+      eval $(/opt/homebrew/bin/brew shellenv)
     fi
   # -----
   # Cargo

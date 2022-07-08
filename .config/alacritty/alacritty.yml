@@ -25,7 +25,7 @@ scrolling:
 font:
   normal:
     family: BlexMono NF
-    style: Regular
+    style: Text
   bold:
     family: BlexMono NF
     style: Bold
@@ -35,7 +35,7 @@ font:
   bold_italic:
     family: BlexMono NF
     style: Bold Italic
-  size: 11.0
+  size: 12.0
   offset:
     x: 0
     y: 0

@@ -55,6 +55,9 @@
 # ==========
 # Completion
 # ==========
+  # Close completion menu with <space>
+  zmodload zsh/complist
+  bindkey -M menuselect ' ' accept-search
   # Add Custom completions
   FPATH="$HOME/.zsh/completions:$FPATH"
 

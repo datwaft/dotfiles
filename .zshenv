@@ -75,9 +75,6 @@
     if [ -d "$HOME/.local/bin" ]; then
       export PATH="$PATH:$HOME/.local/bin"
     fi
-    if [ -d "$HOME/.scripts" ]; then
-      export PATH="$PATH:$HOME/.scripts"
-    fi
   # -----
   # Cargo
   # -----
@@ -142,10 +139,6 @@
       alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
       alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     fi
-  # ------------------
-  # Neovim with socket
-  # ------------------
-    alias nvim='nvim --listen /tmp/nvim_$(uuidgen).pipe'
   # ---------
   # ls or exa
   # ---------

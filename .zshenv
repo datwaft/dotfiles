@@ -75,6 +75,9 @@
     if [ -d "$HOME/.local/bin" ]; then
       export PATH="$PATH:$HOME/.local/bin"
     fi
+    if [ -d "$HOME/.scripts" ]; then
+      export PATH="$PATH:$HOME/.scripts"
+    fi
   # -----
   # Cargo
   # -----

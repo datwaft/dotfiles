@@ -27,3 +27,5 @@
   difftool = true
 [alias]
   difft = difftool
+[push]
+  autoSetupRemote = true

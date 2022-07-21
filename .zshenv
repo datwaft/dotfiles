@@ -128,6 +128,10 @@
       export PYENV_VIRTUALENV_DISABLE_PROMPT=1
       export PYENV_ROOT="$(pyenv root)"
     fi
+  # -------
+  # AWS CLI
+  # -------
+    export AWS_PROFILE=dguevara-littera-read-only
 
 # =======
 # Aliases

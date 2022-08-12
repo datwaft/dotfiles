@@ -131,7 +131,7 @@
   # -------
   # AWS CLI
   # -------
-    export AWS_PROFILE=dguevara-littera-read-only
+    export AWS_PROFILE=dguevara-littera-prod-qa
 
 # =======
 # Aliases

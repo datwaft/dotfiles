@@ -21,6 +21,11 @@
     if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
       source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
     fi
+  # --------------------------------------
+  # Configure maximum number of open files
+  # --------------------------------------
+    # This is necessary for MacOS
+    ulimit -n 10240
 
 # =======================
 # Aesthetic configuration

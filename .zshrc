@@ -1,215 +1,67 @@
-# .ZSHRC
-# ======
-
-# =====================
-# Startup configuration
-# =====================
-  # -----------------
-  # Start within tmux
-  # -----------------
-    if [ -x "$(command -v tmux)" ]; then
-      export TERM="tmux-256color"
-      if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
-        exec tmux new-session -A -s "vscode-$(pwd | xargs basename)"
-      elif [ ! -n "$TMUX" ]; then
-        exec tmux new-session -A -s default
-      fi
-    fi
-  # --------------
-  # Instant prompt
-  # --------------
-    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-    fi
-  # --------------------------------------
-  # Configure maximum number of open files
-  # --------------------------------------
-    # This is necessary for MacOS
-    ulimit -n 10240
-
-# =======================
-# Aesthetic configuration
-# =======================
-  # --------
-  # LSCOLORS
-  # --------
-  if [ -x "$(command -v dircolors)" ]; then
-    eval `dircolors`
+## ==============
+## Initialization
+## ==============
+# Start inside TMUX
+if [ -x "$(command -v tmux)" ]; then
+  export TERM="tmux-256color"
+  if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
+    exec tmux new-session -A -s "vscode-$(pwd | xargs basename)"
+  elif [ ! -n "$TMUX" ]; then
+    exec tmux new-session -A -s default
   fi
-  export LS_COLORS="$LS_COLORS:ow=1;7;34:st=30;44:su=30;41"
+fi
+# Use Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# Configure maximum number of open files
+ulimit -n 10240
 
-# =========
-# Oh My Zsh
-# =========
-  # Initialization
-  export ZSH="$HOME/.oh-my-zsh"
-  # Case insensitive completion
-  CASE_SENSITIVE="false"
-  # Hyphen insensitive completion
-  HYPHEN_INSENSITIVE="true"
-  # Display red dots whilst waiting for completion
-  COMPLETION_WAITING_DOTS="true"
-  # Faster status check - not marking untracked files as dirty
-  DISABLE_UNTRACKED_FILES_DIRTY="true"
-  # Time stamp
-  HIST_STAMPS="yyyy-mm-dd"
-  # Autosuggestions
-  ZSH_AUTOSUGGEST_STRATEGY="completion"
-  ZSH_AUTOSUGGEST_USE_ASYNC="true"
+## =======================
+## Oh My Zsh configuration
+## =======================
+# Define Oh My Zsh home folder
+export ZSH="$HOME/.oh-my-zsh"
+# Define plugins
+plugins=(
+  dotenv # Automatically load .env variables
+  command-not-found # Suggest packages on command not found
+  zsh-syntax-highlighting
+  zsh-vi-mode
+)
 
-# ==========
-# Completion
-# ==========
-  # Close completion menu with <space>
-  zmodload zsh/complist
-  bindkey -M menuselect ' ' accept-search
-  # Add Custom completions
-  FPATH="$HOME/.zsh/completions:$FPATH"
+## ============================
+## Configure zsh-vi-mode plugin
+## ============================
+# Use s-prefix mode
+ZVM_VI_SURROUND_BINDKEY=s-prefix
 
-# =======
-# Plugins
-# =======
-  # -------
-  # Listing
-  # -------
-    if [ -s "$HOME/.zsh/antigen.zsh" ]; then
-      source "$HOME/.zsh/antigen.zsh"
-      antigen use oh-my-zsh
-      antigen bundle git
-      antigen bundle heroku
-      antigen bundle pip
-      antigen bundle npm
-      antigen bundle lein
-      antigen bundle command-not-found
-      antigen bundle web-search
-      antigen bundle zdharma-continuum/fast-syntax-highlighting
-      antigen bundle zsh-users/zsh-completions
-      antigen theme romkatv/powerlevel10k
-      antigen apply
-    else
-      echo "Antigen not found."
-      echo "Please install using: curl -L git.io/antigen > ~/.zsh/antigen.zsh"
-    fi
-  # -----
-  # Theme
-  # -----
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+## =======================
+## Aesthetic configuration
+## =======================
+# Better LS_COLORS
+export LS_COLORS="$LS_COLORS:ow=1;7;34:st=30;44:su=30;41"
+# Change theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# ===================
-# Conda configuration
-# ===================
-  __conda_setup="$("$HOME/.local/bin/miniconda/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-  else
-    if [ -f "$HOME/.local/bin/miniconda/etc/profile.d/conda.sh" ]; then
-      . "$HOME/.local/bin/miniconda/etc/profile.d/conda.sh"
-    else
-      export PATH="$HOME/.local/bin/miniconda/bin:$PATH"
-    fi
-  fi
-  unset __conda_setup
+## ========================
+## Completion configuration
+## ========================
+# Make completion hypen-insensitive
+HYPHEN_INSENSITIVE=true
 
-# ====================
-# direnv configuration
-# ====================
-  if [ -n "$(command -v direnv)" ]; then
-    eval "$(direnv hook zsh)"
-  fi
+## =====================
+## History configuration
+## =====================
+# Change timestamp format
+HIST_STAMPS="yyyy-mm-dd"
 
-# ===================
-# Pyenv configuration
-# ===================
-  if [ -n "$(command -v pyenv)" ]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-  fi
-
-# ===================
-# Broot configuration
-# ===================
-  if [ -n "$(command -v broot)" ]; then
-    source $HOME/.config/broot/launcher/bash/br
-  fi
-
-# =================
-# GPG configuration
-# =================
-  export GPG_TTY=$TTY
-
-# ======================
-# VIM-mode configuration
-# ======================
-  # Enable vi-mode
-  bindkey -v
-  # Remove switching delay
-  KEYTIMEOUT=5
-  # --------------------
-  # Cursor configuration
-  # --------------------
-    # Change cursor depending on mode
-    function zle-keymap-select {
-      if [[ $KEYMAP == vicmd ]] ||
-         [[ $1 = 'block' ]]; then
-        echo -ne '\e[1 q'
-      elif [[ $KEYMAP == main ]] ||
-           [[ $KEYMAP == viins ]] ||
-           [[ $KEYMAP = '' ]] ||
-           [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-      fi
-    }
-    zle -N zle-keymap-select
-    zle-line-init() { zle-keymap-select 'beam' }
-    # Start with beam shape cursor
-    zle-keymap-select 'beam'
-    preexec() { zle-keymap-select 'beam' }
-
-# =====================
-# History configuration
-# =====================
-  # Where to save history
-  export HISTFILE=~/.zsh_history
-  # Size of the history
-  export HISTFILESIZE=1000000000
-  export HISTSIZE=1000000000
-  export SAVEHIST=1000000000
-  # Add timestamp to the history
-  export HISTTIMEFORMAT="[%y-%m-%d %T] "
-  setopt EXTENDED_HISTORY
-  # History is shared between sessions
-  setopt SHARE_HISTORY
-  # Not show duplicates
-  setopt HIST_FIND_NO_DUPS
-  # Not write duplicates
-  setopt HIST_IGNORE_ALL_DUPS
-
-# ======================
-# Keyboard configuration
-# ======================
-  # Ability to travel the menu backwards
-  bindkey '^[[Z' reverse-menu-complete
-  # Accept autosuggestions
-  bindkey '^ ' autosuggest-accept
-  # Enable editing of commands
-  autoload -U edit-command-line
-  zle -N edit-command-line
-  bindkey -M vicmd v edit-command-line
-  # Use up and down arrows to search on history
-  autoload -U up-line-or-beginning-search
-  autoload -U down-line-or-beginning-search
-  zle -N up-line-or-beginning-search
-  zle -N down-line-or-beginning-search
-  bindkey '^[[A' up-line-or-beginning-search # Up
-  bindkey '^[[B' down-line-or-beginning-search # Down
-
-# ===========================
-# Miscellaneous configuration
-# ===========================
-  # Disable bell
-  unsetopt BEEP
-
-# =========
-# Finishing
-# =========
-  source ~/.zshenv
+## ==========================
+## Configuration finalization
+## ==========================
+# Load Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+# Load Powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Load .zshenv
+source $HOME/.zshenv

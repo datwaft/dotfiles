@@ -29,6 +29,9 @@ plugins=(
   zsh-syntax-highlighting
   zsh-vi-mode
 )
+# Add completions to fpath
+fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 ## ============================
 ## Configure zsh-vi-mode plugin
@@ -66,8 +69,11 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search # Up
-bindkey '^[[B' down-line-or-beginning-search # Down
+bindkey '^[[A' up-line-or-beginning-search # <Up>
+bindkey '^[[B' down-line-or-beginning-search # <Down>
+# Set MacOS shortcuts
+bindkey '^[[1;3D' backward-word # ⌥+<Left>
+bindkey '^[[1;3C' forward-word # ⌥+<Right>
 
 ## ==========================
 ## Configuration finalization

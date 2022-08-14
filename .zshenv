@@ -7,11 +7,7 @@
   # ---
   # SSH
   # ---
-    if [[ -f /proc/version ]] && grep -q WSL /proc/version; then
-      export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-    else
-      export SSH_AUTH_SOCK=~/.1password/agent.sock
-    fi
+    export SSH_AUTH_SOCK=~/.1password/agent.sock
   # ------
   # Editor
   # ------
@@ -25,12 +21,6 @@
     if [ -x "$(command -v nvim)" ]; then
       export MANPAGER="nvim +Man!"
     fi
-
-# =====================
-# Environment variables
-# =====================
-  export WINOS="/mnt/c"
-  export WINDATA="/mnt/d"
 
 # ==============
 # User variables
@@ -80,12 +70,6 @@
   # -----
     if [ -d "$HOME/.cargo" ]; then
       export PATH="$PATH:$HOME/.cargo/bin"
-    fi
-  # -------------------
-  # Lua Language Server
-  # -------------------
-    if [ -d "$HOME/.local/bin/lua-language-server" ]; then
-      export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/Linux"
     fi
   # ----
   # Deno
@@ -156,29 +140,4 @@
       alias lsa='ls --color=auto -a'
       alias la='ls --color=auto -l'
       alias la='ls --color=auto -la'
-    fi
-  # ----------------
-  # Windows Explorer
-  # ----------------
-    if [ -x "$WINOS/Windows/explorer.exe" ]; then
-      alias explorer="$WINOS/Windows/explorer.exe"
-    fi
-  # -----------
-  # Windows CMD
-  # -----------
-    if [ -x "$WINOS/Windows/System32/cmd.exe" ]; then
-      alias cmd="$WINOS/Windows/System32/cmd.exe /c"
-    fi
-  # -------------
-  # Google Chrome
-  # -------------
-    if [ -x "$WINOS/Program Files/Google/Chrome/Application/chrome.exe" ]; then
-      alias chrome="$WINOS/Program\ Files/Google/Chrome/Application/chrome.exe"
-    fi
-  # ---------
-  # Win32Yank
-  # ---------
-    if [ -x "$(command -v win32yank.exe)" ]; then
-      alias yank="win32yank.exe -i"
-      alias put="win32yank.exe -o"
     fi

@@ -56,6 +56,19 @@ HYPHEN_INSENSITIVE=true
 # Change timestamp format
 HIST_STAMPS="yyyy-mm-dd"
 
+## ======================
+## Keyboard configuration
+## ======================
+# Ability to travel the menu backwards with <S-Tab>
+bindkey '^[[Z' reverse-menu-complete
+# Use <up> and <down> to search on history
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search # Up
+bindkey '^[[B' down-line-or-beginning-search # Down
+
 ## ==========================
 ## Configuration finalization
 ## ==========================

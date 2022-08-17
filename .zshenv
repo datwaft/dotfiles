@@ -36,12 +36,6 @@
     if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
       export JAVA_HOME="$(brew --prefix)/opt/java"
     fi
-  # --------------------
-  # Node Version Manager
-  # --------------------
-    if [ -d "$HOME/.nvm" ]; then
-      export NVM_DIR="$HOME/.nvm"
-    fi
   # ---------
   # Prettierd
   # ---------
@@ -77,6 +71,12 @@
     if [ -d "$DENO_INSTALL/bin" ]; then
       export PATH="$DENO_INSTALL/bin:$PATH"
     fi
+  # ------
+  # Poetry
+  # ------
+    if [ -d "$HOME/.poetry" ]; then
+      export PATH="$HOME/.poetry/bin:$PATH"
+    fi
 
 # ======================
 # Binaries configuration
@@ -94,23 +94,6 @@
   # -----
     if [ -d "$HOME/.cargo" ] ; then
       source "$HOME/.cargo/env"
-    fi
-  # --------------------
-  # Node Version Manager
-  # --------------------
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
-  # ------------------
-  # Go Version Manager
-  # ------------------
-    [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
-  # -----
-  # Pyenv
-  # -----
-    if [ -n "$(command -v pyenv)" ]; then
-      eval "$(pyenv init --path)"
-      export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-      export PYENV_ROOT="$(pyenv root)"
     fi
   # -------
   # AWS CLI

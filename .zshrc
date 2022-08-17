@@ -26,6 +26,9 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
   dotenv # Automatically load .env variables
   command-not-found # Suggest packages on command not found
+  asdf
+  poetry
+  # -- Custom plugins --
   zsh-syntax-highlighting
   zsh-vi-mode
 )
@@ -82,5 +85,3 @@ bindkey '^[[1;3C' forward-word # ⌥+<Right>
 source $ZSH/oh-my-zsh.sh
 # Load Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Load .zshenv
-source $HOME/.zshenv

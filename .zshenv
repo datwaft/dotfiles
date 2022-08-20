@@ -110,6 +110,12 @@
       alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
       alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     fi
+  # -----
+  # Trash
+  # -----
+    if [ -x "$(command -v trash)" ]; then
+      alias rm='trash'
+    fi
   # ---------
   # ls or exa
   # ---------

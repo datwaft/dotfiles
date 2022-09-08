@@ -4,6 +4,7 @@
   signingKey = CA543AC7BABF282D
 [core]
   editor = nvim
+  pager = cat
 [credential]
   helper = cache
 [pull]

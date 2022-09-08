@@ -99,28 +99,3 @@
   # AWS CLI
   # -------
     export AWS_PROFILE=dguevara-littera-prod-qa
-
-# =======
-# Aliases
-# =======
-  # ------------------
-  # Dotfiles using git
-  # ------------------
-    if [ -d "$HOME/.dotfiles" ]; then
-      alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-      alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    fi
-  # ---------
-  # ls or exa
-  # ---------
-    if [ -x "$(command -v exa)" ]; then
-      alias ls='exa'
-      alias lsa='exa -a'
-      alias l='exa -l'
-      alias la='exa -la'
-    else
-      alias ls='ls --color=auto'
-      alias lsa='ls --color=auto -a'
-      alias la='ls --color=auto -l'
-      alias la='ls --color=auto -la'
-    fi

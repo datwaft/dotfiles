@@ -1,7 +1,7 @@
 [user]
   name = datwaft
   email = datwaftx@gmail.com
-  signingKey = CA543AC7BABF282D
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnkU+nFQobmr5OMxnYYOk1ql+wrwCLvbA3bEu0qIGAU
 [core]
   editor = nvim
   pager = cat
@@ -30,3 +30,7 @@
   difft = difftool
 [push]
   autoSetupRemote = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

@@ -111,3 +111,18 @@ source $ZSH/oh-my-zsh.sh
     if [ -x "$(command -v trash)" ]; then
       alias trash='trash -F'
     fi
+
+## ===================
+## Conda configuration
+## ===================
+  __conda_setup="$('/Users/datwaft/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+  else
+    if [ -f "/Users/datwaft/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+      . "/Users/datwaft/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+      export PATH="/Users/datwaft/opt/anaconda3/bin:$PATH"
+    fi
+  fi
+  unset __conda_setup

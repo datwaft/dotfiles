@@ -1,6 +1,0 @@
-# Make CapsLock behave like Ctrl
-# Use this command if this doesn't work on startup: 'sudo localectl set-x11-keymap us "" "" ctrl:nocaps'
-setxkbmap -option ctrl:nocaps
-
-# Make short-pressed Ctrl behave like Escape
-xcape -e 'Control_L=Escape'

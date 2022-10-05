@@ -1,15 +1,6 @@
 ## ==============
 ## Initialization
 ## ==============
-# Start inside TMUX
-if [ -x "$(command -v tmux)" ]; then
-  export TERM="tmux-256color"
-  if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
-    exec tmux new-session -A -s "vscode-$(pwd | xargs basename)"
-  elif [ ! -n "$TMUX" ]; then
-    exec tmux new-session -A -s default
-  fi
-fi
 # Use Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

@@ -173,6 +173,10 @@ fi
 if [ -d "$HOME/.poetry" ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
+# Kitty
+if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
+  export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
+fi
 
 ## ==========================
 ## Configuration finalization

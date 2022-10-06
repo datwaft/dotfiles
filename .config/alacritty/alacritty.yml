@@ -24,16 +24,17 @@ scrolling:
 
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font
+    style: Thin
   bold:
-    family: JetBrains Mono
-    style: Bold
+    family: JetBrainsMono Nerd Font
+    style: SemiBold
   italic:
-    family: JetBrains Mono
-    style: Italic
+    family: JetBrainsMono Nerd Font
+    style: Thin Italic
   bold_italic:
-    family: JetBrains Mono
-    style: Bold Italic
+    family: JetBrainsMono Nerd Font
+    style: SemiBold Italic
   size: 13.0
   offset:
     x: 0

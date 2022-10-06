@@ -1,5 +1,5 @@
 env:
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   dimensions:
@@ -19,23 +19,22 @@ window:
   dynamic_title: true
 
 scrolling:
-  history: 10000
+  history: 0
   multiplier: 3
 
 font:
   normal:
-    family: BlexMono NF
-    style: Text
+    family: JetBrains Mono
   bold:
-    family: BlexMono NF
+    family: JetBrains Mono
     style: Bold
   italic:
-    family: BlexMono NF
+    family: JetBrains Mono
     style: Italic
   bold_italic:
-    family: BlexMono NF
+    family: JetBrains Mono
     style: Bold Italic
-  size: 12.0
+  size: 13.0
   offset:
     x: 0
     y: 0
@@ -43,7 +42,7 @@ font:
     x: 0
     y: 0
 
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
@@ -89,6 +88,14 @@ cursor:
 
 live_config_reload: true
 
+shell:
+  program: /opt/homebrew/bin/tmux
+  args:
+    - new-session
+    - -A
+    - -s
+    - default
+
 alt_send_esc: true
 
 mouse:
@@ -119,6 +126,9 @@ mouse_bindings:
   - { mouse: Right, action: ClearSelection }
 
 key_bindings:
+  - { key: Left, mods: Command, chars: "\x1b[1H" }
+  - { key: Right, mods: Command, chars: "\x1b[1F" }
+
   - { key: Paste, action: Paste }
   - { key: Copy, action: Copy }
   - { key: L, mods: Control, action: ClearLogNotice }

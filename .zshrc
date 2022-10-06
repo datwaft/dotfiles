@@ -8,30 +8,13 @@ fi
 # Configure maximum number of open files
 ulimit -n 10240
 
-## =======================
-## Oh My Zsh configuration
-## =======================
-# Define Oh My Zsh home folder
-export ZSH="$HOME/.oh-my-zsh"
-# Define plugins
-plugins=(
-  dotenv # Automatically load .env variables
-  command-not-found # Suggest packages on command not found
-  asdf
-  poetry
-  # -- Custom plugins --
-  zsh-syntax-highlighting
-  zsh-vi-mode
-)
-# Add completions to fpath
-fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
 ## ============================
 ## Configure zsh-vi-mode plugin
 ## ============================
-# Use s-prefix mode
-ZVM_VI_SURROUND_BINDKEY=s-prefix
+function zvm_config() {
+  # Use s-prefix mode
+  ZVM_VI_SURROUND_BINDKEY=s-prefix
+}
 
 ## =======================
 ## Aesthetic configuration
@@ -56,18 +39,39 @@ HIST_STAMPS="yyyy-mm-dd"
 ## ======================
 ## Keyboard configuration
 ## ======================
-# Ability to travel the menu backwards with <S-Tab>
-bindkey '^[[Z' reverse-menu-complete
-# Use <up> and <down> to search on history
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search # <Up>
-bindkey '^[[B' down-line-or-beginning-search # <Down>
-# Set MacOS shortcuts
-bindkey '^[[1;3D' backward-word # ⌥+<Left>
-bindkey '^[[1;3C' forward-word # ⌥+<Right>
+function zvm_after_init() {
+  # Ability to travel the menu backwards with <S-Tab>
+  bindkey '^[[Z' reverse-menu-complete
+  # Use <up> and <down> to search on history
+  autoload -U up-line-or-beginning-search
+  autoload -U down-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey '^[[A' up-line-or-beginning-search # <Up>
+  bindkey '^[[B' down-line-or-beginning-search # <Down>
+  # Set MacOS shortcuts
+  bindkey '^[[1;3D' backward-word # ⌥+<Left>
+  bindkey '^[[1;3C' forward-word # ⌥+<Right>
+}
+
+## =======================
+## Oh My Zsh configuration
+## =======================
+# Define Oh My Zsh home folder
+export ZSH="$HOME/.oh-my-zsh"
+# Define plugins
+plugins=(
+  dotenv # Automatically load .env variables
+  command-not-found # Suggest packages on command not found
+  asdf
+  poetry
+  # -- Custom plugins --
+  fast-syntax-highlighting
+  zsh-vi-mode
+)
+# Add completions to fpath
+fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 ## ==========================
 ## Configuration finalization

@@ -77,25 +77,3 @@
     if [ -d "$HOME/.poetry" ]; then
       export PATH="$HOME/.poetry/bin:$PATH"
     fi
-
-# ======================
-# Binaries configuration
-# ======================
-  # --------
-  # Homebrew
-  # --------
-    if [ -d "/home/linuxbrew" ]; then
-      eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    elif [ -d "/opt/homebrew" ]; then
-      eval $(/opt/homebrew/bin/brew shellenv)
-    fi
-  # -----
-  # Cargo
-  # -----
-    if [ -d "$HOME/.cargo" ] ; then
-      source "$HOME/.cargo/env"
-    fi
-  # -------
-  # AWS CLI
-  # -------
-    export AWS_PROFILE=dguevara-littera-prod-qa

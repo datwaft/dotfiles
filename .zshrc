@@ -73,14 +73,6 @@ plugins=(
 fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-## ==========================
-## Configuration finalization
-## ==========================
-# Load Oh My Zsh
-source $ZSH/oh-my-zsh.sh
-# Load Powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 ## =======
 ## Aliases
 ## =======
@@ -101,9 +93,18 @@ if [ -x "$(command -v trash)" ]; then
   alias trash='trash -F'
 fi
 
-## ===================
-## Conda configuration
-## ===================
+## ====================
+## Binary configuration
+## ====================
+# Homebrew
+if [ -d "/opt/homebrew" ]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+# Cargo
+if [ -d "$HOME/.cargo" ] ; then
+  source "$HOME/.cargo/env"
+fi
+# Anaconda
 __conda_setup="$("$HOME/opt/anaconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
   eval "$__conda_setup"
@@ -115,3 +116,11 @@ else
   fi
 fi
 unset __conda_setup
+
+## ==========================
+## Configuration finalization
+## ==========================
+# Load Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+# Load Powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -84,40 +84,34 @@ source $ZSH/oh-my-zsh.sh
 ## =======
 ## Aliases
 ## =======
-  # ------------------
-  # Dotfiles using git
-  # ------------------
-    if [ -d "$HOME/.dotfiles" ]; then
-      alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-      alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    fi
-  # ---
-  # Exa
-  # ---
-    if [ -x "$(command -v exa)" ]; then
-      alias ls='exa'
-      alias lsa='exa -a'
-      alias l='exa -l'
-      alias la='exa -la'
-    fi
-  # -----
-  # Trash
-  # -----
-    if [ -x "$(command -v trash)" ]; then
-      alias trash='trash -F'
-    fi
+# Dotfiles using git
+if [ -d "$HOME/.dotfiles" ]; then
+  alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+  alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+fi
+# Exa
+if [ -x "$(command -v exa)" ]; then
+  alias ls='exa'
+  alias lsa='exa -a'
+  alias l='exa -l'
+  alias la='exa -la'
+fi
+# Trash
+if [ -x "$(command -v trash)" ]; then
+  alias trash='trash -F'
+fi
 
 ## ===================
 ## Conda configuration
 ## ===================
-  __conda_setup="$('/Users/datwaft/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+__conda_setup="$("$HOME/opt/anaconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "$HOME/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/opt/anaconda3/etc/profile.d/conda.sh"
   else
-    if [ -f "/Users/datwaft/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-      . "/Users/datwaft/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-      export PATH="/Users/datwaft/opt/anaconda3/bin:$PATH"
-    fi
+    export PATH="$HOME/opt/anaconda3/bin:$PATH"
   fi
-  unset __conda_setup
+fi
+unset __conda_setup

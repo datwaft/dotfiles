@@ -73,26 +73,6 @@ plugins=(
 fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-## =======
-## Aliases
-## =======
-# Dotfiles using git
-if [ -d "$HOME/.dotfiles" ]; then
-  alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-  alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-fi
-# Exa
-if [ -x "$(command -v exa)" ]; then
-  alias ls='exa'
-  alias lsa='exa -a'
-  alias l='exa -l'
-  alias la='exa -la'
-fi
-# Trash
-if [ -x "$(command -v trash)" ]; then
-  alias trash='trash -F'
-fi
-
 ## ====================
 ## Binary configuration
 ## ====================
@@ -185,3 +165,23 @@ fi
 source $ZSH/oh-my-zsh.sh
 # Load Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## ================
+## Aliases override
+## ================
+# Dotfiles using git
+if [ -d "$HOME/.dotfiles" ]; then
+  alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+  alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+fi
+# Exa
+if [ -x "$(command -v exa)" ]; then
+  alias ls='exa'
+  alias lsa='exa -a'
+  alias l='exa -l'
+  alias la='exa -la'
+fi
+# Trash
+if [ -x "$(command -v trash)" ]; then
+  alias trash='trash -F'
+fi

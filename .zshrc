@@ -158,9 +158,9 @@ if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
 fi
 
-## ==========================
-## Configuration finalization
-## ==========================
+## ======================
+## Oh My Zsh finalization
+## ======================
 # Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 # Load Powerlevel10k

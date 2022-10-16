@@ -65,6 +65,7 @@ plugins=(
   command-not-found # Suggest packages on command not found
   asdf
   poetry
+  direnv
   git
   # -- Custom plugins --
   fast-syntax-highlighting

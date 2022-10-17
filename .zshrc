@@ -98,6 +98,10 @@ else
   fi
 fi
 unset __conda_setup
+# Luarocks
+if [ -x "$(command -v luarocks)" ]; then
+  eval "$(luarocks path --bin)"
+fi
 
 ## ================
 ## System variables
@@ -159,6 +163,11 @@ fi
 if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
 fi
+# Neovim
+if [ -d "$HOME/.local/bin/nvim-macos/bin" ]; then
+  export PATH="$PATH:$HOME/.local/bin/nvim-macos/bin"
+fi
+
 
 ## ======================
 ## Oh My Zsh finalization

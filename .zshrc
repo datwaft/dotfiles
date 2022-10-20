@@ -127,7 +127,9 @@ export NVIM="$HOME/.config/nvim.conf"
 ## Binaries variables
 ## ==================
 # Java
-if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
+if [ -d "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home" ]; then
+  export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+elif [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/java" ]; then
   export JAVA_HOME="$(brew --prefix)/opt/java"
 fi
 # Prettierd
@@ -135,6 +137,10 @@ export PRETTIERD_DEFAULT_CONFIG="$HOME/.prettierrc.json"
 # Deno
 if [ -d "$HOME/.deno" ]; then
   export DENO_INSTALL="$HOME/.deno"
+fi
+# SDKMAN
+if [ -d "$HOME/.sdkman" ]; then
+  export SDKMAN_DIR="$HOME/.sdkman"
 fi
 
 ## =============
@@ -196,3 +202,8 @@ fi
 if [ -x "$(command -v trash)" ]; then
   alias trash='trash -F'
 fi
+
+## ====================
+## SDK!Man finalization
+## ====================
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

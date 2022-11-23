@@ -165,6 +165,10 @@ fi
 if [ -d "$HOME/.poetry" ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
+# Wezterm
+if [ -d "/Applications/Wezterm.app/Contents/MacOS" ]; then
+  export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
+fi
 # Kitty
 if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"

@@ -103,21 +103,6 @@ if [ -x "$(command -v luarocks)" ]; then
   eval "$(luarocks path --bin)"
 fi
 
-## ================
-## System variables
-## ================
-# SSH
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-# Editor
-if [ -x "$(command -v nvim)" ]; then
-  export EDITOR="nvim"
-  export VISUAL="nvim"
-fi
-# Man pages
-if [ -x "$(command -v nvim)" ]; then
-  export MANPAGER="nvim +Man!"
-fi
-
 ## ==============
 ## User variables
 ## ==============
@@ -205,6 +190,21 @@ fi
 # Trash
 if [ -x "$(command -v trash)" ]; then
   alias trash='trash -F'
+fi
+
+## ================
+## System variables
+## ================
+# SSH
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+# Editor
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+fi
+# Man pages
+if [ -x "$(command -v nvim)" ]; then
+  export MANPAGER="nvim +Man!"
 fi
 
 ## ====================

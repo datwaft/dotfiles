@@ -159,8 +159,8 @@ if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
 fi
 # Neovim
-if [ -d "$HOME/.local/bin/nvim-macos/bin" ]; then
-  export PATH="$PATH:$HOME/.local/bin/nvim-macos/bin"
+if [ -d "$HOME/.local/share/neovim/bin" ]; then
+  export PATH="$PATH:$HOME/.local/share/neovim/bin"
 fi
 
 

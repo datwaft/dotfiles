@@ -6,7 +6,7 @@ The way this repository uses for storing my dotfiles is with a _bare_ repository
 
 ## FAQ (Frequently Asked Questions)
 
-### What are the pre-requisites for this?
+### What are the prerequisites for this?
 
 Install `git`.
 

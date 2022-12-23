@@ -23,11 +23,13 @@ function zvm_config() {
 export LS_COLORS="$LS_COLORS:ow=1;7;34:st=30;44:su=30;41"
 # Change theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
+# bat theme
+export BAT_THEME="Catppuccin-mocha"
 
 ## ========================
 ## Completion configuration
 ## ========================
-# Make completion hypen-insensitive
+# Make completion hyphen-insensitive
 HYPHEN_INSENSITIVE=true
 
 ## =====================

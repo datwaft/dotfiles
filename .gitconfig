@@ -38,3 +38,5 @@
 	manyFiles = true
 [color]
 	ui = true
+[tag]
+	gpgSign = true

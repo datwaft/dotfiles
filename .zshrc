@@ -108,7 +108,7 @@ fi
 ## ==============
 ## User variables
 ## ==============
-export NVIM="$HOME/.config/nvim.conf"
+export NVIM="$HOME/.config/nvim"
 
 ## ==================
 ## Binaries variables

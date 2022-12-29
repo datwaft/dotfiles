@@ -15,6 +15,8 @@ function zvm_config() {
   # Use s-prefix mode
   ZVM_VI_SURROUND_BINDKEY=s-prefix
 }
+# Add FZF keybinds
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
 ## =======================
 ## Aesthetic configuration
@@ -70,22 +72,12 @@ plugins=(
   direnv
   git
   # -- Custom plugins --
-  fzf-tab
   fast-syntax-highlighting
   zsh-vi-mode
 )
 # Add completions to fpath
 fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-## ====================
-## Plugin configuration
-## ====================
-# fzf-tab
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' special-dirs true
-setopt globdots
 
 ## ====================
 ## Binary configuration

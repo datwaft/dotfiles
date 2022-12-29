@@ -104,6 +104,8 @@ unset __conda_setup
 if [ -x "$(command -v luarocks)" ]; then
   eval "$(luarocks path --bin)"
 fi
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## ==============
 ## User variables

@@ -79,6 +79,14 @@ fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 ## ====================
+## Plugin configuration
+## ====================
+# fzf-tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+setopt globdots
+
+## ====================
 ## Binary configuration
 ## ====================
 # Homebrew

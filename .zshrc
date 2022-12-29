@@ -70,6 +70,7 @@ plugins=(
   direnv
   git
   # -- Custom plugins --
+  fzf-tab
   fast-syntax-highlighting
   zsh-vi-mode
 )

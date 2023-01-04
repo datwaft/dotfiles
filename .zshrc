@@ -215,7 +215,7 @@ if [ -x "$(command -v trash)" ]; then
 fi
 # Neovide
 if [ -x "$(command -v neovide)" ]; then
-  alias nvd='neovide --frame buttonless --multigrid --notabs'
+  alias nvd='neovide --frame buttonless --notabs'
 fi
 
 ## ================

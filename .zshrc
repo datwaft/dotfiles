@@ -177,7 +177,14 @@ fi
 if [ -d "$HOME/.local/share/neovim/bin" ]; then
   export PATH="$PATH:$HOME/.local/share/neovim/bin"
 fi
-
+# Doom Emacs
+if [ -d "$HOME/.emacs.d/bin" ]; then
+  export PATH="$PATH:$HOME/.emacs.d/bin"
+fi
+# Neovide
+if [ -d "/Applications/Neovide.app/Contents/MacOS" ]; then
+  export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
+fi
 
 ## ======================
 ## Oh My Zsh finalization

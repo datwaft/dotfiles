@@ -213,6 +213,10 @@ fi
 if [ -x "$(command -v trash)" ]; then
   alias trash='trash -F'
 fi
+# Neovide
+if [ -x "$(command -v neovide)" ]; then
+  alias nvd='neovide'
+fi
 
 ## ================
 ## System variables

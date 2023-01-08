@@ -146,6 +146,10 @@ fi
 ## =============
 ## PATH variable
 ## =============
+# User scripts
+if [ -d "$HOME/scripts" ]; then
+  export PATH="$PATH:$HOME/scripts"
+fi
 # User binaries
 if [ -d "$HOME/bin" ]; then
   export PATH="$PATH:$HOME/bin"

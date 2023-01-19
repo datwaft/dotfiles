@@ -14,6 +14,8 @@ ulimit -n 10240
 function zvm_config() {
   # Use s-prefix mode
   ZVM_VI_SURROUND_BINDKEY=s-prefix
+  # Use neovim as editor
+  ZVM_VI_EDITOR=nvim
 }
 # Add FZF keybinds
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')

@@ -87,6 +87,8 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # Homebrew
 if [ -d "/opt/homebrew" ]; then
   eval $(/opt/homebrew/bin/brew shellenv)
+  export CPATH="$CPATH:/opt/homebrew/include"
+  export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
 fi
 # Cargo
 if [ -d "$HOME/.cargo" ] ; then

@@ -189,6 +189,10 @@ fi
 if [ -d "/Applications/Neovide.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 fi
+# LLVM
+if [ -d "/opt/homebrew/opt/llvm/bin" ]; then
+  export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+fi
 # Bob (Neovim)
 if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
   export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"

@@ -181,10 +181,6 @@ fi
 if [ -d "/Applications/kitty.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
 fi
-# Neovim
-if [ -d "$HOME/.local/share/neovim/bin" ]; then
-  export PATH="$PATH:$HOME/.local/share/neovim/bin"
-fi
 # Doom Emacs
 if [ -d "$HOME/.emacs.d/bin" ]; then
   export PATH="$PATH:$HOME/.emacs.d/bin"
@@ -192,6 +188,10 @@ fi
 # Neovide
 if [ -d "/Applications/Neovide.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
+fi
+# Bob (Neovim)
+if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
+  export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 fi
 
 ## ======================

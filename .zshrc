@@ -96,6 +96,8 @@ if [ -x "$(command -v brew)" ]; then
   # Add C libraries installed with brew
   export CPATH="$CPATH:$(brew --prefix)/include"
   export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+  export LDFLAGS="-L$(brew --prefix)/opt/openssl@3/lib"
+  export CPPFLAGS="-I$(brew --prefix)/opt/openssl@3/include"
 fi
 # Cargo
 if [ -d "$HOME/.cargo" ] ; then

@@ -86,9 +86,16 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ## ====================
 # Homebrew
 if [ -d "/opt/homebrew" ]; then
+  # For MacOS
   eval $(/opt/homebrew/bin/brew shellenv)
-  export CPATH="$CPATH:/opt/homebrew/include"
-  export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
+elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
+  # For Linux
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+if [ -x "$(command -v brew)" ]; then
+  # Add C libraries installed with brew
+  export CPATH="$CPATH:$(brew --prefix)/include"
+  export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 fi
 # Cargo
 if [ -d "$HOME/.cargo" ] ; then
@@ -190,8 +197,8 @@ if [ -d "/Applications/Neovide.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 fi
 # LLVM
-if [ -d "/opt/homebrew/opt/llvm/bin" ]; then
-  export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+if [ -d "$(brew --prefix)/opt/llvm/bin" ]; then
+  export PATH="$PATH:$(brew --prefix)/opt/llvm/bin"
 fi
 # Bob (Neovim)
 if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then

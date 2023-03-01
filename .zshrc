@@ -74,6 +74,7 @@ plugins=(
   direnv
   git
   1password
+  aws
   # -- Custom plugins --
   fast-syntax-highlighting
   zsh-vi-mode

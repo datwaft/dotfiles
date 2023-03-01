@@ -73,6 +73,7 @@ plugins=(
   poetry
   direnv
   git
+  1password
   # -- Custom plugins --
   fast-syntax-highlighting
   zsh-vi-mode

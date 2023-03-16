@@ -3,4 +3,6 @@ options(
   languageserver.server_capabilities =
     list(completionProvider = FALSE, completionItemResolve = FALSE)
 )
-library(colorout)
+if (isatty(stdout())) {
+  library(colorout)
+}

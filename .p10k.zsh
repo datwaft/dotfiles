@@ -97,7 +97,7 @@
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-    # cpu_arch              # CPU architecture
+    cpu_arch                # CPU architecture
     time                    # current time
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
@@ -850,8 +850,8 @@
   typeset -g POWERLEVEL9K_CPU_ARCH_FOREGROUND=172
 
   # Hide the segment when on a specific CPU architecture.
-  # typeset -g POWERLEVEL9K_CPU_ARCH_X86_64_CONTENT_EXPANSION=
-  # typeset -g POWERLEVEL9K_CPU_ARCH_X86_64_VISUAL_IDENTIFIER_EXPANSION=
+  typeset -g POWERLEVEL9K_CPU_ARCH_ARM64E_CONTENT_EXPANSION=
+  typeset -g POWERLEVEL9K_CPU_ARCH_ARM64E_VISUAL_IDENTIFIER_EXPANSION=
 
   # Custom icon.
   # typeset -g POWERLEVEL9K_CPU_ARCH_VISUAL_IDENTIFIER_EXPANSION='⭐'

@@ -253,6 +253,8 @@ fi
 if [ -x "$(command -v nvim)" ]; then
   export MANPAGER="nvim +Man!"
 fi
+# Display
+export DISPLAY="${DISPLAY:-:0}"
 
 ## ====================
 ## SDK!Man finalization

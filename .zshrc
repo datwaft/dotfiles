@@ -255,6 +255,8 @@ if [ -x "$(command -v nvim)" ]; then
 fi
 # Display
 export DISPLAY="${DISPLAY:-:0}"
+# Locale
+export LANG=en_US.UTF-8
 
 ## ====================
 ## SDK!Man finalization

@@ -253,8 +253,6 @@ fi
 if [ -x "$(command -v nvim)" ]; then
   export MANPAGER="nvim +Man!"
 fi
-# Display
-export DISPLAY="${DISPLAY:-:0}"
 # Locale
 export LANG=en_US.UTF-8
 

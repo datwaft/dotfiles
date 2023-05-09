@@ -255,6 +255,8 @@ if [ -x "$(command -v nvim)" ]; then
 fi
 # Locale
 export LANG=en_US.UTF-8
+# TERMINFO
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 ## ====================
 ## SDK!Man finalization

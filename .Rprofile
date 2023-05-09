@@ -4,5 +4,5 @@ options(
     list(completionProvider = FALSE, completionItemResolve = FALSE)
 )
 if (isatty(stdout())) {
-  library(colorout)
+  require(colorout)
 }

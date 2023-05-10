@@ -75,6 +75,10 @@ plugins=(
   git
   1password
   aws
+  deno
+  fd
+  fzf
+  npm
   # -- Custom plugins --
   fast-syntax-highlighting
   zsh-vi-mode

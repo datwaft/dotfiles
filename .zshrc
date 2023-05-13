@@ -48,13 +48,16 @@ HIST_STAMPS="yyyy-mm-dd"
 function zvm_after_init() {
   # Ability to travel the menu backwards with <S-Tab>
   bindkey '^[[Z' reverse-menu-complete
-  # Use <up> and <down> to search on history
+  # Use <Up> and <Down> to search on history
   autoload -U up-line-or-beginning-search
   autoload -U down-line-or-beginning-search
   zle -N up-line-or-beginning-search
   zle -N down-line-or-beginning-search
   bindkey '^[[A' up-line-or-beginning-search # <Up>
   bindkey '^[[B' down-line-or-beginning-search # <Down>
+  # Fix <Home> and <End>
+  bindkey '^[[1~' beginning-of-line
+  bindkey '^[[4~' end-of-line
   # Set MacOS shortcuts
   bindkey '^[[1;3D' backward-word # ⌥+<Left>
   bindkey '^[[1;3C' forward-word # ⌥+<Right>
@@ -205,7 +208,7 @@ if [ -d "/Applications/Neovide.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 fi
 # LLVM
-if [ -d "$(brew --prefix)/opt/llvm/bin" ]; then
+if [ -x "$(command -v brew)" ] && [ -d "$(brew --prefix)/opt/llvm/bin" ]; then
   export PATH="$PATH:$(brew --prefix)/opt/llvm/bin"
 fi
 # Bob (Neovim)

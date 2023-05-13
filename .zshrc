@@ -253,8 +253,8 @@ fi
 ## ================
 # Editor
 if [ -x "$(command -v nvim)" ]; then
-  export EDITOR="nvim"
-  export VISUAL="nvim"
+  export EDITOR=$(command -v nvim)
+  export VISUAL=$(command -v nvim)
 fi
 # Man pages
 if [ -x "$(command -v nvim)" ]; then

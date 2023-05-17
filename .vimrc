@@ -1,3 +1,6 @@
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 syntax on
 filetype plugin indent on
 

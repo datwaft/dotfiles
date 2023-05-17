@@ -247,6 +247,10 @@ fi
 if [ -x "$(command -v neovide)" ]; then
   alias nvd='neovide --frame buttonless --notabs'
 fi
+# Powershell
+if [ -x "$(command -v pwsh)" ]; then
+  alias pwsh='TERM=xterm-256color pwsh'
+fi
 
 ## ================
 ## System variables

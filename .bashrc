@@ -1,6 +1,6 @@
 # Use <Up> and <Down> for search in history
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+bind '"\e[A": history-search-backward' 2> /dev/null
+bind '"\e[B": history-search-forward' 2> /dev/null
 # Give colors to default prompt
 PS1=\
 "\[\e[0m\]"\

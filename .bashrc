@@ -18,3 +18,5 @@ PS1=\
 "\[\e[22;39m\]"\
 "]\$ "\
 "\[\e[0m\]"
+# Use vim as EDITOR
+export EDITOR=vim

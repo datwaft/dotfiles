@@ -252,6 +252,10 @@ fi
 if [ -x "$(command -v pwsh)" ]; then
   alias pwsh='TERM=xterm-256color pwsh'
 fi
+# SSH
+if [ -x "$(command -v ssh)" ]; then
+  alias ssh='TERM=xterm-256color ssh'
+fi
 
 ## ================
 ## System variables

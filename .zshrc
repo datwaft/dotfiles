@@ -82,6 +82,7 @@ plugins=(
   fd
   fzf
   npm
+  kubectl
   # -- Custom plugins --
   fast-syntax-highlighting
   zsh-vi-mode

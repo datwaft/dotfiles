@@ -20,3 +20,5 @@ PS1=\
 "\[\e[0m\]"
 # Use vim as EDITOR
 export EDITOR=vim
+# Enable completion
+if [ -x "$(command -v kubectl)"]; then source <(kubectl completion bash) fi

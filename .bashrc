@@ -21,4 +21,4 @@ PS1=\
 # Use vim as EDITOR
 export EDITOR=vim
 # Enable completion
-if [ -x "$(command -v kubectl)"]; then source <(kubectl completion bash) fi
+if [ -x "$(command -v kubectl)"]; then source <(kubectl completion bash); fi

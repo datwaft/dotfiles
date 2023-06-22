@@ -235,10 +235,10 @@ if [ -d "$HOME/.dotfiles" ]; then
 fi
 # Exa
 if [ -x "$(command -v exa)" ]; then
-  alias ls='exa'
-  alias lsa='exa -a'
-  alias l='exa -l'
-  alias la='exa -la'
+  alias ls="exa -I $'Icon\r'"
+  alias lsa='ls -a'
+  alias l='ls -l'
+  alias la='ls -la'
 fi
 # Trash
 if [ -x "$(command -v trash)" ]; then

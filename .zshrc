@@ -140,6 +140,9 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d . "$1"
 }
+# OPAM
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || \
+  source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 ## ==============
 ## User variables

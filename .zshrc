@@ -219,6 +219,14 @@ fi
 if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
   export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 fi
+# GHCup (Haskell)
+if [ -d "$HOME/.ghcup/bin" ]; then
+  export PATH="$PATH:$HOME/.ghcup/bin"
+fi
+# Cabal (Haskell)
+if [ -d "$HOME/.cabal/bin" ]; then
+  export PATH="$PATH:$HOME/.cabal/bin"
+fi
 
 ## ======================
 ## Oh My Zsh finalization

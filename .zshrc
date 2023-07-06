@@ -143,6 +143,8 @@ _fzf_compgen_dir() {
 # OPAM
 [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || \
   source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# 1Password CLI
+source $HOME/.config/op/plugins.sh
 
 ## ==============
 ## User variables

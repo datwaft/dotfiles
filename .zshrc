@@ -84,8 +84,8 @@ plugins=(
   npm
   kubectl
   # -- Custom plugins --
-  fast-syntax-highlighting
   zsh-vi-mode
+  zsh-syntax-highlighting
 )
 # Add completions to fpath
 fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions

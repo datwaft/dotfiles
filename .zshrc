@@ -83,6 +83,7 @@ plugins=(
   fzf
   npm
   kubectl
+  bun
   # -- Custom plugins --
   zsh-vi-mode
   zsh-syntax-highlighting
@@ -170,6 +171,10 @@ fi
 if [ -d "$HOME/.sdkman" ]; then
   export SDKMAN_DIR="$HOME/.sdkman"
 fi
+# bun
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+fi
 
 ## =============
 ## PATH variable
@@ -228,6 +233,10 @@ fi
 # Cabal (Haskell)
 if [ -d "$HOME/.cabal/bin" ]; then
   export PATH="$PATH:$HOME/.cabal/bin"
+fi
+# bun
+if [ -d "$BUN_INSTALL/bin" ]; then
+  export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
 ## ======================

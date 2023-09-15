@@ -29,6 +29,15 @@ export LS_COLORS="$LS_COLORS:ow=1;7;34:st=30;44:su=30;41"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # bat theme
 export BAT_THEME="Catppuccin-mocha"
+# zsh-syntax-highlighting theme
+if [ -f $HOME/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh ]; then
+  source $HOME/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+fi
+# fzf theme
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 ## ========================
 ## Completion configuration

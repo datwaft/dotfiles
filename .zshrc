@@ -97,9 +97,6 @@ plugins=(
   zsh-vi-mode
   zsh-syntax-highlighting
 )
-# Add completions to fpath
-fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 ## ====================
 ## Binary configuration
@@ -311,3 +308,11 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 ## SDK!Man finalization
 ## ====================
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+## ========================
+## Completion configuration
+## ========================
+# Add homebrew completions
+fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
+# Add zsh-completions plugin
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src

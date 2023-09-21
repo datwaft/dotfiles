@@ -205,7 +205,7 @@ if [ -d "$HOME/.cargo" ]; then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi
 # Deno
-if [ -d "$DENO_INSTALL/bin" ]; then
+if [ ! -z $DENO_INSTALL ] && [ -d "$DENO_INSTALL/bin" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 # Poetry
@@ -245,7 +245,7 @@ if [ -d "$HOME/.cabal/bin" ]; then
   export PATH="$PATH:$HOME/.cabal/bin"
 fi
 # bun
-if [ -d "$BUN_INSTALL/bin" ]; then
+if [ ! -z $BUN_INSTALL ] && [ -d "$BUN_INSTALL/bin" ]; then
   export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 

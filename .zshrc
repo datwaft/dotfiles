@@ -249,6 +249,16 @@ if [ ! -z $BUN_INSTALL ] && [ -d "$BUN_INSTALL/bin" ]; then
   export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
+## ========================
+## Completion configuration
+## ========================
+# Add custom completions
+fpath+=$HOME/.zfunc
+# Add homebrew completions
+fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
+# Add zsh-completions plugin
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 ## ======================
 ## Oh My Zsh finalization
 ## ======================
@@ -310,13 +320,3 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 ## SDK!Man finalization
 ## ====================
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-## ========================
-## Completion configuration
-## ========================
-# Add custom completions
-fpath+=$HOME/.zfunc
-# Add homebrew completions
-fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
-# Add zsh-completions plugin
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src

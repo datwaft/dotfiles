@@ -314,6 +314,8 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 ## ========================
 ## Completion configuration
 ## ========================
+# Add custom completions
+fpath+=$HOME/.zfunc
 # Add homebrew completions
 fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 # Add zsh-completions plugin

@@ -298,6 +298,11 @@ fi
 if [ -x "$(command -v ssh)" ]; then
   alias ssh='TERM=xterm-256color ssh'
 fi
+# Neovim
+if [ -x "$(command -v nvim)" ]; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
 
 ## ================
 ## System variables

@@ -160,7 +160,7 @@ fi
 ## ==============
 ## User variables
 ## ==============
-export NVIM="$HOME/.config/nvim"
+export NVIM="${XDG_CONFIG_HOME:-$HOME/.config}/${NVIM_APPNAME:-nvim}"
 
 ## ==================
 ## Binaries variables

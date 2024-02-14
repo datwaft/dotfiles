@@ -37,3 +37,11 @@
   ui = true
 [tag]
   gpgSign = true
+[rerere]
+  enabled = true
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[fetch]
+  writeCommitGraph = true

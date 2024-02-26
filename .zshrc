@@ -288,7 +288,7 @@ if [ -x "$(command -v trash)" ]; then
 fi
 # Neovide
 if [ -x "$(command -v neovide)" ]; then
-  alias nvd='neovide --frame buttonless --notabs'
+  alias nvd='neovide'
 fi
 # Powershell
 if [ -x "$(command -v pwsh)" ]; then

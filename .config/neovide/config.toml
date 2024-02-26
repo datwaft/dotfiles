@@ -1,0 +1,5 @@
+neovim-bin = "/Users/datwaft/.local/share/bob/nvim-bin/nvim"
+
+[font]
+normal = ["Iosevka"]
+size = 14

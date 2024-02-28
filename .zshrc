@@ -281,6 +281,7 @@ if [ -x "$(command -v exa)" ]; then
   alias lsa='ls -a'
   alias l='ls -l'
   alias la='ls -la'
+  alias tree='ls -T'
 fi
 # Trash
 if [ -x "$(command -v trash)" ]; then

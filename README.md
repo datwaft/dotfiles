@@ -1,5 +1,8 @@
 # `datwaft` dotfiles
 
+> [!WARNING]
+> There can be conflicts if you already have any files in this repository.
+
 ## How do I install these dotfiles?
 
 ```sh

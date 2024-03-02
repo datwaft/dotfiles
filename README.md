@@ -1,7 +1,8 @@
 # `datwaft` dotfiles
 
-> [!WARNING]
-> There can be conflicts if you already have any files in this repository.
+> [!CAUTION]
+> There could be conflicts if you already have any of the files in this
+> repository in your machine.
 
 ## How do I install these dotfiles?
 

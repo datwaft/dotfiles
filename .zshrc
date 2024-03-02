@@ -267,38 +267,10 @@ source $ZSH/oh-my-zsh.sh
 # Load Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-## ================
-## Aliases override
-## ================
-# Exa
-if [ -x "$(command -v exa)" ]; then
-  alias ls="exa -I $'Icon\r'"
-  alias lsa='ls -a'
-  alias l='ls -l'
-  alias la='ls -la'
-  alias tree='ls -T'
-fi
-# Trash
-if [ -x "$(command -v trash)" ]; then
-  alias trash='trash -F'
-fi
-# Neovide
-if [ -x "$(command -v neovide)" ]; then
-  alias nvd='neovide'
-fi
-# Powershell
-if [ -x "$(command -v pwsh)" ]; then
-  alias pwsh='TERM=xterm-256color pwsh'
-fi
-# SSH
-if [ -x "$(command -v ssh)" ]; then
-  alias ssh='TERM=xterm-256color ssh'
-fi
-# Neovim
-if [ -x "$(command -v nvim)" ]; then
-  alias vi='nvim'
-  alias vim='nvim'
-fi
+## =======
+## Aliases
+## =======
+source ~/.aliases.sh
 
 ## ================
 ## System variables

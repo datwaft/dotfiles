@@ -156,6 +156,10 @@ _fzf_compgen_dir() {
 if [ -x "$HOME/.config/op/plugins.sh" ]; then
   source $HOME/.config/op/plugins.sh
 fi
+# zoxide
+if [ -x "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
 
 ## ==============
 ## User variables

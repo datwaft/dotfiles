@@ -29,3 +29,7 @@ if [ -x "$(command -v nvim)" ]; then
   alias vi="nvim"
   alias vim="nvim"
 fi
+# `cd` related alises
+if [ -x "$(command -v zoxide)" ]; then
+  alias cd="z"
+fi

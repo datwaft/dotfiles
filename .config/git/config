@@ -29,6 +29,7 @@
   difft = difftool
 [push]
   autoSetupRemote = true
+  followTags = true
 [gpg]
   format = ssh
 [feature]

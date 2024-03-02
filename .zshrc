@@ -270,11 +270,6 @@ source $ZSH/oh-my-zsh.sh
 ## ================
 ## Aliases override
 ## ================
-# Dotfiles using git
-if [ -d "$HOME/.dotfiles" ]; then
-  alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-  alias gitd='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-fi
 # Exa
 if [ -x "$(command -v exa)" ]; then
   alias ls="exa -I $'Icon\r'"

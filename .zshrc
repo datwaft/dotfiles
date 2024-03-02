@@ -158,7 +158,7 @@ if [ -x "$HOME/.config/op/plugins.sh" ]; then
 fi
 # zoxide
 if [ -x "$(command -v zoxide)" ]; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init --cmd cd zsh)"
 fi
 
 ## ==============

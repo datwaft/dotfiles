@@ -93,7 +93,7 @@ plugins=(
   bun
   # -- Custom plugins --
   zsh-vi-mode
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
 )
 
 ## ====================

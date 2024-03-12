@@ -56,10 +56,6 @@ function zvm_after_init() {
   # Ability to travel the menu backwards with <S-Tab>
   bindkey '^[[Z' reverse-menu-complete
   # Use <Up> and <Down> to search on history
-  autoload -U up-line-or-beginning-search
-  autoload -U down-line-or-beginning-search
-  zle -N up-line-or-beginning-search
-  zle -N down-line-or-beginning-search
   bindkey '^[[A' up-line-or-beginning-search # <Up>
   bindkey '^[[B' down-line-or-beginning-search # <Down>
   # Fix <Home> and <End>
@@ -68,6 +64,8 @@ function zvm_after_init() {
   # Set MacOS shortcuts
   bindkey '^[[1;3D' backward-word # ⌥+<Left>
   bindkey '^[[1;3C' forward-word # ⌥+<Right>
+  # Edit command line with <C-f>
+  bindkey '^F' edit-command-line
 }
 
 ## =======================

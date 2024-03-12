@@ -5,9 +5,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-# Configure maximum number of open files when using MacOS
+# Remove soft limit for the number of simultaneously opened files when using MacOS
 if [[ $(uname) == "Darwin" ]]; then
-  ulimit -n 10240
+  ulimit -n unlimited
 fi
 
 ## ============================

@@ -54,8 +54,6 @@ if status is-interactive
   # ====================
   # Binary configuration
   # ====================
-    # zoxide
-    zoxide init --cmd cd fish | source
     # asdf
     source (brew --prefix asdf)/libexec/asdf.fish
   # ==================

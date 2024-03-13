@@ -47,6 +47,8 @@ if status is-interactive
   # ====================
     # zoxide
     zoxide init --cmd cd fish | source
+    # asdf
+    source (brew --prefix asdf)/libexec/asdf.fish
   # ==================
   # PATH configuration
   # ==================

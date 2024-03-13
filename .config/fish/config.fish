@@ -32,8 +32,10 @@ if status is-interactive
     set fish_cursor_replace underscore
     set fish_cursor_external line
     set fish_cursor_visual block
-    # Add some keybinds
+    # Edit current command in EDITOR with <C-f>
     bind --mode insert \cf edit_command_buffer
+    # Use <space> to accept completion
+    bind --mode insert \x20 'commandline -P && commandline -f accept-autosuggestion || commandline -i " "'
     # Configure fzf.fish plugin keybinds
     fzf_configure_bindings \
       --directory=\cT \

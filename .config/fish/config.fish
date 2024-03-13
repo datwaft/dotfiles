@@ -35,7 +35,14 @@ if status is-interactive
     # Edit current command in EDITOR with <C-f>
     bind --mode insert \cf edit_command_buffer
     # Use <space> to accept completion
-    bind --mode insert \x20 'commandline -P && commandline -f accept-autosuggestion || commandline -i " "'
+    bind --mode insert \x20 '
+      if commandline -P
+        commandline -f execute
+      else
+        commandline -f expand-abbr
+        commandline -i " "
+      end
+    '
     # Configure fzf.fish plugin keybinds
     fzf_configure_bindings \
       --directory=\cT \

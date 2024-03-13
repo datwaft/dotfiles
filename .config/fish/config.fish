@@ -91,6 +91,9 @@ if status is-interactive
       abbr --add vid neovide
       abbr --add vimd neovide
     end
+    # Set abbreviations for Git
+    abbr --add gs git status
+    abbr --add gss git status --short
     # Set aliases related to `ls`
     if test -x (command -v exa)
       alias ls exa

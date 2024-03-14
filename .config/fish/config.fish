@@ -72,6 +72,9 @@ if status is-interactive
     # User binaries
     add_folder_to_path ~/bin
     add_folder_to_path ~/.local/bin
+    # Homebrew
+    add_folder_to_path /opt/homebrew/bin
+    add_folder_to_path /opt/homebrew/sbin
     # Cargo
     add_folder_to_path ~/.cargo/bin
     # Deno

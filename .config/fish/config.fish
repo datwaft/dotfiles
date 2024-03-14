@@ -54,8 +54,10 @@ if status is-interactive
   # ====================
   # Binary configuration
   # ====================
+    # homebrew
+    eval (/opt/homebrew/bin/brew shellenv)
     # asdf
-    source (brew --prefix asdf)/libexec/asdf.fish
+    test -x (command -v brew) && source (brew --prefix asdf)/libexec/asdf.fish
   # ==================
   # PATH configuration
   # ==================

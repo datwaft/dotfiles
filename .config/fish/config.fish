@@ -107,7 +107,7 @@ if status is-interactive
     abbr --add gss git status --short
     # Set aliases and abbreviations related to `ls`
     if test -x (command -v exa)
-      alias ls exa
+      alias ls "exa -I 'Icon'"
       abbr --add l 'ls -l'
       abbr --add la 'ls -a'
       abbr --add ll 'ls -l'

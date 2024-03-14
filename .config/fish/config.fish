@@ -105,20 +105,20 @@ if status is-interactive
     # Set abbreviations for Git
     abbr --add gs git status
     abbr --add gss git status --short
-    # Set aliases related to `ls`
+    # Set aliases and abbreviations related to `ls`
     if test -x (command -v exa)
       alias ls exa
-      alias l 'ls -l'
-      alias la 'ls -a'
-      alias ll 'ls -l'
-      alias lla 'ls -la'
-      alias lsa 'ls -a'
-      alias lsl 'ls -l'
-      alias tree 'ls -T'
+      abbr --add l 'ls -l'
+      abbr --add la 'ls -a'
+      abbr --add ll 'ls -l'
+      abbr --add lla 'ls -la'
+      abbr --add lsa 'ls -a'
+      abbr --add lsl 'ls -l'
+      abbr --add tree 'ls -T'
     end
     # Add -F flag to trash command by default
     if test -x (command -v trash)
-      alias trash 'trash -F'
+      abbr --add trash 'trash -F'
     end
   # ====================
   # System configuration

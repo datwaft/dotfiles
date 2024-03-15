@@ -58,6 +58,8 @@ if status is-interactive
     eval (/opt/homebrew/bin/brew shellenv)
     # asdf
     test -x (command -v brew) && source (brew --prefix asdf)/libexec/asdf.fish
+    # luarocks
+    eval (luarocks path --bin)
   # ==================
   # PATH configuration
   # ==================

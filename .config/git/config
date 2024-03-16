@@ -3,14 +3,7 @@
   email = datwaftx@gmail.com
 [core]
   editor = nvim
-  pager = delta
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  navigate = true
-  light = false
-[merge]
-  conflictstyle = diff3
+  pager = cat
 [credential]
   helper = cache
 [pull]
@@ -25,7 +18,6 @@
 [commit]
   gpgsign = true
 [diff]
-  colorMoved = default
   tool = difftastic
 [difftool]
   prompt = false

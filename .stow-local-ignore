@@ -7,3 +7,6 @@
 ^/README.*
 ^/LICENSE.*
 ^/COPYING.*
+
+# Binaries
+^/bin

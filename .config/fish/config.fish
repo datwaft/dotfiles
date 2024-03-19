@@ -100,32 +100,34 @@ if status is-interactive
   # =========================
     # Set abbreviations for Neovim
     if test -x (command -v nvim)
-      abbr --add vi nvim
-      abbr --add vim nvim
+      abbr vi nvim
+      abbr vim nvim
     end
     # Set abbreviations for Neovide
     if test -x (command -v neovide)
-      abbr --add nvd neovide
-      abbr --add vid neovide
-      abbr --add vimd neovide
+      abbr nvd neovide
+      abbr vid neovide
+      abbr vimd neovide
     end
     # Set abbreviations for Git
-    abbr --add gs git status
-    abbr --add gss git status --short
+    abbr gs git status
+    abbr gss git status --short
+    abbr gc git commit
+    abbr gcm --set-cursor={} git commit -m \'{}\'
     # Set aliases and abbreviations related to `ls`
     if test -x (command -v eza)
       alias ls "eza -I 'Icon'"
-      abbr --add l 'ls -l'
-      abbr --add la 'ls -a'
-      abbr --add ll 'ls -l'
-      abbr --add lla 'ls -la'
-      abbr --add lsa 'ls -a'
-      abbr --add lsl 'ls -l'
-      abbr --add tree 'ls -T'
+      abbr l 'ls -l'
+      abbr la 'ls -a'
+      abbr ll 'ls -l'
+      abbr lla 'ls -la'
+      abbr lsa 'ls -a'
+      abbr lsl 'ls -l'
+      abbr tree 'ls -T'
     end
     # Add -F flag to trash command by default
     if test -x (command -v trash)
-      abbr --add trash 'trash -F'
+      abbr trash 'trash -F'
     end
   # ====================
   # System configuration

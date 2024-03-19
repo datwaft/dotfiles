@@ -114,6 +114,10 @@ if status is-interactive
     abbr gss git status --short
     abbr gc git commit
     abbr gcm --set-cursor={} git commit -m \'{}\'
+    abbr gd git diff
+    abbr gdc git diff --cached
+    abbr gdt git difft
+    abbr gdtc git difft --cached
     # Set aliases and abbreviations related to `ls`
     if test -x (command -v eza)
       alias ls "eza -I 'Icon'"

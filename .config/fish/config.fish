@@ -42,13 +42,9 @@ if status is-interactive
       end
     '
     # Configure fzf.fish plugin keybinds
-    fzf_configure_bindings \
-      --directory=\cT \
-      --git_log=\al \
-      --git_status=\as \
-      --history=\cR \
-      --processes=\cP \
-      --variables=\cV
+    _fzf_uninstall_bindings
+    bind --mode insert \cR _fzf_search_history
+    bind --mode insert \cT _fzf_search_directory
   # ====================
   # Binary configuration
   # ====================

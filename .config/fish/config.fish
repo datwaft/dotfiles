@@ -45,6 +45,7 @@ if status is-interactive
     _fzf_uninstall_bindings
     bind --mode insert \cR _fzf_search_history
     bind --mode insert \cT _fzf_search_directory
+    bind --mode insert \al _fzf_search_git_log
   # ====================
   # Binary configuration
   # ====================

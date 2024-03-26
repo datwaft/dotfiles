@@ -141,5 +141,5 @@ if status is-interactive
     # Use Neovim as MANPAGER
     set -gx MANPAGER 'nvim +Man!'
     # Use local TERMINFO
-    set -gax TERMINFO_DIRS ~/.local/share/terminfo
+    set -gax --path TERMINFO_DIRS ~/.local/share/terminfo
 end

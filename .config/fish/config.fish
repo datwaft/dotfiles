@@ -61,7 +61,7 @@ if status is-interactive
     # Define a function for adding folders to PATH if they exist
     function add_folder_to_path
       if test -d $argv[1]
-        fish_add_path --move $argv[1]
+        fish_add_path --path --move $argv[1]
       end
     end
     # User scripts
@@ -69,9 +69,6 @@ if status is-interactive
     # User binaries
     add_folder_to_path ~/bin
     add_folder_to_path ~/.local/bin
-    # Homebrew
-    add_folder_to_path /opt/homebrew/bin
-    add_folder_to_path /opt/homebrew/sbin
     # Cargo
     add_folder_to_path ~/.cargo/bin
     # Deno

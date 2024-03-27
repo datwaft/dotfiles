@@ -61,7 +61,7 @@ if status is-interactive
     # Define a function for adding folders to PATH if they exist
     function add_folder_to_path
       if test -d $argv[1]
-        fish_add_path $argv[1]
+        fish_add_path --move $argv[1]
       end
     end
     # User scripts

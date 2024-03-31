@@ -4,7 +4,7 @@ if status is-interactive
   # ===================
     # Set theme to Catppuccin Mocha
     fish_config theme choose 'Catppuccin Mocha'
-    # Set theme to Catppuccin Mocha for fzf
+    # Set theme to Catppuccin Mocha for FZF
     set -gx FZF_DEFAULT_OPTS "\
     --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
     --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \

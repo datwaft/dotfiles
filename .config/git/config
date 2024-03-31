@@ -48,3 +48,4 @@
   writeCommitGraph = true
 [rebase]
   updateRefs = true
+  autosquash = true

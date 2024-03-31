@@ -120,6 +120,8 @@ if status is-interactive
       abbr lsa 'ls -a'
       abbr lsl 'ls -l'
       abbr tree 'ls -T'
+      abbr lgi 'ls --git-ignore'
+      abbr lsgi 'ls --git-ignore'
     end
     # Add -F flag to trash command by default
     if test -x (command -v trash)

@@ -2,9 +2,12 @@
 
 # shellcheck disable=SC2016
 sesh connect "$(sesh list -t | fzf-tmux -p 55%,60% \
-  --reverse --info=inline --no-scrollbar --pointer '➤ ' \
+  --color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+  --reverse --no-scrollbar --pointer '➤ ' --info=inline-right \
   --no-sort --border-label [1m[3m' Choose Session '[22m[23m --prompt '   ' \
-  --header [34m'󰌌  ''<C-a> '[1m'all |'[22m' <C-t> '[1m'tmux |'[22m' <C-x> '[1m'zoxide |'[22m' <C-d> '[1m'tmux kill |'[22m' <C-f> '[1m'find'[22m[39m \
+  --header [2m'   ^a all ∣ ^t tmux ∣ ^x zoxide ∣ ^d kill ∣ ^f find'[22m \
   --preview 'tmux capture-pane -e -p -t {} 2> /dev/null || \
              eza -I "Icon" --color=always -1 (string replace "~" $HOME {})' \
   --preview-label [1m[3m' Session Preview '[22m[23m \

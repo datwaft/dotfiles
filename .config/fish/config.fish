@@ -22,6 +22,7 @@ if status is-interactive
   # Keybind configuration
   # =====================
     # Enable vi key bindings
+    set -g fish_vi_force_cursor 1
     fish_vi_key_bindings
     # Change cursor shape based on current mode
     set fish_cursor_default block

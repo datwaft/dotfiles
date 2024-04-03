@@ -50,11 +50,11 @@ if status is-interactive
   # Binary configuration
   # ====================
     # homebrew
-    eval (/opt/homebrew/bin/brew shellenv)
+    type -q /opt/homebrew/bin/brew && eval (/opt/homebrew/bin/brew shellenv)
     # asdf
-    test -x (command -v brew) && source (brew --prefix asdf)/libexec/asdf.fish
+    type -q && source (brew --prefix asdf)/libexec/asdf.fish
     # luarocks
-    eval (luarocks path --bin)
+    type -q luarocks && eval (luarocks path --bin)
   # ==================
   # PATH configuration
   # ==================
@@ -82,7 +82,7 @@ if status is-interactive
     # Neovide
     add_folder_to_path /Applications/Neovide.app/Contents/MacOS
     # LLVM
-    test -x (command -v brew) && add_folder_to_path (brew --prefix)/opt/llvm/bin
+    type -q brew && add_folder_to_path (brew --prefix)/opt/llvm/bin
     # Bob (Neovim)
     add_folder_to_path ~/.local/share/bob/nvim-bin
     # Bun
@@ -91,12 +91,12 @@ if status is-interactive
   # Abbreviations and Aliases
   # =========================
     # Set abbreviations for Neovim
-    if test -x (command -v nvim)
+    if type -q nvim
       abbr vi nvim
       abbr vim nvim
     end
     # Set abbreviations for Neovide
-    if test -x (command -v neovide)
+    if type -q neovide
       abbr nvd neovide
       abbr vid neovide
       abbr vimd neovide
@@ -111,7 +111,7 @@ if status is-interactive
     abbr gdt git difft
     abbr gdtc git difft --cached
     # Set aliases and abbreviations related to `ls`
-    if test -x (command -v eza)
+    if type -q eza
       alias ls "eza -I 'Icon'"
       abbr l 'ls -l'
       abbr la 'ls -a'
@@ -124,7 +124,7 @@ if status is-interactive
       abbr lsgi 'ls --git-ignore'
     end
     # Add -F flag to trash command by default
-    if test -x (command -v trash)
+    if type -q trash
       abbr trash 'trash -F'
     end
   # ====================

@@ -32,7 +32,8 @@ if status is-interactive
     set fish_cursor_external line
     set fish_cursor_visual block
     # Edit current command in EDITOR with <C-f>
-    bind --mode insert \cf edit_command_buffer
+    # The echo is a workaround for the cursor not changing properly
+    bind --mode insert \cf 'edit_command_buffer; echo -e "\033[6 q"'
     # Use <space> to accept completion
     bind --mode insert \x20 '
       if commandline -P

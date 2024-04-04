@@ -92,8 +92,17 @@ if status is-interactive
   # =========================
   # Abbreviations and Aliases
   # =========================
-    # Set alias for dotfiles git
+    # Set alias for dotfiles Git
     alias .git 'git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
+    # Set abbreviations for dotfiles Git
+    abbr .gs .git status
+    abbr .gss .git status --short
+    abbr .gc .git commit
+    abbr .gcm --set-cursor={} .git commit -m \'{}\'
+    abbr .gd .git diff
+    abbr .gdc .git diff --cached
+    abbr .gdt .git difft
+    abbr .gdtc .git difft --cached
     # Set abbreviations for Git
     abbr gs git status
     abbr gss git status --short

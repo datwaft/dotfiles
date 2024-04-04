@@ -94,6 +94,15 @@ if status is-interactive
   # =========================
     # Set alias for dotfiles git
     alias .git 'git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
+    # Set abbreviations for Git
+    abbr gs git status
+    abbr gss git status --short
+    abbr gc git commit
+    abbr gcm --set-cursor={} git commit -m \'{}\'
+    abbr gd git diff
+    abbr gdc git diff --cached
+    abbr gdt git difft
+    abbr gdtc git difft --cached
     # Set abbreviations for Neovim
     if type -q nvim
       abbr vi nvim
@@ -105,15 +114,6 @@ if status is-interactive
       abbr vid neovide
       abbr vimd neovide
     end
-    # Set abbreviations for Git
-    abbr gs git status
-    abbr gss git status --short
-    abbr gc git commit
-    abbr gcm --set-cursor={} git commit -m \'{}\'
-    abbr gd git diff
-    abbr gdc git diff --cached
-    abbr gdt git difft
-    abbr gdtc git difft --cached
     # Set aliases and abbreviations related to `ls`
     if type -q eza
       alias ls "eza -I 'Icon'"

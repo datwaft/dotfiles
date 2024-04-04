@@ -1,4 +1,4 @@
-# `datwaft` dotfiles
+# datwaft's dotfiles
 
 > [!CAUTION]
 > There could be conflicts if you already have any of the files in this

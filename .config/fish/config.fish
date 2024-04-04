@@ -92,6 +92,8 @@ if status is-interactive
   # =========================
   # Abbreviations and Aliases
   # =========================
+    # Set alias for dotfiles git
+    alias .git 'git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
     # Set abbreviations for Neovim
     if type -q nvim
       abbr vi nvim

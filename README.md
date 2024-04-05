@@ -16,7 +16,7 @@ git clone git@github.com:datwaft/dotfiles.git ~/.dotfiles
 # Then we enter the created repository
 cd ~/.dotfiles
 # And finally we use the stow command
-stow .
+stow . --no-folding
 ```
 
 ## How do I solve conflicts?
@@ -32,5 +32,5 @@ rm ~/.zshrc
 Another way is by using the `--adopt` flag (be careful as this modifies the dotfiles repository):
 
 ```sh
-stow . --adopt
+stow . --no-folding --adopt
 ```

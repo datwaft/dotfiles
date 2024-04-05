@@ -5,10 +5,11 @@
 script_name="$(basename "$0")"
 
 show_usage() {
-  printf "Usage: \x1b[2m%s [-h|--help] [-n|--no|--simulate] <file>...\x1b[22m\n" "$script_name" >&2
+  printf "Usage: \x1b[2m%s [-h|--help] [-n|--no|--simulate] [-q|--quiet] <file>...\x1b[22m\n" "$script_name" >&2
 }
 
 dry_run=
+quiet=
 
 while :; do
   case $1 in
@@ -18,6 +19,9 @@ while :; do
       ;;
     -n|--no|--simulate)
       dry_run=yes
+      ;;
+    -q|--quiet)
+      quiet=yes
       ;;
     --)
       shift
@@ -42,10 +46,14 @@ fi
 # Check that the input is a file
 for file in "$@"; do
   if [ ! -e "$file" ]; then
-    printf "\x1b[31m%s: '%s' doesn't exist or is not a regular file\x1b[39m\n" "$script_name" "$file" >&2
+    if [ -z "$quiet" ]; then
+      printf "\x1b[31m%s: '%s' doesn't exist or is not a regular file\x1b[39m\n" "$script_name" "$file" >&2
+    fi
     exit 65 # EX_DATAERR
   elif [ -L "$file" ]; then
-    printf "\x1b[31m%s: '%s' is a symbolic link\x1b[39m\n" "$script_name" "$file" >&2
+    if [ -z "$quiet" ]; then
+      printf "\x1b[31m%s: '%s' is a symbolic link\x1b[39m\n" "$script_name" "$file" >&2
+    fi
     exit 65 # EX_DATAERR
   fi
 done
@@ -54,7 +62,9 @@ for file in "$@"; do
   file="$(realpath "$file")"
   # Check that the file is contained in home directory
   if ! echo "$file" | grep -q "$HOME"; then
-    printf "\x1b[31m%s: '%s' is not in home directory\x1b[39m\n" "$script_name" "${file//$HOME/~}" >&2
+    if [ -z "$quiet" ]; then
+      printf "\x1b[31m%s: '%s' is not in home directory\x1b[39m\n" "$script_name" "${file//$HOME/~}" >&2
+    fi
     exit 65 # EX_DATAERR
   fi
   dest="${file//$HOME/$HOME/.dotfiles}"
@@ -72,7 +82,9 @@ for file in "$@"; do
           printf "\x1b[2m"'cp "%s" "%s"'"\x1b[22m\n" "$dest" "${dest}.bak"
           printf "\x1b[2m"'cp "%s" "%s"'"\x1b[22m\n" "$file" "$dest"
         fi
-        printf "\x1b[32m'%s' successfully overwritten!\x1b[39m\n" "${dest//$HOME/~}" >&2
+        if [ -z "$quiet" ]; then
+          printf "\x1b[32m'%s' successfully overwritten!\x1b[39m\n" "${dest//$HOME/~}" >&2
+        fi
         ;;
       *)
         exit 65 # EX_DATAERR
@@ -96,7 +108,9 @@ for file in "$@"; do
         else
           printf "\x1b[2m"'mkdir -p "%s"'"\x1b[22m\n" "$dest_dir"
         fi
-        printf "\x1b[32m'%s' successfully created!\x1b[39m\n" "${dest_dir//$HOME/~}" >&2
+        if [ -z "$quiet" ]; then
+          printf "\x1b[32m'%s' successfully created!\x1b[39m\n" "${dest_dir//$HOME/~}" >&2
+        fi
         ;;
     esac
   fi
@@ -106,5 +120,7 @@ for file in "$@"; do
   else
     printf "\x1b[2m"'cp "%s" "%s"'"\x1b[22m\n" "$file" "$dest"
   fi
-  printf "\x1b[32m'%s' successfully copied into '%s'!\x1b[39m\n" "${file//$HOME/~}" "${dest//$HOME/~}" >&2
+  if [ -z "$quiet" ]; then
+    printf "\x1b[32m'%s' successfully copied into '%s'!\x1b[39m\n" "${file//$HOME/~}" "${dest//$HOME/~}" >&2
+  fi
 done

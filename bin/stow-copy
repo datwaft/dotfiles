@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
 # Copies file into dotfiles
+# Requires: bash@>5
+# Usage: stow-copy [-h|--help] [-d|--dry-run] [-q|--quiet] [-y|--yes] [-n|--no] <file>...
 
 script_name="$(basename "$0")"
 
@@ -30,6 +32,12 @@ while :; do
       ;;
     -n|--no)
       no=yes
+      ;;
+    -[!-]?*)
+      readarray -t args <<<"$(echo "${1:1}" | grep -o . | awk '{print "-" $0}')"
+      shift
+      set -- "${args[@]}" "$@"
+      continue
       ;;
     --)
       shift

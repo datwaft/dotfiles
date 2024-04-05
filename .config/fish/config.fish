@@ -54,7 +54,7 @@ if status is-interactive
     # homebrew
     type -q /opt/homebrew/bin/brew && eval (/opt/homebrew/bin/brew shellenv)
     # asdf
-    type -q && source (brew --prefix asdf)/libexec/asdf.fish
+    type -q asdf && source (brew --prefix asdf)/libexec/asdf.fish
     # luarocks
     type -q luarocks && eval (luarocks path --bin)
   # ==================
@@ -69,6 +69,8 @@ if status is-interactive
     # Homebrew
     add_folder_to_path /opt/homebrew/bin
     add_folder_to_path /opt/homebrew/sbin
+    # asdf
+    add_folder_to_path ~/.asdf/shims
     # User scripts
     add_folder_to_path ~/.dotfiles/bin
     # User binaries

@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Copies file into dotfiles
-# Requires: bash@>5
+# Requires: bash@>=4
 # Usage: stow-copy [-h|--help] [-d|--dry-run] [-q|--quiet] [-y|--yes] [-n|--no] <file>...
 
 script_name="$(basename "$0")"

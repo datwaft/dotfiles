@@ -5,11 +5,13 @@
 script_name="$(basename "$0")"
 
 show_usage() {
-  printf "Usage: \x1b[2m%s [-h|--help] [-d|--dry-run] [-q|--quiet] <file>...\x1b[22m\n" "$script_name" >&2
+  printf "Usage: \x1b[2m%s [-h|--help] [-d|--dry-run] [-q|--quiet] [-y|--yes] [-n|--no] <file>...\x1b[22m\n" "$script_name" >&2
 }
 
 dry_run=
 quiet=
+yes=
+no=
 
 while :; do
   case $1 in
@@ -22,6 +24,12 @@ while :; do
       ;;
     -q|--quiet)
       quiet=yes
+      ;;
+    -y|--yes)
+      yes=yes
+      ;;
+    -n|--no)
+      no=yes
       ;;
     --)
       shift
@@ -70,9 +78,15 @@ for file in "$@"; do
   dest="${file//$HOME/$HOME/.dotfiles}"
   # Check that the file doesn't already exist, if it does ask before overwriting
   if [ -d "$dest" ] || [ -f "$dest" ]; then
-    printf "\x1b[33m%s: '%s' already exists\x1b[39m\n" "$script_name" "${dest//$HOME/~}" >&2
-    printf "Would you like to overwrite it? (a backup will be created) \x1b[2m[y/N]\x1b[22m " >&2
-    read -r answer
+    if [ -z "$yes" ] && [ -z "$no" ]; then
+      printf "\x1b[33m%s: '%s' already exists\x1b[39m\n" "$script_name" "${dest//$HOME/~}" >&2
+      printf "Would you like to overwrite it? (a backup will be created) \x1b[2m[y/N]\x1b[22m " >&2
+      read -r answer
+    elif [ -n "$yes" ]; then
+      answer="y"
+    elif [ -n "$no" ]; then
+      answer="n"
+    fi
     case $answer in
       [Yy]*)
         if [ -z "$dry_run" ]; then
@@ -95,9 +109,15 @@ for file in "$@"; do
   # Check if file directory exists, if it doesn't ask before creating it
   dest_dir="$(dirname "$dest")"
   if [ ! -d "$dest_dir" ]; then
-    printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "${dest_dir//$HOME/~}" >&2
-    printf "Would you like to create it? \x1b[2m[Y/n]\x1b[22m " >&2
-    read -r answer
+    if [ -z "$yes" ] && [ -z "$no" ]; then
+      printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "${dest_dir//$HOME/~}" >&2
+      printf "Would you like to create it? \x1b[2m[Y/n]\x1b[22m " >&2
+      read -r answer
+    elif [ -n "$yes" ]; then
+      answer="y"
+    elif [ -n "$no" ]; then
+      answer="n"
+    fi
     case $answer in
       [Nn]*)
         exit 65 # EX_DATAERR

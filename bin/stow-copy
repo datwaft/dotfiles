@@ -81,8 +81,9 @@ for file in "$@"; do
     continue
   fi
   # Check if file directory exists, if it doesn't ask before creating it
-  if [ ! -d "$(dirname "$dest")" ]; then
-    printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "$(dirname "$dest")" >&2
+  dest_dir="$(dirname "$dest")"
+  if [ ! -d "$dest_dir" ]; then
+    printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "$dest_dir" >&2
     printf "Would you like to create it? \x1b[2m[Y/n]\x1b[22m " >&2
     read -r answer
     case $answer in
@@ -91,11 +92,11 @@ for file in "$@"; do
         ;;
       *)
         if [ -z "$dry_run" ]; then
-          mkdir -p "$(dirname "$dest")"
+          mkdir -p "$dest_dir"
         else
-          printf "\x1b[2m"'mkdir -p "%s"'"\x1b[22m\n" "$(dirname "$dest")" >&2
+          printf "\x1b[2m"'mkdir -p "%s"'"\x1b[22m\n" "$dest_dir" >&2
         fi
-        printf "'%s' successfully created!\n" "$(dirname "$dest")" >&2
+        printf "'%s' successfully created!\n" "$dest_dir" >&2
         ;;
     esac
   fi

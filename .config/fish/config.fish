@@ -67,7 +67,7 @@ if status is-interactive
       end
     end
     # User scripts
-    add_folder_to_path ~/scripts
+    add_folder_to_path ~/.dotfiles/bin
     # User binaries
     add_folder_to_path ~/bin
     add_folder_to_path ~/.local/bin

@@ -66,6 +66,9 @@ if status is-interactive
         fish_add_path --path --move $argv[1]
       end
     end
+    # Homebrew
+    add_folder_to_path /opt/homebrew/bin
+    add_folder_to_path /opt/homebrew/sbin
     # User scripts
     add_folder_to_path ~/.dotfiles/bin
     # User binaries

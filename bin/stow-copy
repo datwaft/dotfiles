@@ -5,7 +5,7 @@
 script_name="$(basename "$0")"
 
 show_usage() {
-  printf "Usage: \x1b[2m%s [-h|--help] [-n|--no|--simulate] [-q|--quiet] <file>...\x1b[22m\n" "$script_name" >&2
+  printf "Usage: \x1b[2m%s [-h|--help] [-d|--dry-run] [-q|--quiet] <file>...\x1b[22m\n" "$script_name" >&2
 }
 
 dry_run=
@@ -17,7 +17,7 @@ while :; do
       show_usage
       exit 0 # EX_OK
       ;;
-    -n|--no|--simulate)
+    -d|--dry-run)
       dry_run=yes
       ;;
     -q|--quiet)

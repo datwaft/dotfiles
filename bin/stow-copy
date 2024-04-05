@@ -79,7 +79,7 @@ for file in "$@"; do
   # Check that the file is contained in home directory
   if ! echo "$file" | grep -q "$HOME"; then
     if [ -z "$quiet" ]; then
-      printf "\x1b[31m%s: '%s' is not in home directory\x1b[39m\n" "$script_name" "${file//$HOME/~}" >&2
+      printf "\x1b[31m%s: '%s' is not in home directory\x1b[39m\n" "$script_name" "${file//$HOME/'~'}" >&2
     fi
     exit 65 # EX_DATAERR
   fi
@@ -87,7 +87,7 @@ for file in "$@"; do
   # Check that the file doesn't already exist, if it does ask before overwriting
   if [ -d "$dest" ] || [ -f "$dest" ]; then
     if [ -z "$yes" ] && [ -z "$no" ]; then
-      printf "\x1b[33m%s: '%s' already exists\x1b[39m\n" "$script_name" "${dest//$HOME/~}" >&2
+      printf "\x1b[33m%s: '%s' already exists\x1b[39m\n" "$script_name" "${dest//$HOME/'~'}" >&2
       printf "Would you like to overwrite it? (a backup will be created) \x1b[2m[y/N]\x1b[22m " >&2
       read -r answer
     elif [ -n "$yes" ]; then
@@ -105,12 +105,12 @@ for file in "$@"; do
           printf "\x1b[2m"'cp "%s" "%s"'"\x1b[22m\n" "$file" "$dest"
         fi
         if [ -z "$quiet" ]; then
-          printf "\x1b[32m'%s' successfully overwritten!\x1b[39m\n" "${dest//$HOME/~}" >&2
+          printf "\x1b[32m'%s' successfully overwritten!\x1b[39m\n" "${dest//$HOME/'~'}" >&2
         fi
         ;;
       *)
         if [ -z "$quiet" ]; then
-          printf "\x1b[31m'%s' wasn't overwritten!\x1b[39m\n" "${dest//$HOME/~}" >&2
+          printf "\x1b[31m'%s' wasn't overwritten!\x1b[39m\n" "${dest//$HOME/'~'}" >&2
         fi
         exit 65 # EX_DATAERR
         ;;
@@ -121,7 +121,7 @@ for file in "$@"; do
   dest_dir="$(dirname "$dest")"
   if [ ! -d "$dest_dir" ]; then
     if [ -z "$yes" ] && [ -z "$no" ]; then
-      printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "${dest_dir//$HOME/~}" >&2
+      printf "\x1b[33m%s: '%s' doesn't exist\x1b[39m\n" "$script_name" "${dest_dir//$HOME/'~'}" >&2
       printf "Would you like to create it? \x1b[2m[Y/n]\x1b[22m " >&2
       read -r answer
     elif [ -n "$yes" ]; then
@@ -132,7 +132,7 @@ for file in "$@"; do
     case $answer in
       [Nn]*)
         if [ -z "$quiet" ]; then
-          printf "\x1b[31m'%s' wasn't created!\x1b[39m\n" "${dest_dir//$HOME/~}" >&2
+          printf "\x1b[31m'%s' wasn't created!\x1b[39m\n" "${dest_dir//$HOME/'~'}" >&2
         fi
         exit 65 # EX_DATAERR
         ;;
@@ -143,7 +143,7 @@ for file in "$@"; do
           printf "\x1b[2m"'mkdir -p "%s"'"\x1b[22m\n" "$dest_dir"
         fi
         if [ -z "$quiet" ]; then
-          printf "\x1b[32m'%s' successfully created!\x1b[39m\n" "${dest_dir//$HOME/~}" >&2
+          printf "\x1b[32m'%s' successfully created!\x1b[39m\n" "${dest_dir//$HOME/'~'}" >&2
         fi
         ;;
     esac
@@ -155,6 +155,6 @@ for file in "$@"; do
     printf "\x1b[2m"'cp "%s" "%s"'"\x1b[22m\n" "$file" "$dest"
   fi
   if [ -z "$quiet" ]; then
-    printf "\x1b[32m'%s' successfully copied into '%s'!\x1b[39m\n" "${file//$HOME/~}" "${dest//$HOME/~}" >&2
+    printf "\x1b[32m'%s' successfully copied into '%s'!\x1b[39m\n" "${file//$HOME/'~'}" "${dest//$HOME/'~'}" >&2
   fi
 done

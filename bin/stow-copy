@@ -101,6 +101,9 @@ for file in "$@"; do
         fi
         ;;
       *)
+        if [ -z "$quiet" ]; then
+          printf "\x1b[31m'%s' wasn't overwritten!\x1b[39m\n" "${dest//$HOME/~}" >&2
+        fi
         exit 65 # EX_DATAERR
         ;;
     esac
@@ -120,6 +123,9 @@ for file in "$@"; do
     fi
     case $answer in
       [Nn]*)
+        if [ -z "$quiet" ]; then
+          printf "\x1b[31m'%s' wasn't created!\x1b[39m\n" "${dest_dir//$HOME/~}" >&2
+        fi
         exit 65 # EX_DATAERR
         ;;
       *)

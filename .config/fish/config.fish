@@ -55,8 +55,6 @@ if status is-interactive
     type -q /opt/homebrew/bin/brew && eval (/opt/homebrew/bin/brew shellenv)
     # asdf
     type -q asdf && source (brew --prefix asdf)/libexec/asdf.fish
-    # luarocks
-    type -q luarocks && eval (luarocks path --bin)
   # ==================
   # PATH configuration
   # ==================

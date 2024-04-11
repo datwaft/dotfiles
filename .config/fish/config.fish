@@ -143,6 +143,10 @@ if status is-interactive
     if type -q trash
       abbr trash 'trash -F'
     end
+  # Set abbreviations for pnpm
+    if type -q pnpm
+      abbr pn 'pnpm'
+    end
   # ====================
   # System configuration
   # ====================

@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-prompt_all=' '
-prompt_tmux=' '
-prompt_zoxide='󰤏 '
-prompt_find='󱦞 '
+prompt_all='^a'
+prompt_tmux='^t'
+prompt_zoxide='^x'
+prompt_find='^f'
 
 # shellcheck disable=SC2016
 sesh connect "$(sesh list -t | fzf-tmux -p 55%,60% \

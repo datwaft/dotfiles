@@ -12,7 +12,12 @@ dynamic_padding = true
 option_as_alt = "OnlyLeft"
 
 [font]
-normal.family = "IosevkaTerm Nerd Font Propo"
+normal.family = "IosevkaTerm Nerd Font"
+normal.style = "Light"
+bold.style = "Medium"
+italic.style = "Light Italic"
+bold_italic.style = "Medium Italic"
+
 
 [terminal]
 osc52 = "CopyPaste"

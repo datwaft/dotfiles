@@ -6,9 +6,10 @@ if status is-interactive
     fish_config theme choose 'Catppuccin Mocha'
     # Set theme to Catppuccin Mocha for FZF
     set -gx FZF_DEFAULT_OPTS "\
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+    --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8,gutter:-1 \
+    --color=fg:#cdd6f4,header:#f38ba8,info:-1,pointer:#cba6f7 \
+    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#cba6f7 \
+    --reverse --no-scrollbar --pointer='➤ ' --info=hidden --border=sharp"
     # Set theme to base16 for bat
     set -gx BAT_THEME base16
   # ====================

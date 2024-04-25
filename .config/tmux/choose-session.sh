@@ -7,8 +7,8 @@ prompt_find='^f'
 
 # shellcheck disable=SC2016
 sesh connect "$(sesh list -t | fzf-tmux -p 55%,60% \
-  --color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-  --color=fg:#cdd6f4,header:#f38ba8,info:#1e1e2e,pointer:#cba6f7 \
+  --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8,gutter:-1 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:-1,pointer:#cba6f7 \
   --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#cba6f7 \
   --reverse --no-scrollbar --pointer='➤ ' --info=hidden --no-sort --border=sharp \
   --prompt="${prompt_tmux}  " \

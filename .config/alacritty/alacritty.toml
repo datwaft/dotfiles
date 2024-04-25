@@ -10,6 +10,8 @@ args = ["new-session", "-A", "-s", "default"]
 [window]
 dynamic_padding = true
 option_as_alt = "OnlyLeft"
+opacity = 0.65
+blur = true
 
 [font]
 normal.family = "IosevkaTerm Nerd Font Mono"

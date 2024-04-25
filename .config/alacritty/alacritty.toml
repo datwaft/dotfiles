@@ -10,7 +10,7 @@ args = ["new-session", "-A", "-s", "default"]
 [window]
 dynamic_padding = true
 option_as_alt = "OnlyLeft"
-opacity = 0.65
+opacity = 0.85
 blur = true
 
 [font]

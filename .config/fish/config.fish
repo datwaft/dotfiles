@@ -164,4 +164,7 @@ if status is-interactive
     set -gx MANPAGER 'nvim +Man!'
     # Use local TERMINFO
     set -gax --path TERMINFO_DIRS ~/.local/share/terminfo
+    # Set locale always to UTF-8
+    set -gx LANG "en_US.UTF-8"
+    set -gx LC_CTYPE "en_US.UTF-8"
 end

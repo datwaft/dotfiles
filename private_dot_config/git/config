@@ -1,0 +1,51 @@
+[user]
+  name = datwaft
+  email = datwaftx@gmail.com
+[core]
+  editor = nvim
+  pager = cat
+[credential]
+  helper = cache
+[pull]
+  rebase = true
+[init]
+  defaultBranch = main
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[commit]
+  gpgsign = true
+[diff]
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true
+[alias]
+  difft = difftool
+[push]
+  autoSetupRemote = true
+  followTags = true
+[gpg]
+  format = ssh
+[feature]
+  manyFiles = true
+[color]
+  ui = true
+[tag]
+  gpgSign = true
+[rerere]
+  enabled = true
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[fetch]
+  writeCommitGraph = true
+[rebase]
+  updateRefs = true
+  autosquash = true

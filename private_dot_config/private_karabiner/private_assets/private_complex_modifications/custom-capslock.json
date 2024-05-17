@@ -1,0 +1,30 @@
+{
+  "title": "Change Caps Lock to ESC and CTRL",
+  "rules": [
+    {
+      "description": "Make Caps Lock behave like ESC if tapped and CTRL if held.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "lazy": true
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

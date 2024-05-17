@@ -1,0 +1,9 @@
+[FORMAT]
+max-line-length = 88
+
+[MESSAGES CONTROL]
+disable = missing-function-docstring,
+          missing-module-docstring,
+          missing-class-docstring,
+          invalid-name,
+          redefined-builtin,

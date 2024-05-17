@@ -1,0 +1,33 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[env]
+TERM = "alacritty-direct"
+
+[shell]
+program = "/opt/homebrew/bin/tmux"
+args = ["new-session", "-A", "-s", "default"]
+
+[window]
+dynamic_padding = true
+option_as_alt = "OnlyLeft"
+opacity = 0.85
+blur = true
+
+[font]
+normal.family = "IosevkaTerm Nerd Font Mono"
+normal.style = "Light"
+bold.style = "Medium"
+italic.style = "Light Italic"
+bold_italic.style = "Medium Italic"
+
+
+[terminal]
+osc52 = "CopyPaste"
+
+[keyboard]
+bindings = [
+  { key = "ArrowLeft", mods = "Command", chars = "\u001bOH" },  # <Home>
+  { key = "ArrowRight", mods = "Command", chars = "\u001bOF" }, # <End>
+  { key = "Backspace", mods = "Command", chars = "\u0015" },    # <C-u>
+  { key = "Backspace", mods = "Option", chars = "\u0017" },     # <C-w>
+]

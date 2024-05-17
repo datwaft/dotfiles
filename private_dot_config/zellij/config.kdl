@@ -1,0 +1,120 @@
+// vim:ft=kdl:
+
+// See https://github.com/catppuccin/zellij
+theme "catppuccin-mocha"
+
+keybinds clear-defaults=true {
+    shared_except "normal" "locked" {
+        // Be able to exit any mode (apart from Normal and Locked) by using Esc or Enter
+        bind "Enter" "Esc" { SwitchToMode "normal"; }
+    }
+    // Locked mode keybinds
+    shared_except "locked" {
+        bind "Alt l" { SwitchToMode "locked"; }
+        // Move between panes
+        bind "Alt Left" { MoveFocus "Left"; }
+        bind "Alt Right" { MoveFocus "Right"; }
+        bind "Alt Down" { MoveFocus "Down"; }
+        bind "Alt Up" { MoveFocus "Up"; }
+        // Move between tabs
+        bind "Alt [" { GoToPreviousTab; }
+        bind "Alt ]" { GoToNextTab; }
+        // Increase or decrease pane size
+        bind "Alt =" "Alt +" { Resize "Increase"; }
+        bind "Alt _" "Alt -" { Resize "Decrease"; }
+        // Go to tab by number
+        bind "Alt 1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "Alt 2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "Alt 3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "Alt 4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "Alt 5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "Alt 6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "Alt 7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "Alt 8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "Alt 9" { GoToTab 9; SwitchToMode "normal"; }
+        // Open session manager
+        bind "Alt s" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
+    }
+    locked {
+        bind "Alt l" { SwitchToMode "normal"; }
+    }
+    // Pane mode keybinds
+    shared_except "locked" "pane" {
+        bind "Alt w" { SwitchToMode "pane"; }
+    }
+    pane {
+        bind "Alt w" { SwitchToMode "normal"; }
+        // Move between panes
+        bind "h" "Left" { MoveFocus "Left"; }
+        bind "l" "Right" { MoveFocus "Right"; }
+        bind "j" "Down" { MoveFocus "Down"; }
+        bind "k" "Up" { MoveFocus "Up"; }
+        // Close the focused pane
+        bind "q" "x" { CloseFocus; SwitchToMode "normal"; }
+        // Create new panes
+        bind "n" { NewPane; SwitchToMode "normal"; }
+        bind "s" { NewPane "Down"; SwitchToMode "normal"; }
+        bind "v" { NewPane "Right"; SwitchToMode "normal"; }
+        // Zoom to focused pane
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        // Toggle floating panes
+        bind "f" { ToggleFloatingPanes; SwitchToMode "normal"; }
+        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "normal"; }
+        // Rename focused pane
+        bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
+    }
+    renamepane {
+        bind "Ctrl c" { SwitchToMode "normal"; }
+        bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
+    }
+    // Resize mode keybinds
+    shared_except "locked" "resize" {
+        bind "Alt r" { SwitchToMode "resize"; }
+    }
+    resize {
+        bind "Alt r" { SwitchToMode "normal"; }
+        // Increase size of pane
+        bind "h" "Left" { Resize "Increase Left"; }
+        bind "j" "Down" { Resize "Increase Down"; }
+        bind "k" "Up" { Resize "Increase Up"; }
+        bind "l" "Right" { Resize "Increase Right"; }
+        bind "=" "+" { Resize "Increase"; }
+        // Decrease size of pane
+        bind "_" "-" { Resize "Decrease"; }
+    }
+    // Tab mode keybinds
+    shared_except "locked" "tab" {
+        bind "Alt t" { SwitchToMode "tab"; }
+    }
+    tab {
+        bind "Alt t" { SwitchToMode "normal"; }
+        // Go to tab by number
+        bind "1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "normal"; }
+        // Move between tabs
+        bind "[" { GoToPreviousTab; }
+        bind "]" { GoToNextTab; }
+        // Create new tabs
+        bind "n" { NewTab; SwitchToMode "normal"; }
+        // Rename focused tab
+        bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
+        // Close the focused pane
+        bind "q" "x" { CloseTab; SwitchToMode "normal"; }
+    }
+    renametab {
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
+    }
+}

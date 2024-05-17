@@ -1,5 +1,0 @@
-complete -c stow-copy -s h -l help -d "show usage"
-complete -c stow-copy -s d -l dry-run -d "simulate an execution"
-complete -c stow-copy -s q -l quiet -d "do not show any output"
-complete -c stow-copy -s y -l yes -d "answer yes if a yes/no question is asked"
-complete -c stow-copy -s n -l no -d "answer no if a yes/no question is asked"

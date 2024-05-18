@@ -9,8 +9,8 @@ belak/zsh-utils path:utility
 
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
-olets/zsh-abbr
 jeffreytse/zsh-vi-mode kind:defer
+olets/zsh-abbr
 
 ohmyzsh/ohmyzsh path:plugins/command-not-found
 ohmyzsh/ohmyzsh path:plugins/asdf

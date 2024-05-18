@@ -58,6 +58,9 @@ function zvm_after_init() {
   # Search history with <Up> and <Down>
   bindkey "^[[A" history-substring-search-up # <Up>
   bindkey "^[[B" history-substring-search-down # <Down>
+  # Move to start and end of line with <Home> and <End>
+  bindkey '^[[1~' beginning-of-line # <Home>
+  bindkey '^[[4~' end-of-line # <End>
   # Move between words with <M-Left> and <M-Right>
   bindkey '^[[1;3D' backward-word # <M-Left>
   bindkey '^[[1;3C' forward-word # <M-Right>
@@ -67,6 +70,12 @@ function zvm_after_init() {
   bindkey '^F' edit-command-line
   # Enable fzf keybinds
   which fzf &> /dev/null && source <(fzf --zsh)
+  # Restore zsh-abbr keybinds
+  bindkey '^M' abbr-expand-and-accept
+  bindkey ' ' abbr-expand-and-insert
+  bindkey '^ ' magic-space
+  bindkey -M isearch ' ' magic-space
+  bindkey -M isearch '^ ' abbr-expand-and-insert
 }
 
 # Use user $TERMINFO

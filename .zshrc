@@ -38,7 +38,7 @@ export FZF_DEFAULT_OPTS="
 # Enable abbreviations cursor expansion
 ABBR_SET_EXPANSION_CURSOR=1
 # Define an alias for dotfiles management
-alias .git='git --git-dir ~/.dotfiles --work-tree ~'
+alias .git='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 # Define an alias for `ls` if `eza` is installed
 which eza &> /dev/null && alias ls="eza -I $'Icon\r'"
 # Use `fd` for FZF if it is installed

@@ -13,6 +13,7 @@ jeffreytse/zsh-vi-mode kind:defer
 olets/zsh-abbr
 
 ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/asdf
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/zoxide kind:defer

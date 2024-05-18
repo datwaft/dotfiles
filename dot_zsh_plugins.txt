@@ -1,0 +1,21 @@
+# vi:ft=conf:nospell:
+
+romkatv/powerlevel10k
+romkatv/zsh-defer
+
+belak/zsh-utils path:completion
+belak/zsh-utils path:history
+belak/zsh-utils path:utility
+
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+olets/zsh-abbr
+jeffreytse/zsh-vi-mode kind:defer
+
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/asdf
+ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/zoxide kind:defer
+
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search

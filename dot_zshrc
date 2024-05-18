@@ -60,8 +60,8 @@ function zvm_config() {
 
 function zvm_after_init() {
   # Search history with <Up> and <Down>
-  bindkey "^[[A" history-substring-search-up # <Up>
-  bindkey "^[[B" history-substring-search-down # <Down>
+  bindkey '^[[A' history-substring-search-up # <Up>
+  bindkey '^[[B' history-substring-search-down # <Down>
   # Move to start and end of line with <Home> and <End>
   bindkey '^[[1~' beginning-of-line # <Home>
   bindkey '^[[4~' end-of-line # <End>

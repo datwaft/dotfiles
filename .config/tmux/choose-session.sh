@@ -14,7 +14,7 @@ sesh connect "$(sesh list -t | fzf-tmux -p 55%,60% \
   --prompt="${prompt_tmux}  " \
   --header=[2m'^a all ∣ ^t tmux ∣ ^x zoxide ∣ ^d kill ∣ ^f find'[22m \
   --preview='tmux capture-pane -e -p -t {} 2> /dev/null || \
-             eza -I "Icon" --color=always -1 (string replace "~" $HOME {})' \
+             eza -I "Icon" --color=always -1 $(eval echo {})' \
   --preview-window='right,border-sharp,<50(down)' \
   --bind='tab:down,btab:up' \
   --bind="ctrl-a:change-prompt(${prompt_all}  )+reload(sesh list -tz)" \

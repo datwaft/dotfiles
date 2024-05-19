@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # Split the current tmux pane automatically depending on which dimension is bigger
 # Requires: tmux

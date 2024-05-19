@@ -78,12 +78,12 @@ function zvm_after_init() {
   bindkey '^F' edit-command-line
   # Enable fzf keybinds
   which fzf &> /dev/null && source <(fzf --zsh)
+  # Add `fzf-git-log-widget` keybind
+  source ~/.zsh/fzf-git-log-widget.zsh
+  bindkey '^G' fzf-git-log-widget
   # Restore zsh-abbr keybinds
-  bindkey '^M' abbr-expand-and-accept
-  bindkey ' ' abbr-expand-and-insert
-  bindkey '^ ' magic-space
-  bindkey -M isearch ' ' magic-space
-  bindkey -M isearch '^ ' abbr-expand-and-insert
+  bindkey '^M' abbr-expand-and-accept ' ' abbr-expand-and-insert '^ ' magic-space
+  bindkey -M isearch ' ' magic-space '^ ' abbr-expand-and-insert
 }
 
 # Use user $TERMINFO

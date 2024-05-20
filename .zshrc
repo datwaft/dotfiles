@@ -105,9 +105,9 @@ export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 # Configure luarocks
 which luarocks &> /dev/null && eval $(luarocks path --bin)
 # Configure cargo
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 # Configure Bob (Neovim)
-export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

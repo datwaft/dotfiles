@@ -50,10 +50,14 @@ fi
 # Use `zoxide` as `cd`
 ZOXIDE_CMD_OVERRIDE=cd
 
+# Enable completion
+zmodload -i zsh/complist
 # Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Use `LS_COLORS` on completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Highlight current completion item
+zstyle ':completion:*' menu select
 
 function zvm_config() {
   # Sandwich-like surround keybinds
@@ -62,23 +66,20 @@ function zvm_config() {
 
 function zvm_after_init() {
   # Search history with <Up> and <Down>
-  bindkey '^[[A' history-substring-search-up # <Up>
-  bindkey '^[[B' history-substring-search-down # <Down>
+  bindkey '^[[A' history-substring-search-up '^[[B' history-substring-search-down
   # Move to start and end of line with <Home> and <End>
-  bindkey '^[[1~' beginning-of-line # <Home>
-  bindkey '^[[4~' end-of-line # <End>
+  bindkey '^[[1~' beginning-of-line '^[[4~' end-of-line
   # Move between words with <M-Left> and <M-Right>
-  bindkey '^[[1;3D' backward-word # <M-Left>
-  bindkey '^[[1;3C' forward-word # <M-Right>
+  bindkey '^[[1;3D' backward-word '^[[1;3C' forward-word
   # Use <Tab> and <S-Tab> for completion
-  bindkey '^I' menu-select '^[[Z' menu-select
-  bindkey -M menuselect '^I' menu-complete '^[[Z' reverse-menu-complete
-  # Abort completion with <ESC>
-  bindkey -M menuselect '^[' undo # <ESC>
-  # Always submit with <Enter>
-  bindkey -M menuselect '^M' .accept-line
-  # Accept completion with <Space>
-  bindkey -M menuselect ' ' accept-search
+  bindkey '^I' menu-complete '^[[Z' reverse-menu-complete
+  # Restore arrows in completion mode
+  bindkey -M menuselect '^[[D' .backward-char '^[[C' .forward-char
+  bindkey -M menuselect '^[[A' .history-substring-search-up '^[[B' .history-substring-search-down
+  bindkey -M menuselect '^[[1~' .beginning-of-line '^[[4~' .end-of-line
+  bindkey -M menuselect '^[[1;3D' .backward-word '^[[1;3C' .forward-word
+  # Completion configuration
+  bindkey -M menuselect '^[' undo '^M' .accept-line ' ' accept-search
   # Edit command line with <C-f>
   autoload -z edit-command-line
   zle -N edit-command-line

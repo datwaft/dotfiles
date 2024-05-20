@@ -2,8 +2,6 @@
 
 romkatv/powerlevel10k
 
-marlonrichert/zsh-autocomplete
-
 belak/zsh-utils path:completion
 belak/zsh-utils path:history
 belak/zsh-utils path:utility

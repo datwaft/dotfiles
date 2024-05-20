@@ -5,7 +5,7 @@ FZF_CTRL_G_L_COMMAND=(
 )
 
 FZF_CTRL_G_L_OPTS=(
-  --height -40%
+  --height 40%
   --inline-info
   --ansi
   --reverse
@@ -21,9 +21,16 @@ FZF_CTRL_G_L_OPTS=(
 )
 
 fzf-git-log-widget() {
+  local command
+  if [[ $LBUFFER == .git* ]]; then
+    command=(git --git-dir ~/.dotfiles --work-tree ~ "${FZF_CTRL_G_L_COMMAND[@]:1}")
+  else
+    command=("${FZF_CTRL_G_L_COMMAND[@]}")
+  fi
+
   local results
   local selected
-  if results=$("${FZF_CTRL_G_L_COMMAND[@]}" 2> /dev/null) &&
+  if results=$("${command[@]}" 2> /dev/null) &&
      selected=$(echo $results | fzf "${FZF_CTRL_G_L_OPTS[@]}" | awk '{print $1}'); then
     LBUFFER="$LBUFFER${selected}"
   fi

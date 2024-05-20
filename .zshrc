@@ -55,7 +55,8 @@ zmodload -i zsh/complist
 # Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Use `LS_COLORS` on completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# See https://www.reddit.com/r/zsh/comments/1408avn/comment/jnfzwc1
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" "ma=1;38;2;205;214;244"
 # Highlight current completion item
 zstyle ':completion:*' menu select
 

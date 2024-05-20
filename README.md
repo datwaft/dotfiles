@@ -10,6 +10,9 @@ The way this repository uses for storing my dotfiles is with a _bare_ repository
 
 Install `git`.
 
+> [!WARNING]
+> If you install `git` using `brew` you will break completion.
+
 ### How do I import the dotfiles?
 
 Use this command:
@@ -38,7 +41,8 @@ And add this to make it ignore files it doesn't have:
 .git config --local status.showUntrackedFiles no
 ```
 
-**Warning:** Your home directory shouldn't contain any of the dotfiles present inside the directory.
+> [!WARNING]
+> Your home directory shouldn't contain any of the dotfiles present inside the directory.
 
 ### Where did you get the information for using your dotfiles like this?
 

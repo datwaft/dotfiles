@@ -1,7 +1,6 @@
 # vi:ft=conf:nospell:
 
 romkatv/powerlevel10k
-romkatv/zsh-defer
 
 marlonrichert/zsh-autocomplete
 

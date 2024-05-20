@@ -70,8 +70,13 @@ function zvm_after_init() {
   # Move between words with <M-Left> and <M-Right>
   bindkey '^[[1;3D' backward-word # <M-Left>
   bindkey '^[[1;3C' forward-word # <M-Right>
-  # Complete backwards with <S-Tab>
-  bindkey '^[[Z' reverse-menu-complete # <S-Tab>
+  # Use <Tab> and <S-Tab> for completion
+  bindkey '^I' menu-select '^[[Z' menu-select
+  bindkey -M menuselect '^I' menu-complete '^[[Z' reverse-menu-complete
+  # Abort completion with <ESC>
+  bindkey -M menuselect '^[' undo # <ESC>
+  # Always submit with <Enter>
+  bindkey -M menuselect '^M' .accept-line
   # Edit command line with <C-f>
   autoload -z edit-command-line
   zle -N edit-command-line

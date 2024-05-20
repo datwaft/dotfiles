@@ -1,3 +1,12 @@
+# Start with beam cursor
+# See https://stackoverflow.com/a/17100535/10702981
+printf '\e[6 q'
+
+# Generated automatically by `p10k`, enables the instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Do not load the configuration file if `brew` is not installed
 which brew &> /dev/null || return
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -6,15 +15,6 @@ eval $(/opt/homebrew/bin/brew shellenv)
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 antidote load
-
-# Generated automatically by `p10k`, enables the instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Start with beam cursor
-# See https://stackoverflow.com/a/17100535/10702981
-printf '\e[6 q'
 
 # Support unlimited number of file descriptors
 ulimit -n unlimited

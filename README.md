@@ -35,12 +35,6 @@ And after that do a checkout to add the files to the home directory:
 .git checkout
 ```
 
-And add this to make it ignore files it doesn't have:
-
-```sh
-.git config --local status.showUntrackedFiles no
-```
-
 > [!WARNING]
 > Your home directory shouldn't contain any of the dotfiles present inside the directory.
 

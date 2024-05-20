@@ -1,0 +1,4 @@
+# Ignore self
+.dotfiles
+# Ignore all files
+*

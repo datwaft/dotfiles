@@ -77,6 +77,8 @@ function zvm_after_init() {
   bindkey -M menuselect '^[' undo # <ESC>
   # Always submit with <Enter>
   bindkey -M menuselect '^M' .accept-line
+  # Accept completion with <Space>
+  bindkey -M menuselect ' ' accept-search
   # Edit command line with <C-f>
   autoload -z edit-command-line
   zle -N edit-command-line

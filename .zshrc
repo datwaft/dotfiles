@@ -19,6 +19,10 @@ antidote load
 # Support unlimited number of file descriptors
 ulimit -n unlimited
 
+# Disable extended glob option
+# See https://stackoverflow.com/a/26295653
+setopt noEXTENDED_GLOB
+
 # Load `p10k` configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Disable history-substring-search highlighting

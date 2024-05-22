@@ -56,6 +56,10 @@ ZOXIDE_CMD_OVERRIDE=cd
 
 # Enable completion
 zmodload -i zsh/complist
+# Make completion menu take less space
+setopt LIST_PACKED
+# Define completers to use
+zstyle ':completion:*' completer _extensions _complete _approximate
 # Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Use `LS_COLORS` on completion

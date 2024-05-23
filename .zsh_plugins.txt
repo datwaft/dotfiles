@@ -11,6 +11,8 @@ zsh-users/zsh-autosuggestions
 jeffreytse/zsh-vi-mode kind:defer
 olets/zsh-abbr
 
+g-plane/pnpm-shell-completion
+
 ohmyzsh/ohmyzsh path:plugins/command-not-found
 ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/asdf

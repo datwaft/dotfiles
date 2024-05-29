@@ -1,0 +1,12 @@
+@commitlint/cli
+@commitlint/config-conventional
+@fsouza/prettierd
+bun
+corepack
+eslint
+neovim
+npm
+pnpm
+prettier
+typescript-language-server
+typescript

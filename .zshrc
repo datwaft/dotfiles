@@ -11,6 +11,11 @@ fi
 which brew &> /dev/null || return
 eval $(/opt/homebrew/bin/brew shellenv)
 
+# Make <C-w> remove words only
+# See https://stackoverflow.com/a/1438523/10702981
+autoload -U select-word-style
+select-word-style bash
+
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"

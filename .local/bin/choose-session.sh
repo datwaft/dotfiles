@@ -8,7 +8,7 @@ command_all=(sesh list --zoxide --tmux)
 command_tmux=(sesh list --tmux)
 command_zoxide=(sesh list --zoxide)
 
-sesh connect "$("${command_tmux[@]}" | fzf-tmux -p 55%,60% \
+sesh connect "$("${command_tmux[@]}" | fzf --tmux 55%,60% \
   --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8,gutter:-1 \
   --color=fg:#cdd6f4,header:#f38ba8,info:-1,pointer:#cba6f7 \
   --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#cba6f7 \

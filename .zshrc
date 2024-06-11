@@ -111,6 +111,7 @@ function zvm_after_init() {
 export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 # Add user binaries to $PATH
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.bin"
 # Add some MacOS apps to $PATH
 export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
 export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"

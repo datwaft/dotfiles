@@ -58,6 +58,8 @@ if which fd &> /dev/null; then
 fi
 # Use `zoxide` as `cd`
 ZOXIDE_CMD_OVERRIDE=cd
+# Suggest first from history and then from completion
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Enable completion
 zmodload -i zsh/complist

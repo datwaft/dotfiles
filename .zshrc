@@ -8,7 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Do not load the configuration file if `brew` is not installed
-which brew &> /dev/null || return
+[[ -x /opt/homebrew/bin/brew ]] || return
 eval $(/opt/homebrew/bin/brew shellenv)
 
 # Make <C-w> remove words only

@@ -124,6 +124,9 @@ which luarocks &> /dev/null && eval $(luarocks path --bin)
 export PATH="$HOME/.cargo/bin:$PATH"
 # Configure Bob (Neovim)
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+# Configure GCP SDK
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

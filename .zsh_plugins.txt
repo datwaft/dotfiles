@@ -10,6 +10,7 @@ zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 jeffreytse/zsh-vi-mode kind:defer
 olets/zsh-abbr
+atuinsh/atuin kind:defer
 
 g-plane/pnpm-shell-completion
 

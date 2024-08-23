@@ -27,4 +27,4 @@ sesh connect "$("${command_tmux[@]}" | fzf --tmux 55%,60% \
   --bind="ctrl-a:change-prompt(${prompt_all})+reload(${command_all[*]})" \
   --bind="ctrl-t:change-prompt(${prompt_tmux})+reload(${command_tmux[*]})" \
   --bind="ctrl-x:change-prompt(${prompt_zoxide})+reload(${command_zoxide[*]})" \
-  --bind="ctrl-d:execute(tmux kill-session -t {})+change-prompt(${prompt_tmux})+reload(${command_tmux[*]})")"
+  --bind="ctrl-d:execute(tmux kill-session -t {})+change-prompt(${prompt_tmux})+reload(${command_tmux[*]})")" > /dev/null

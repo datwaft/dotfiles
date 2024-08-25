@@ -129,6 +129,8 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 # Configure 1Password plugins
 source $HOME/.config/op/plugins.sh
+# Configure opam
+[[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

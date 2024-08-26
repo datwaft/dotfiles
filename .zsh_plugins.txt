@@ -11,6 +11,7 @@ zsh-users/zsh-autosuggestions
 jeffreytse/zsh-vi-mode kind:defer
 olets/zsh-abbr
 atuinsh/atuin kind:defer
+marlonrichert/zsh-edit
 
 g-plane/pnpm-shell-completion
 

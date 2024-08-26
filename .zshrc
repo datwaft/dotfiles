@@ -11,11 +11,6 @@ fi
 [[ -x /opt/homebrew/bin/brew ]] || return
 eval $(/opt/homebrew/bin/brew shellenv)
 
-# Make <C-w> remove words only
-# See https://stackoverflow.com/a/1438523/10702981
-autoload -U select-word-style
-select-word-style bash
-
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
@@ -85,7 +80,9 @@ function zvm_after_init() {
   # Move to start and end of line with <Home> and <End>
   bindkey '^[[1~' beginning-of-line '^[[4~' end-of-line
   # Move between words with <M-Left> and <M-Right>
-  bindkey '^[[1;3D' backward-word '^[[1;3C' forward-word
+  bindkey '^[[1;3D' backward-subword '^[[1;3C' forward-subword
+  # Remove words using <M-Backspace> and <C-w>
+  bindkey '^W' backward-kill-subword '^[^?' backward-kill-subword
   # Use <Tab> and <S-Tab> for completion
   bindkey '^I' menu-complete '^[[Z' reverse-menu-complete
   # Restore arrows in completion mode
@@ -107,6 +104,8 @@ function zvm_after_init() {
   # Restore zsh-abbr keybinds
   bindkey '^M' abbr-expand-and-accept ' ' abbr-expand-and-insert '^ ' magic-space
   bindkey -M isearch ' ' magic-space '^ ' abbr-expand-and-insert
+  # Configure what characters constitute a word
+  export WORDCHARS=''
 }
 
 # Use user $TERMINFO

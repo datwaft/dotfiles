@@ -10,6 +10,7 @@ fi
 # Do not load the configuration file if `brew` is not installed
 [[ -x /opt/homebrew/bin/brew ]] || return
 eval $(/opt/homebrew/bin/brew shellenv)
+export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'

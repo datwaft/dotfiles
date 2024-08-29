@@ -9,6 +9,3 @@ prefers_reduced_motion = true
 workspaces = true
 filter_mode_shell_up_key_binding = "directory"
 search_mode_shell_up_key_binding = "prefix"
-
-[daemon]
-enabled = true

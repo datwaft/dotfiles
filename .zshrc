@@ -46,6 +46,8 @@ ABBR_SET_EXPANSION_CURSOR=1
 alias .git='git --git-dir ~/.dotfiles --work-tree ~'
 # Define an alias for `ls` if `eza` is installed
 which eza &> /dev/null && alias ls="eza -I $'Icon\r'"
+# Define an alias for `kitten icat`
+alias icat="kitten icat"
 # Use `fd` for FZF if it is installed
 if which fd &> /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix --follow --hidden --exclude=.git --color=always'

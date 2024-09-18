@@ -4,7 +4,7 @@
   name = datwaft
   email = datwaftx@gmail.com
 [core]
-  editor = vim
+  editor = nvim
   pager = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive

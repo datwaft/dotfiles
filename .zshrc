@@ -9,6 +9,7 @@ fi
 
 # Do not load the configuration file if `brew` is not installed
 [[ -x /opt/homebrew/bin/brew ]] || return
+export HOMEBREW_BUNDLE_NO_LOCK=1
 eval $(/opt/homebrew/bin/brew shellenv)
 export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 

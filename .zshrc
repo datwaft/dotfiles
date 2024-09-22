@@ -123,7 +123,7 @@ export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
 export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
 export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 # Configure luarocks
-which luarocks &> /dev/null && eval $(luarocks path --bin)
+which luarocks &> /dev/null && zsh-defer -c 'eval $(luarocks path --bin)'
 # Configure cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 # Configure Bob (Neovim)

@@ -1238,6 +1238,45 @@
           }
         }
       },
+      "mise": {
+        "version": "2024.9.6",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sequoia": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:541e94ee7980b96114110416413321849637ef15f719ac4b01acce075f32e2dd",
+              "sha256": "541e94ee7980b96114110416413321849637ef15f719ac4b01acce075f32e2dd"
+            },
+            "arm64_sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:e599455f94425a72e018aea23f5db3213b185b78a52250e3cc5369639f7ed383",
+              "sha256": "e599455f94425a72e018aea23f5db3213b185b78a52250e3cc5369639f7ed383"
+            },
+            "arm64_ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:0e0b46d2a13f1fbac7d91dd3f1d84ec0d81012750e52c80f5288ffe8019ec4ec",
+              "sha256": "0e0b46d2a13f1fbac7d91dd3f1d84ec0d81012750e52c80f5288ffe8019ec4ec"
+            },
+            "sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:a3d90aabf07e8a7bad9904d268b402a63717984810f23722841720a237066996",
+              "sha256": "a3d90aabf07e8a7bad9904d268b402a63717984810f23722841720a237066996"
+            },
+            "ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:bae5933a6f14c7da5710fe7dea04b998afac02c673fe21aa0db083781e7d7945",
+              "sha256": "bae5933a6f14c7da5710fe7dea04b998afac02c673fe21aa0db083781e7d7945"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:a59ce2e35cba0b8a401fcb09d100a52e80ff0262131259a2faf317bbc7f266a9",
+              "sha256": "a59ce2e35cba0b8a401fcb09d100a52e80ff0262131259a2faf317bbc7f266a9"
+            }
+          }
+        }
+      },
       "neovim": {
         "version": "0.10.1",
         "bottle": {

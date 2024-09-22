@@ -105,6 +105,7 @@ function zvm_after_init() {
   source ~/.zsh/fzf-git-log-widget.zsh
   bindkey '^G' fzf-git-log-widget
   # Restore zsh-abbr keybinds
+  zle -N abbr-expand-and-accept
   bindkey '^M' abbr-expand-and-accept ' ' abbr-expand-and-insert '^ ' magic-space
   bindkey -M isearch ' ' magic-space '^ ' abbr-expand-and-insert
   # Configure what characters constitute a word
@@ -130,7 +131,7 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 # Configure 1Password plugins
-source $HOME/.config/op/plugins.sh
+[[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
 # Configure opam
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 

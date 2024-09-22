@@ -1,4 +1,4 @@
 @commitlint/cli
 @commitlint/config-conventional
-typescript
 corepack
+typescript

@@ -1,4 +1,5 @@
 @commitlint/cli
 @commitlint/config-conventional
 corepack
+husky
 typescript

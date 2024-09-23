@@ -1,0 +1,6 @@
+[tools]
+python = "3"
+go = "1.23"
+ruby = "latest"
+lua = "5.1.5"
+node = "20"

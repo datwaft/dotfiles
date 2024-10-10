@@ -1,4 +1,14 @@
 ipython
+jupyter_client
 jupytext
+kaleido
+nbformat
 neovim
+pillow
 pipx
+plotly
+pnglatex
+pynvim
+pyperclip
+requests
+websocket-client

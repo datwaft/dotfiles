@@ -5,6 +5,7 @@ jupytext
 kaleido
 nbformat
 neovim
+openpyxl
 pillow
 pipx
 plotly
@@ -12,4 +13,5 @@ pnglatex
 pynvim
 pyperclip
 requests
+visidata
 websocket-client

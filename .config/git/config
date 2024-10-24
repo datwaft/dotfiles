@@ -62,3 +62,5 @@
 [rebase]
   updateRefs = true
   autosquash = true
+[advice]
+  skippedCherryPicks = false

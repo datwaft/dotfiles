@@ -1,0 +1,3 @@
+# vi:ft=crontab:
+# Execute `brew update` every 2 hours
+0 */2 * * * /opt/homebrew/bin/brew update

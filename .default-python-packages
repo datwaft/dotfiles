@@ -1,11 +1,14 @@
 cairosvg
 ipython
+jupyter
 jupyter_client
 jupytext
 kaleido
+matplotlib
 nbformat
 neovim
 openpyxl
+pandas
 pillow
 pipx
 plotly

@@ -82,7 +82,8 @@ function zvm_after_init() {
   # Search history with <Up> and <Down>
   bindkey '^[[A' history-substring-search-up '^[[B' history-substring-search-down
   # Move to start and end of line with <Home> and <End>
-  bindkey '^[[1~' beginning-of-line '^[[4~' end-of-line
+  bindkey '^[[1~' beginning-of-line '^[OH' beginning-of-line
+  bindkey '^[[4~' end-of-line '^[OF' end-of-line
   # Move between words with <M-Left> and <M-Right>
   bindkey '^[[1;3D' backward-subword '^[[1;3C' forward-subword
   # Remove words using <M-Backspace> and <C-w>

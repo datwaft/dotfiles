@@ -12,6 +12,9 @@ fi
 export HOMEBREW_BUNDLE_NO_LOCK=1
 eval $(/opt/homebrew/bin/brew shellenv)
 export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+export LDFLAGS="-L$(brew --prefix)/lib"
+export CPPFLAGS="-I$(brew --prefix)/include"
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'

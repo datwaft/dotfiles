@@ -1,0 +1,15 @@
+# vi:nospell:ft=conf:
+font-family = IosevkaTerm Nerd Font Mono
+theme = catppuccin-mocha
+background-opacity = 0.95
+initial-command = /opt/homebrew/bin/tmux new -As default
+macos-option-as-alt = left
+keybind = cmd+left=csi:H
+keybind = cmd+right=csi:F
+keybind = opt+left=unbind
+keybind = opt+right=unbind
+keybind = cmd+backspace=text:\x15
+keybind = opt+backspace=text:\x17
+confirm-close-surface = false
+quit-after-last-window-closed = true
+adjust-underline-position = 2

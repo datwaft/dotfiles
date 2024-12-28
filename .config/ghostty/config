@@ -1,7 +1,8 @@
 # vi:nospell:ft=conf:
 font-family = IosevkaTerm Nerd Font Mono
 theme = catppuccin-mocha
-background-opacity = 0.95
+background-opacity = 0.97
+background-blur-radius = 20
 initial-command = /opt/homebrew/bin/tmux new -As default
 macos-option-as-alt = left
 keybind = cmd+left=csi:H

@@ -1,7 +1,3 @@
-# Start with beam cursor
-# See https://stackoverflow.com/a/17100535/10702981
-printf '\e[6 q'
-
 # Generated automatically by `p10k`, enables the instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

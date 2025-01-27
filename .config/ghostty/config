@@ -13,4 +13,4 @@ keybind = cmd+backspace=text:\x15
 keybind = opt+backspace=text:\x17
 confirm-close-surface = false
 quit-after-last-window-closed = true
-adjust-underline-position = 2
+adjust-underline-position = 3

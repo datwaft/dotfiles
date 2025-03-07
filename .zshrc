@@ -17,6 +17,9 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 antidote load
 
+# Set colorscheme for $LS_COLORS
+which vivid &> /dev/null && export LS_COLORS="$(vivid generate catppuccin-mocha)"
+
 # Support unlimited number of file descriptors
 ulimit -n unlimited
 
@@ -71,6 +74,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" "ma=1"
 # Highlight current completion item
 zstyle ':completion:*' menu select
+
+# Use `caparace` for completion if installed
+if which carapace &> /dev/null; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
 
 function zvm_config() {
   # Sandwich-like surround keybinds

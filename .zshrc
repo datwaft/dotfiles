@@ -61,6 +61,8 @@ fi
 ZOXIDE_CMD_OVERRIDE=cd
 # Suggest first from history and then from completion
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# Always use xterm-256color when SSHing into another machine
+alias ssh="TERM=xterm-256color ssh"
 
 # Enable completion
 zmodload -i zsh/complist

@@ -7,6 +7,8 @@ fi
 [[ -x /opt/homebrew/bin/brew ]] || return
 export HOMEBREW_BUNDLE_NO_LOCK=1
 eval $(/opt/homebrew/bin/brew shellenv)
+export CC="$(brew --prefix llvm)/bin/clang"
+export CXX="$(brew --prefix llvm)/bin/clang++"
 export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 export LDFLAGS="-L$(brew --prefix)/lib"
 export CPPFLAGS="-I$(brew --prefix)/include"

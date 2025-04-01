@@ -79,13 +79,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" "ma=1"
 # Highlight current completion item
 zstyle ':completion:*' menu select
 
-# Use `caparace` for completion if installed
-if which carapace &> /dev/null; then
-  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-  source <(carapace _carapace)
-fi
-
 function zvm_config() {
   # Sandwich-like surround keybinds
   ZVM_VI_SURROUND_BINDKEY=s-prefix

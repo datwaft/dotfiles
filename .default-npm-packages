@@ -1,6 +1,5 @@
 @commitlint/cli
 @commitlint/config-conventional
-corepack
 husky
 neovim
 tsx

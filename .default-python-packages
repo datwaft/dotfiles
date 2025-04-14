@@ -18,3 +18,4 @@ pyperclip
 requests
 visidata
 websocket-client
+nbdime

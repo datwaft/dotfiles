@@ -4,8 +4,6 @@ prompt_all='^a  '
 prompt_tmux='^t  '
 prompt_zoxide='^x  '
 
-export TMUX_PANE=1
-
 command_all=(sesh list --zoxide --tmux)
 command_tmux=(sesh list --tmux)
 command_zoxide=(sesh list --zoxide)

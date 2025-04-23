@@ -4,3 +4,6 @@ go = "1.23"
 ruby = "latest"
 lua = "5.1.5"
 node = "22.14.0"
+
+[settings]
+idiomatic_version_file_enable_tools = []

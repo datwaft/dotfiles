@@ -10,7 +10,7 @@ keybind = cmd+right=csi:F
 keybind = opt+left=unbind
 keybind = opt+right=unbind
 keybind = cmd+backspace=text:\x15
-keybind = opt+backspace=text:\x17
+keybind = opt+backspace=unbind
 confirm-close-surface = false
 quit-after-last-window-closed = true
 adjust-underline-position = 3

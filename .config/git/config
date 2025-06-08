@@ -13,6 +13,8 @@
   addEmptyPathSpec  = false
   skippedCherryPicks = false
   statusHints = false
+[index]
+  skipHash = false
 [url "git@github.com:"]
   insteadOf = "gh:"
 [init]

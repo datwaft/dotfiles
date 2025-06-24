@@ -25,10 +25,6 @@ which vivid &> /dev/null && export LS_COLORS="$(vivid generate catppuccin-mocha)
 # Support unlimited number of file descriptors
 ulimit -n unlimited
 
-# Disable extended glob option
-# See https://stackoverflow.com/a/26295653
-setopt noEXTENDED_GLOB
-
 # Load `p10k` configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Disable history-substring-search highlighting
@@ -159,3 +155,6 @@ export MANPAGER='nvim +Man!'
 # Use UTF-8 locale
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
+
+# An small speedup
+zcompile -R ~/.zshrc ~/.zshrc.zwc 2>/dev/null

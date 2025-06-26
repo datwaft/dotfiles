@@ -5,6 +5,7 @@ jupyter_client
 jupytext
 kaleido
 matplotlib
+nbdime
 nbformat
 neovim
 openpyxl
@@ -13,9 +14,9 @@ pillow
 pipx
 plotly
 pnglatex
+pylatexenc
 pynvim
 pyperclip
 requests
 visidata
 websocket-client
-nbdime

@@ -1,5 +1,5 @@
 font-family = IosevkaTerm Nerd Font Mono
-theme = catppuccin-mocha
+theme = light:rose-pine-dawn,dark:rose-pine
 cursor-opacity = 0.60
 initial-command = /opt/homebrew/bin/tmux new -As default
 macos-option-as-alt = left

@@ -1,5 +1,3 @@
-[include]
-  path = ~/.config/delta/catppuccin.gitconfig
 [user]
   name = datwaft
   email = datwaftx@gmail.com
@@ -36,7 +34,6 @@
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [delta]
-  features = catppuccin-mocha
   navigate = true
 [delta "interactive"]
   keep-plus-minus-markers = false

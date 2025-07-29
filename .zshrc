@@ -20,7 +20,7 @@ source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 antidote load
 
 # Set colorscheme for $LS_COLORS
-which vivid &> /dev/null && export LS_COLORS="$(vivid generate catppuccin-mocha)"
+which vivid &> /dev/null && export LS_COLORS="$(vivid generate rose-pine)"
 
 # Support unlimited number of file descriptors
 ulimit -n unlimited

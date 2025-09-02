@@ -1,6 +1,9 @@
+@biomejs/biome
 @commitlint/cli
 @commitlint/config-conventional
 husky
 neovim
+pnpm
+prettier
 tsx
 typescript

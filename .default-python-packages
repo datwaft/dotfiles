@@ -1,13 +1,16 @@
 cairosvg
 ipython
 jupyter
+jupyter-console
 jupyter_client
 jupytext
 kaleido
 matplotlib
+nbclassic
 nbdime
 nbformat
 neovim
+notebook
 openpyxl
 pandas
 pillow

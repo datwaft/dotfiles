@@ -2,7 +2,7 @@ font-family = Iosevka Term
 theme = light:Rose Pine Dawn,dark:Rose Pine
 cursor-opacity = 0.60
 adjust-cell-height = 15%
-adjust-icon-height = -16.6%
+adjust-icon-height = -40%
 initial-command = /opt/homebrew/bin/tmux new -As default
 macos-option-as-alt = left
 keybind = cmd+left=csi:H

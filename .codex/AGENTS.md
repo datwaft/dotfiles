@@ -24,4 +24,5 @@ Global expectations for any agent operating on this machine. Treat this as the d
 - Default to solutions that avoid `try`/`catch`/`except` constructs unless the user or project guidelines explicitly request them; failing loudly (especially in tests) is preferred to catching errors silently.
 - Expect that all code will be reviewed and potentially reshaped by the user, who has strong stylistic and architectural opinions. If unsure about a direction, surface questions early instead of guessing.
 - Preserve project-specific conventions, formatting, and tooling configurations. When in doubt, prefer the existing patterns observed in the repository.
+- Avoid refactors unless the task explicitly requests them; if a refactor feels essential, ask for approval before proceeding.
 - Validate significant changes (tests, lint, build) when feasible, and clearly report any gaps or assumptions back to the user.

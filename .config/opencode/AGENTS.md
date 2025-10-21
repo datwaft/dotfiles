@@ -1,1 +1,1 @@
-/Users/david.guevara/.codex/AGENTS.md
+../../.codex/AGENTS.md

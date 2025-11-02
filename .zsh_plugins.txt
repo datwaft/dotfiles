@@ -22,6 +22,7 @@ ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/zoxide kind:defer
 ohmyzsh/ohmyzsh path:plugins/mise kind:defer
+ohmyzsh/ohmyzsh path:plugins/jj
 
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search

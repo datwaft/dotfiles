@@ -2,6 +2,7 @@
 
 romkatv/powerlevel10k
 romkatv/zsh-defer
+mafredri/zsh-async
 
 belak/zsh-utils path:completion
 belak/zsh-utils path:history

@@ -13,6 +13,7 @@ export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 export LDFLAGS="-L$(brew --prefix)/lib"
 export CPPFLAGS="-I$(brew --prefix)/include"
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+export PERL5LIB="$HOME/perl5/lib/perl5"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -121,6 +122,7 @@ export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 # Add user binaries to $PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/perl5/bin"
 # Add some MacOS apps to $PATH
 export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
 export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"

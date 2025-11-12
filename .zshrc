@@ -6,6 +6,7 @@ fi
 # Do not load the configuration file if `brew` is not installed
 [[ -x /opt/homebrew/bin/brew ]] || return
 export HOMEBREW_BUNDLE_NO_LOCK=1
+export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
 eval $(/opt/homebrew/bin/brew shellenv)
 export CC="$(brew --prefix llvm)/bin/clang"
 export CXX="$(brew --prefix llvm)/bin/clang++"

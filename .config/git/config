@@ -41,6 +41,8 @@
   conflictstyle = diff3
 [diff]
   colorMoved = default
+  tool = difftastic
+  external = difft
 [credential]
   helper = cache
 [filter "lfs"]
@@ -50,8 +52,6 @@
   required = true
 [commit]
   gpgsign = true
-[diff]
-  tool = difftastic
 [difftool]
   prompt = false
 [difftool "difftastic"]
@@ -60,6 +60,7 @@
   difftool = true
 [alias]
   difft = difftool
+  showt = show --ext-diff
 [gpg]
   format = ssh
 [feature]

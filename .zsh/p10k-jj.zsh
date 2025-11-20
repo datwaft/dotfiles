@@ -54,8 +54,7 @@ _jj_vcs_async() {
     )
   '
 
-  # NOTE: uses `--ignore-working-copy` for speed; state may be stale vs filesystem.
-  local raw_data=$(jj log --repository "$workspace" --ignore-working-copy \
+  local raw_data=$(jj log --repository "$workspace" \
     --no-graph --color never \
     -r "first_ancestors(@, ${max_depth})" \
     -T "$jj_template" 2>/dev/null) || return 1

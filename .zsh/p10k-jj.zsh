@@ -108,6 +108,8 @@ _jj_vcs_async() {
   local c_red="%F{1}"
   local c_green="%F{2}"
   local c_yellow="%F{3}"
+  local c_blue="%F{4}"
+  local c_magenta="%F{5}"
   local c_teal="%F{6}"
   local c_reset="%f"
 
@@ -134,10 +136,10 @@ _jj_vcs_async() {
 
   if [[ "$is_empty" == "false" ]]; then
     local stats_parts=()
-    (( added > 0 )) && stats_parts+=("+${added}")
-    (( modified > 0 )) && stats_parts+=("~${modified}")
-    (( renamed > 0 )) && stats_parts+=("↻${renamed}")
-    (( deleted > 0 )) && stats_parts+=("-${deleted}")
+    (( added > 0 ))    && stats_parts+=("${c_green}+${added}${color}")
+    (( modified > 0 )) && stats_parts+=("${c_yellow}~${modified}${color}")
+    (( renamed > 0 ))  && stats_parts+=("${c_magenta}↻${renamed}${color}")
+    (( deleted > 0 ))  && stats_parts+=("${c_red}-${deleted}${color}")
 
     if (( ${#stats_parts[@]} )); then
       display+=" ${stats_parts[*]}"

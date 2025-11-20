@@ -39,60 +39,50 @@ _jj_vcs_async() {
   local workspace=$1
   local max_depth=${JJ_PROMPT_MAX_DEPTH:-80} # override to search deeper ancestry if needed
 
-  local jj_template
-  jj_template=$(cat <<'JJT'
-concat(
-  self.change_id().shortest(4), "|",
-  self.bookmarks().map(|b| b.name()).join(","), "|",
-  self.empty(), "|",
-  (self.description().len() > 0), "|",
-  self.conflict(), "|",
-  if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="added").len(), 0), "|",
-  if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="modified").len(), 0), "|",
-  if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="removed").len(), 0), "|",
-  if(self.current_working_copy(), self.diff().files().filter(|f| (f.status()=="renamed") || (f.status()=="copied")).len(), 0),
-  "\n"
-)
-JJT
-)
+  local jj_template='
+    concat(
+      self.change_id().shortest(4), "|",
+      self.bookmarks().map(|b| b.name()).join(","), "|",
+      self.empty(), "|",
+      (self.description().len() > 0), "|",
+      self.conflict(), "|",
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="added").len(), 0), "|",
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="modified").len(), 0), "|",
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="removed").len(), 0), "|",
+      if(self.current_working_copy(), self.diff().files().filter(|f| (f.status()=="renamed") || (f.status()=="copied")).len(), 0),
+      "\n"
+    )
+  '
 
-  # One jj call: walk first-parent history until we find a bookmark anchor.
-  local raw_data
-  if ! raw_data=$(jj log --repository "$workspace" --ignore-working-copy \
-      --no-graph --color never \
-      -r "first_ancestors(@, ${max_depth})" \
-      -T "$jj_template" 2>/dev/null); then
-    return 1
-  fi
+  # NOTE: uses `--ignore-working-copy` for speed; state may be stale vs filesystem.
+  local raw_data=$(jj log --repository "$workspace" --ignore-working-copy \
+    --no-graph --color never \
+    -r "first_ancestors(@, ${max_depth})" \
+    -T "$jj_template" 2>/dev/null) || return 1
 
   [[ -z "$raw_data" ]] && return 1
 
-  local -a lines
-  lines=("${(@f)raw_data}")
+  local -a lines=("${(@f)raw_data}")
   [[ ${#lines[@]} -eq 0 ]] && return 1
 
-  local -a wc_fields=()
-  local anchor=""
-  local distance=""
-  local idx=0
+  local -a wc_fields=() # working copy fields
+  local anchor="" # the nearest bookmark
+  local distance="" # distance to the nearest bookmark
 
-  for line in "${lines[@]}"; do
+  for (( idx = 1; idx <= ${#lines[@]}; idx++ )); do
+    local line=${lines[idx]}
     [[ -z "$line" ]] && continue
 
-    local -a fields=()
-    local IFS="|"
-    read -rA fields <<< "$line"
+    local -a fields=("${(@s:|:)line}")
 
-    if (( idx == 0 )); then
+    if (( idx == 1 )); then
       wc_fields=("${fields[@]}")
     fi
 
     if [[ -z "$anchor" && -n "${fields[2]}" ]]; then
       anchor="${fields[2]%%,*}"
-      distance=$idx
+      distance=$((idx - 1))
     fi
-
-    ((idx++))
   done
 
   (( ${#wc_fields[@]} == 0 )) && return 1
@@ -111,7 +101,7 @@ JJT
     distance=""
   fi
 
-  # --- Determine display state ---
+  # This logic here is for the display state, we already have all the data we need
   local color=""
   local state_icon=""
 

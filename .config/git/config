@@ -42,7 +42,6 @@
 [diff]
   colorMoved = default
   tool = difftastic
-  external = difft
 [credential]
   helper = cache
 [filter "lfs"]
@@ -76,3 +75,6 @@
 [merge "jupyternotebook"]
   driver = git-nbmergedriver merge %O %A %B %L %P
   name = jupyter notebook merge driver
+[diff "jupytext"]
+  textconv = jupytext --from ipynb --to md --output -
+  cachetextconv = true

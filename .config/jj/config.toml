@@ -12,3 +12,6 @@ behavior = "own"
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINtR9uu/tD0SNXfh75fS2sACiGlBMhxfhCxgbBsp+21i"
 backends.ssh.program = "git-ssh-sign.sh"
+
+[template-aliases]
+'format_short_signature(signature)' = 'coalesce(signature.name(), signature.email())'

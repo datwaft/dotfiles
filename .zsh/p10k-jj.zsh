@@ -55,6 +55,7 @@ _jj_vcs_async() {
   '
 
   local raw_data=$(jj log --repository "$workspace" \
+    --ignore-working-copy \
     --no-graph --color never \
     -r "first_ancestors(@, ${max_depth})" \
     -T "$jj_template" 2>/dev/null) || return 1

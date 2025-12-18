@@ -141,6 +141,8 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 [[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
 # Configure opam
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
+# Configure Amp CLI
+export PATH="/Users/david.guevara/.amp/bin:$PATH"
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

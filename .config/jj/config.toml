@@ -10,13 +10,22 @@ diff-formatter = ["difft", "--color=always", "$left", "$right"]
 diff-editor = ":builtin"
 
 [signing]
-behavior = "own"
+behavior = "drop"
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINtR9uu/tD0SNXfh75fS2sACiGlBMhxfhCxgbBsp+21i"
 backends.ssh.program = "git-ssh-sign.sh"
+
+[git]
+sign-on-push = true
 
 [template-aliases]
 'format_short_signature(signature)' = 'coalesce(signature.name(), signature.email())'
 
 [revset-aliases]
 'nearest_bookmark()' = 'heads(bookmarks() & ::@)'
+
+[fsmonitor]
+backend = "watchman"
+
+[fsmonitor.watchman]
+register-snapshot-trigger = true

@@ -1,0 +1,98 @@
+prefix_rule(
+    pattern = ["jj", "status"],
+    decision = "allow",
+    match = ["jj status"],
+)
+
+prefix_rule(
+    pattern = ["jj", "st"],
+    decision = "allow",
+    match = ["jj st"],
+)
+
+prefix_rule(
+    pattern = ["jj", "log"],
+    decision = "allow",
+    match = [
+        "jj log",
+        "jj log -r @::",
+        "jj log -r 'all()'",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "diff"],
+    decision = "allow",
+    match = [
+        "jj diff",
+        "jj diff -r @-",
+        "jj diff --from A --to B",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "show"],
+    decision = "allow",
+    match = [
+        "jj show",
+        "jj show @-",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "file", "list"],
+    decision = "allow",
+    match = ["jj file list"],
+)
+
+prefix_rule(
+    pattern = ["jj", "file", "annotate"],
+    decision = "allow",
+    match = ["jj file annotate src/main.rs"],
+)
+
+prefix_rule(
+    pattern = ["jj", "op", "log"],
+    decision = "allow",
+    match = ["jj op log"],
+)
+
+prefix_rule(
+    pattern = ["jj", "evolog"],
+    decision = "allow",
+    match = [
+        "jj evolog",
+        "jj evolog -p",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "bookmark", "list"],
+    decision = "allow",
+    match = [
+        "jj bookmark list",
+        "jj bookmark list --all",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "git", "remote", "list"],
+    decision = "allow",
+    match = ["jj git remote list"],
+)
+
+prefix_rule(
+    pattern = ["jj", "git", "fetch"],
+    decision = "allow",
+    match = [
+        "jj git fetch",
+        "jj git fetch --remote upstream",
+        "jj git fetch --all-remotes",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "interdiff"],
+    decision = "allow",
+    match = ["jj interdiff --from A --to B"],
+)

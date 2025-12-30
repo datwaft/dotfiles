@@ -7,6 +7,7 @@ Global expectations for any agent operating on this machine. Treat this as the d
 - Default shell is `zsh`; assume shell snippets and scripts must be `zsh`-compatible.
 - All work happens inside `tmux`, so be ready to inspect split panes or scrollback when diagnosing tooling output.
 - The tools listed below are always installed and ready to use. If you rely on anything else, ask before installing or assuming availability.
+- Assume `jj-vcs` is the version control system in use unless otherwise specified. Always load `jj-vcs` skill when doing anything with it. Remember that all `jj-vcs` repos are collocated with `git`, so the only way to check if the repo is a `git` repo is verifying that `.jj` doesn't exist. Even when answering informational questions assume `jj-vcs` is the version control system in use unless otherwise specified. You don't need to check the kind of repo, assume that if nothing is specified we are using `jj-vcs`. Be proactive when reading reference files. For example, there is a `git`-to-`jj-vcs` conversion table.
 
 ## Tooling Access
 

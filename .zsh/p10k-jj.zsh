@@ -40,18 +40,17 @@ _jj_vcs_async() {
   local max_depth=${JJ_PROMPT_MAX_DEPTH:-80} # override to search deeper ancestry if needed
 
   local jj_template='
-    concat(
-      self.change_id().shortest(4), "|",
-      self.bookmarks().map(|b| b.name()).join(","), "|",
-      self.empty(), "|",
-      (self.description().len() > 0), "|",
-      self.conflict(), "|",
-      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="added").len(), 0), "|",
-      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="modified").len(), 0), "|",
-      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="removed").len(), 0), "|",
-      if(self.current_working_copy(), self.diff().files().filter(|f| (f.status()=="renamed") || (f.status()=="copied")).len(), 0),
-      "\n"
-    )
+    join("|",
+      self.change_id().shortest(4),
+      self.bookmarks().map(|b| b.name()).join(","),
+      self.empty(),
+      (self.description().len() > 0),
+      self.conflict(),
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="added").len(), 0),
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="modified").len(), 0),
+      if(self.current_working_copy(), self.diff().files().filter(|f| f.status()=="removed").len(), 0),
+      if(self.current_working_copy(), self.diff().files().filter(|f| (f.status()=="renamed") || (f.status()=="copied")).len(), 0)
+    ) ++ "\n"
   '
 
   local raw_data=$(jj log --repository "$workspace" \

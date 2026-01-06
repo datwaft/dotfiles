@@ -150,6 +150,15 @@ jj split '~glob:"**/*.generated.*"'
 
 Bookmarks are named pointers to commits (like git branches). They auto-move when commits are rewritten, but **do not** auto-move to new commits after `jj new`/`jj commit` (unlike git branches).
 
+### Understanding @ vs @- for bookmarks
+
+After `jj new` or `jj commit`, your working copy (`@`) becomes an empty commit sitting on top of your actual changes (`@-`). When creating bookmarks for PRs:
+
+- **Create bookmarks on `@-`** (the commit with your changes): `jj bookmark create feat/foo -r @-`
+- **Not on `@`** (the empty working copy)
+
+If you accidentally create a bookmark on `@` or try to push `@` directly, you'll get errors like "No commits between main and @" because the working copy is empty.
+
 ```sh
 # Create bookmark (typically on @- after jj commit leaves you on empty commit)
 jj bookmark create feat/foo -r @-

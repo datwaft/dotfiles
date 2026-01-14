@@ -32,4 +32,4 @@ nearest-bookmark = ["log", "-r", "nearest_bookmark()", "--no-graph", "-T", "book
 backend = "watchman"
 
 [fsmonitor.watchman]
-register-snapshot-trigger = true
+register-snapshot-trigger = false

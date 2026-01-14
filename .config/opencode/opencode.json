@@ -4,6 +4,7 @@
   "permission": {
     "bash": {
       "jj*": "ask",
+      "jj*--help*": "allow",
       "jj status*": "allow",
       "jj st*": "allow",
       "jj log*": "allow",
@@ -40,6 +41,7 @@
       "jj git root*": "allow",
       "jj git fetch*": "allow",
       "git*": "ask",
+      "git*--help*": "allow",
       "git status*": "allow",
       "git log*": "allow",
       "git diff*": "allow",
@@ -72,9 +74,9 @@
       "git merge-base*": "allow",
       "git version*": "allow"
     },
-    "read": {
-      "**/.opencode/skill/**/references/*.md": "allow",
-      "**/opencode/skill/**/references/*.md": "allow"
+    "external_directory": {
+      "**/.opencode/skill/**/references/*": "allow",
+      "**/opencode/skill/**/references/*": "allow"
     }
   }
 }

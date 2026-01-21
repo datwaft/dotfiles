@@ -39,6 +39,9 @@ jj describe -m "commit message"
 jj new
 jj new -m "message for the new commit"
 
+# Insert a commit BEFORE the current one (children auto-rebase)
+jj new -B @ -m "insert before current"
+
 # Squash working copy changes into parent
 jj squash
 
@@ -50,7 +53,18 @@ jj edit <change-id>
 
 # Auto-distribute working copy changes into the right commits in a stack
 jj absorb
+
+# Create a merge commit (multiple parents)
+jj new branch1 branch2 -m "merge branches"
 ```
+
+### Two mental models: Squash vs Edit workflow
+
+**Squash workflow** (index-like): Describe commit → create empty child → work in child → `jj squash` into parent. Familiar if you liked git's staging area.
+
+**Edit workflow** (direct): Work directly in commits → use `jj new -B @` to insert commits before → use `jj next --edit` to navigate. More natural for stack-based development.
+
+See [workflows.md](references/workflows.md) for detailed patterns.
 
 ### Stack workflow with jj absorb
 
@@ -225,6 +239,7 @@ Avoid `-i` (interactive) flags:
 ## References
 
 For detailed information on specific operations, see the reference files in `references/`:
+- [workflows.md](references/workflows.md) - Squash vs Edit workflows, anonymous branches, multi-parent merges, simultaneous branch editing
 - [cli-options.md](references/cli-options.md) - Understanding `-r`, `-s`, `-d`, `-A`, `-B`, `--from`, `--to` flag patterns
 - [bookmarks.md](references/bookmarks.md) - Bookmarks, remote operations, GitHub/GitLab workflows
 - [multiple-remotes.md](references/multiple-remotes.md) - Fork workflows, upstream integration, tracking configuration

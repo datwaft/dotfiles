@@ -347,11 +347,21 @@ jj log -r 'roots(trunk()..@)'
 
 # Commits between trunk and my bookmarks
 jj log -r 'trunk()..bookmarks()'
+
+# Rebase ALL branches onto updated trunk (use with jj rebase -s)
+# all: prefix required for multiple revisions
+jj rebase -s 'all:roots(trunk..@)' -d trunk
 ```
 
 ### Branch analysis
 
 ```sh
+# All anonymous branch heads (working on multiple features)
+jj log -r 'heads(all())'
+
+# Heads of just my mutable work
+jj log -r 'heads(mutable())'
+
 # Bookmarks ahead of trunk
 jj log -r 'bookmarks() ~ ::trunk()'
 

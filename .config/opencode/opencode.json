@@ -1,6 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "rosepine",
+  "keybinds": {
+    "input_line_home": "super+left",
+    "input_line_end": "super+right",
+    "input_delete_to_line_start": "super+backspace,super+delete"
+  },
   "permission": {
     "bash": {
       "jj*": "ask",

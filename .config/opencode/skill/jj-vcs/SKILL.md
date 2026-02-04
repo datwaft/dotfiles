@@ -1,6 +1,6 @@
 ---
 name: jj-vcs
-description: Use jj (Jujutsu) version control system. Load this skill when the user wants to perform version control operations and the repository uses jj (check for .jj directory), or when the user explicitly mentions jj/jujutsu.
+description: Use jj (Jujutsu) version control system. Load this skill when the user wants to perform version control operations with jj, or when they explicitly mention jj/jujutsu.
 license: MIT
 ---
 

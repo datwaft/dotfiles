@@ -11,6 +11,8 @@ keybind = opt+left=unbind
 keybind = opt+right=unbind
 keybind = cmd+backspace=text:\x15
 keybind = opt+backspace=unbind
+keybind = cmd+up=csi:5~
+keybind = cmd+down=csi:6~
 confirm-close-surface = false
 quit-after-last-window-closed = true
 adjust-underline-position = 3

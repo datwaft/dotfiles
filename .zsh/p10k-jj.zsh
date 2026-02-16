@@ -42,7 +42,7 @@ _jj_vcs_async() {
   local jj_template='
     join("|",
       self.change_id().shortest(4),
-      self.bookmarks().map(|b| b.name()).join(","),
+      if(self.bookmarks().len() > 0, self.bookmarks().first().name(), ""),
       self.empty(),
       (self.description().len() > 0),
       self.conflict(),
@@ -79,7 +79,7 @@ _jj_vcs_async() {
     fi
 
     if [[ -z "$anchor" && -n "${fields[2]}" ]]; then
-      anchor="${fields[2]%%,*}"
+      anchor="${fields[2]}"
       distance=$((idx - 1))
     fi
   done

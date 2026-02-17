@@ -100,6 +100,17 @@ _jj_vcs_async() {
     distance=""
   fi
 
+  # When inside the home-directory (dotfiles) repo, hide the segment unless
+  # there is something worth acting on: uncommitted changes, conflicts,
+  # a missing description on a non-empty commit, or a growing stack (distance > 1).
+  if [[ "$workspace" == "$HOME" ]]; then
+    if [[ "$is_empty" == "true" && "$is_conflict" != "true" \
+       && ( -z "$distance" || "$distance" -le 1 ) ]]; then
+      echo ""
+      return 0
+    fi
+  fi
+
   # This logic here is for the display state, we already have all the data we need
   local color=""
   local state_icon=""

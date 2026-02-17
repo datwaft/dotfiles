@@ -27,9 +27,3 @@ sign-on-push = true
 [aliases]
 nb = ["log", "-r", "nearest_bookmark()", "--no-graph", "-T", "bookmarks"]
 nearest-bookmark = ["log", "-r", "nearest_bookmark()", "--no-graph", "-T", "bookmarks"]
-
-[fsmonitor]
-backend = "watchman"
-
-[fsmonitor.watchman]
-register-snapshot-trigger = false

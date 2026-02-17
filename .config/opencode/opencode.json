@@ -14,6 +14,7 @@
     "bash": {
       "jj*": "ask",
       "jj*--help*": "allow",
+      "jj help*": "allow",
       "jj status*": "allow",
       "jj st*": "allow",
       "jj log*": "allow",

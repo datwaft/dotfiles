@@ -42,5 +42,5 @@ As we are ignoring all files by default, we need to explicitly track files using
 
 ## How it works
 
-- `jj` uses a bare git repo in `~/.dotfiles` so any tool that is not configured to work with `jj` will not detect a git repository in the home directory. This is something we want to avoid performance implications.
+- `jj` uses a bare git repo in `~/.dotfiles` so any tool that is not configured to work with `jj` will not detect a git repository in the home directory. This prevents performance implications.
 - You need to use `jj file track --include-ignored` to track files as the files are not being tracked automatically. This is a protection measure to prevent accidentally tracking files.

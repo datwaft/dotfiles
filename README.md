@@ -38,7 +38,7 @@ This setup means you can use `jj` anywhere in your home directory and it will wo
 
 If you are inside another repository `jj` will use that repository instead, which is the expected behaviour as we don't want to accidentally add files inside another repository to this repository.
 
-As we are ignoring all files by default which means we need to explicitly track files using `jj file track --include-ignored`. This repository has an abbreviation for adding `--include-ignored` automatically.
+As we are ignoring all files by default, we need to explicitly track files using `jj file track --include-ignored`. This repository has an abbreviation for adding `--include-ignored` automatically.
 
 ## How it works
 

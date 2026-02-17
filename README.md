@@ -1,45 +1,41 @@
-# Please read this
+# Dotfiles
 
-The way this repository uses for storing my dotfiles is with a _bare_ repository. This makes it easy to clone, and it doesn't need to use system links.
+This repository stores dotfiles using [`jj-vcs` (Jujutsu)](https://jj-vcs.dev/) as the version control tool. The working tree is the home directory (`~`) itself, so no symlinks are needed.
 
-> The technique consists in storing a Git bare repository in a "side" folder (like `$HOME/.cfg` or `$HOME/.myconfig`) using a specially crafted alias so that commands are run against that repository and not the usual `.git` local folder, which would interfere with any other Git repositories around.
+## Prerequisites
 
-## FAQ (Frequently Asked Questions)
+- Install `git`.
+- Install `jj`.
 
-### What are the prerequisites for this?
+## Importing the dotfiles
 
-Install `git`.
-
-> [!WARNING]
-> If you install `git` using `brew` you will break completion.
-
-### How do I import the dotfiles?
-
-Use this command:
+Create `~/.gitignore` before initializing so jj doesn't try to snapshot the entire home directory:
 
 ```sh
-git clone --bare git@github.com:datwaft/dotfiles.git $HOME/.dotfiles
+echo '*' > ~/.gitignore
 ```
 
-> This will clone the contents of the remote repository (the .git link) to the home directory (~) while referencing ~/.dotfiles as the local bare repository (the `—seperate-git-dir` part).
-
-After that add the alias to the current shell scope:
+Initialize a colocated jj repo, add the remote, fetch, and check out `main`:
 
 ```sh
-alias .git='git --git-dir ~/.dotfiles --work-tree ~'
+jj git init ~
+jj config set --repo snapshot.auto-track 'none()'
+jj git remote add origin git@github.com:datwaft/dotfiles.git
+jj git fetch
+jj bookmark track main --remote origin
+jj new main
 ```
 
-And after that do a checkout to add the files to the home directory:
+## Usage
 
-```sh
-.git checkout
-```
+This setup means you can use `jj` anywhere in your home directory and it will work.
 
-> [!WARNING]
-> Your home directory shouldn't contain any of the dotfiles present inside the directory.
+If you are inside another repository `jj` will use that repository instead, which is the expected behaviour as we don't want to accidentally add files inside another repository to this repository.
 
-### Where did you get the information for using your dotfiles like this?
+As we are ignoring all files by default and set `snapshot.auto-track` to `none()` we need to explicitly track files using `jj file track --include-ignored`.
 
-Here: <https://www.atlassian.com/git/tutorials/dotfiles>
+## How it works
 
-And Here: <https://martijnvos.dev/using-a-bare-git-repository-to-store-linux-dotfiles/>
+- `jj` uses a colocated workspace: both `.jj` and `.git` exist in `~`.
+- `*` in `~/.gitignore` makes jj skip all files during snapshotting, so operations are fast even with a large home directory.
+- Files are tracked explicitly with `jj file track --include-ignored <path>`. Already-tracked files remain tracked regardless of ignore patterns.

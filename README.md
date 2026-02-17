@@ -18,8 +18,8 @@ echo '*' > ~/.gitignore
 Initialize a bare jj repo (git backend in `~/.dotfiles`, workspace in `~`). The `--config` flag prevents it from trying to snapshot all of `~` during init:
 
 ```sh
-git init --bare ~/.dotfiles
-jj git init --git-repo=~/.dotfiles ~ --config snapshot.auto-track='none()'
+git init --bare "$HOME/.dotfiles"
+jj git init --git-repo="$HOME/.dotfiles" "$HOME" --config snapshot.auto-track='none()'
 jj config set --repo snapshot.auto-track 'none()'
 ```
 
@@ -30,6 +30,7 @@ jj git remote add origin git@github.com:datwaft/dotfiles.git
 jj git fetch
 jj bookmark track main --remote origin
 jj new main
+jj restore .
 ```
 
 ## Usage

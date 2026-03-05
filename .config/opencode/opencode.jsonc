@@ -1,7 +1,43 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "permission": {
+    "lsp": "allow",
     "bash": {
+      // Jira CLI
+      "jira*": "ask",
+      "jira*--help*": "allow",
+      "jira issue view*": "allow",
+      // Atlassian CLI
+      "acli*": "ask",
+      "acli help*": "allow",
+      "acli*--help*": "allow",
+      "acli jira board get*": "allow",
+      "acli jira board list-projects*": "allow",
+      "acli jira board list-sprints*": "allow",
+      "acli jira board search*": "allow",
+      "acli jira dashboard search*": "allow",
+      "acli jira filter get*": "allow",
+      "acli jira filter get-columns*": "allow",
+      "acli jira filter list*": "allow",
+      "acli jira filter search*": "allow",
+      "acli jira project list*": "allow",
+      "acli jira project view*": "allow",
+      "acli jira sprint list-workitems*": "allow",
+      "acli jira sprint view*": "allow",
+      "acli jira workitem attachment list*": "allow",
+      "acli jira workitem comment list*": "allow",
+      "acli jira workitem comment visibility*": "allow",
+      "acli jira workitem link list*": "allow",
+      "acli jira workitem link type*": "allow",
+      "acli jira workitem view*": "allow",
+      "acli jira workitem search*": "allow",
+      "acli jira workitem watcher list*": "allow",
+      "acli confluence blog list*": "allow",
+      "acli confluence blog view*": "allow",
+      "acli confluence page view*": "allow",
+      "acli confluence space list*": "allow",
+      "acli confluence space view*": "allow",
+      // Jujutsu (jj-vcs)
       "jj*": "ask",
       "jj*--help*": "allow",
       "jj help*": "allow",
@@ -40,6 +76,7 @@
       "jj git remote list*": "allow",
       "jj git root*": "allow",
       "jj git fetch*": "allow",
+      // Git
       "git*": "ask",
       "git*--help*": "allow",
       "git status*": "allow",
@@ -73,9 +110,6 @@
       "git reflog*": "allow",
       "git merge-base*": "allow",
       "git version*": "allow",
-      "jira*": "ask",
-      "jira*--help*": "allow",
-      "jira issue view*": "allow"
-    }
-  }
+    },
+  },
 }

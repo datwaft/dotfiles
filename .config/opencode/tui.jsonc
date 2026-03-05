@@ -8,6 +8,7 @@
     "input_buffer_end": "none",
     "messages_first": "ctrl+g",
     "messages_last": "ctrl+alt+g",
-    "input_delete_to_line_start": "super+backspace,super+delete"
-  }
+    "input_delete_to_line_start": "super+backspace,super+delete",
+  },
 }
+

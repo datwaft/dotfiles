@@ -31,3 +31,42 @@ nearest-bookmark = ["log", "-r", "nearest_bookmark()", "--no-graph", "-T", "book
 [fix.tools.sort-word-list]
 command = ["env", "LC_ALL=C", "sort", "-u"]
 patterns = ["glob:'**/*.add'"]
+
+[fix.tools.biome]
+enabled = false
+command = ["npx", "--no-install", "biome", "format", "--stdin-file-path", "$path"]
+patterns = [
+  "glob:'**/*.js'",
+  "glob:'**/*.jsx'",
+  "glob:'**/*.ts'",
+  "glob:'**/*.tsx'",
+  "glob:'**/*.json'",
+  "glob:'**/*.jsonc'",
+  "glob:'**/*.css'",
+  "glob:'**/*.graphql'",
+]
+
+[fix.tools.prettier]
+enabled = false
+command = ["npx", "--no-install", "prettier", "--stdin-filepath", "$path"]
+patterns = [
+  "glob:'**/*.js'",
+  "glob:'**/*.jsx'",
+  "glob:'**/*.ts'",
+  "glob:'**/*.tsx'",
+  "glob:'**/*.mjs'",
+  "glob:'**/*.cjs'",
+  "glob:'**/*.mts'",
+  "glob:'**/*.cts'",
+  "glob:'**/*.json'",
+  "glob:'**/*.jsonc'",
+  "glob:'**/*.yaml'",
+  "glob:'**/*.yml'",
+  "glob:'**/*.md'",
+  "glob:'**/*.mdx'",
+  "glob:'**/*.html'",
+  "glob:'**/*.css'",
+  "glob:'**/*.scss'",
+  "glob:'**/*.less'",
+  "glob:'**/*.graphql'",
+]

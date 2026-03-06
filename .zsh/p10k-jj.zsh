@@ -42,7 +42,8 @@ _jj_vcs_async() {
   local jj_template='
     join("|",
       self.change_id().shortest(4),
-      if(self.bookmarks().len() > 0, self.bookmarks().first().name(), ""),
+      if(self.local_bookmarks().len() > 0, self.local_bookmarks().first().name(), ""),
+      if(self.local_bookmarks().len() > 0, !self.local_bookmarks().first().synced(), false),
       self.empty(),
       (self.description().len() > 0),
       self.conflict(),
@@ -65,7 +66,9 @@ _jj_vcs_async() {
   [[ ${#lines[@]} -eq 0 ]] && return 1
 
   local -a wc_fields=() # working copy fields
-  local anchor="" # the nearest bookmark
+  local anchor="" # display anchor (nearest bookmark or change id)
+  local nearest_bookmark="" # nearest bookmark, if found
+  local is_nearest_bookmark_unsynced=false # true if nearest bookmark is unsynced
   local distance="" # distance to the nearest bookmark
 
   for (( idx = 1; idx <= ${#lines[@]}; idx++ )); do
@@ -78,8 +81,10 @@ _jj_vcs_async() {
       wc_fields=("${fields[@]}")
     fi
 
-    if [[ -z "$anchor" && -n "${fields[2]}" ]]; then
-      anchor="${fields[2]}"
+    if [[ -z "$nearest_bookmark" && -n "${fields[2]}" ]]; then
+      nearest_bookmark="${fields[2]}"
+      anchor="$nearest_bookmark"
+      is_nearest_bookmark_unsynced="${fields[3]}"
       distance=$((idx - 1))
     fi
   done
@@ -87,13 +92,13 @@ _jj_vcs_async() {
   (( ${#wc_fields[@]} == 0 )) && return 1
 
   local change_id="${wc_fields[1]}"
-  local is_empty="${wc_fields[3]}"
-  local has_desc="${wc_fields[4]}"
-  local is_conflict="${wc_fields[5]}"
-  local -i added=${wc_fields[6]:-0}
-  local -i modified=${wc_fields[7]:-0}
-  local -i deleted=${wc_fields[8]:-0}
-  local -i renamed=${wc_fields[9]:-0}
+  local is_empty="${wc_fields[4]}"
+  local has_desc="${wc_fields[5]}"
+  local is_conflict="${wc_fields[6]}"
+  local -i added=${wc_fields[7]:-0}
+  local -i modified=${wc_fields[8]:-0}
+  local -i deleted=${wc_fields[9]:-0}
+  local -i renamed=${wc_fields[10]:-0}
 
   if [[ -z "$anchor" ]]; then
     anchor="$change_id"
@@ -102,10 +107,12 @@ _jj_vcs_async() {
 
   # When inside the home-directory (dotfiles) repo, hide the segment unless
   # there is something worth acting on: uncommitted changes, conflicts,
-  # a missing description on a non-empty commit, or a growing stack (distance > 1).
+  # a missing description on a non-empty commit, a growing stack (distance > 1),
+  # or an unsynced nearest bookmark.
   if [[ "$workspace" == "$HOME" ]]; then
     if [[ "$is_empty" == "true" && "$is_conflict" != "true" \
-       && ( -z "$distance" || "$distance" -le 1 ) ]]; then
+       && ( -z "$distance" || "$distance" -le 1 ) \
+       && "$is_nearest_bookmark_unsynced" != "true" ]]; then
       echo ""
       return 0
     fi
@@ -118,7 +125,6 @@ _jj_vcs_async() {
   local c_red="%F{1}"
   local c_green="%F{2}"
   local c_yellow="%F{3}"
-  local c_blue="%F{4}"
   local c_magenta="%F{5}"
   local c_teal="%F{6}"
   local c_reset="%f"
@@ -135,6 +141,10 @@ _jj_vcs_async() {
   fi
 
   local display="${color}${anchor}"
+
+  if [[ -n "$nearest_bookmark" && "$is_nearest_bookmark_unsynced" == "true" ]]; then
+    display+="*"
+  fi
 
   if [[ -n "$distance" && "$distance" -gt 0 ]]; then
     display+=" ›${distance}"

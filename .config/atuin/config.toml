@@ -7,8 +7,9 @@ show_tabs = false
 style = "compact"
 prefers_reduced_motion = true
 local_timeout = 10
-filter_mode_shell_up_key_binding = "directory"
+filter_mode_shell_up_key_binding = "session-preload"
 search_mode_shell_up_key_binding = "prefix"
+exit_mode = "return-query"
 
 [daemon]
 enabled = true

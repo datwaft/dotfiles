@@ -13,7 +13,7 @@ keybind = cmd+backspace=text:\x15
 keybind = opt+backspace=unbind
 keybind = cmd+up=csi:5~
 keybind = cmd+down=csi:6~
-keybind = global:cmd+backquote=toggle_quick_terminal
+keybind = global:cmd+shift+backquote=toggle_quick_terminal
 confirm-close-surface = false
 quit-after-last-window-closed = true
 adjust-underline-position = 3

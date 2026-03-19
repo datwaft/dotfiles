@@ -12,3 +12,4 @@ search_mode_shell_up_key_binding = "prefix"
 
 [daemon]
 enabled = true
+autostart = true

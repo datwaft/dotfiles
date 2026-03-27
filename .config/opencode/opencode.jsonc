@@ -5,8 +5,19 @@
     "bash": {
       // Jira CLI
       "jira*": "ask",
+      "jira help*": "allow",
       "jira*--help*": "allow",
+      "jira version*": "allow",
+      "jira me*": "allow",
+      "jira serverinfo*": "allow",
+      "jira project list*": "allow",
+      "jira board list*": "allow",
+      "jira release list*": "allow",
+      "jira issue list*": "allow",
       "jira issue view*": "allow",
+      "jira epic list*": "allow",
+      "jira sprint list*": "allow",
+      "jira open* -n*": "allow",
       // Atlassian CLI
       "acli*": "ask",
       "acli help*": "allow",

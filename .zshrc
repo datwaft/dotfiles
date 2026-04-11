@@ -38,9 +38,17 @@ ulimit -n unlimited
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="none"
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="none"
 # Highlight abbreviations
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(regexp)
-ZSH_HIGHLIGHT_REGEXP=('^[[:blank:][:space:]]*('${(j:|:)${(Qk)ABBR_REGULAR_USER_ABBREVIATIONS}}')$' fg=green,bold)
-ZSH_HIGHLIGHT_REGEXP+=('[[:<:]]('${(j:|:)${(Qk)ABBR_GLOBAL_USER_ABBREVIATIONS}}')$' fg=blue,bold)
+if [[ "$OSTYPE" == darwin* ]]; then
+  ZSH_HIGHLIGHT_HIGHLIGHTERS+=(regexp)
+  ZSH_HIGHLIGHT_REGEXP=('^[[:blank:][:space:]]*('${(j:|:)${(Qk)ABBR_REGULAR_USER_ABBREVIATIONS}}')$' fg=green,bold)
+  ZSH_HIGHLIGHT_REGEXP+=('[[:<:]]('${(j:|:)${(Qk)ABBR_GLOBAL_USER_ABBREVIATIONS}}')$' fg=blue,bold)
+else
+  (( ${#ABBR_REGULAR_USER_ABBREVIATIONS} )) && {
+    ZSH_HIGHLIGHT_HIGHLIGHTERS+=(regexp)
+    ZSH_HIGHLIGHT_REGEXP+=('^[[:blank:][:space:]]*('${(j:|:)${(Qk)ABBR_REGULAR_USER_ABBREVIATIONS}}')$' fg=green,bold)
+    ZSH_HIGHLIGHT_REGEXP+=('\<('${(j:|:)${(Qk)ABBR_GLOBAL_USER_ABBREVIATIONS}}')$' fg=blue,bold)
+  }
+fi
 # Configure FZF to use Catppuccin colors
 export FZF_DEFAULT_OPTS="
   --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8,gutter:-1

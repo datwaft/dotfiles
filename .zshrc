@@ -4,13 +4,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Do not load the configuration file if `brew` is not installed
-[[ -x /opt/homebrew/bin/brew ]] || return
+if [[ "$OSTYPE" == darwin* ]]; then
+  HOMEBREW_BIN=/opt/homebrew/bin/brew
+elif [[ "$OSTYPE" == linux* ]]; then
+  HOMEBREW_BIN=/home/linuxbrew/.linuxbrew/bin/brew
+fi
+[[ -n "$HOMEBREW_BIN" && -x "$HOMEBREW_BIN" ]] || return
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
-eval $(/opt/homebrew/bin/brew shellenv)
+eval "$("$HOMEBREW_BIN" shellenv)"
 export CC="$(brew --prefix llvm)/bin/clang"
 export CXX="$(brew --prefix llvm)/bin/clang++"
-export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+[[ "$OSTYPE" == darwin* ]] && export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 export LDFLAGS="-L$(brew --prefix)/lib"
 export CPPFLAGS="-I$(brew --prefix)/include"
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
@@ -124,10 +129,12 @@ export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/perl5/bin"
-# Add some MacOS apps to $PATH
-export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
-export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
-export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
+# Add some macOS apps to $PATH
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
+  export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
+  export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
+fi
 # Configure luarocks
 which luarocks &> /dev/null && zsh-defer -c 'eval $(luarocks path --bin)'
 # Configure cargo
@@ -142,7 +149,7 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 # Configure opam
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 # Configure Amp CLI
-export PATH="/Users/david.guevara/.amp/bin:$PATH"
+export PATH="$HOME/.amp/bin:$PATH"
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

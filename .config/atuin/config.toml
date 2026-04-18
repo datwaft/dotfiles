@@ -14,3 +14,6 @@ exit_mode = "return-query"
 [daemon]
 enabled = true
 autostart = true
+
+[ai]
+enabled = false

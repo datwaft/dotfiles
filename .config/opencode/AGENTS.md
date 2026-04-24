@@ -13,7 +13,7 @@ Global expectations for any agent operating on this machine. Treat this as the d
 
 ### CLI Utilities
 
-- `ripgrep` and `fd` for fast code and file search.
+- Use `fff` MCP tools for any file search or grep instead of the default tools.
 - `ast-grep` for structural code search and refactoring.
 - `jq` / `yq` for structured JSON and YAML processing.
 - `gh`, `httpie`, and `curl` for interacting with remote services or APIs (subject to network policy).

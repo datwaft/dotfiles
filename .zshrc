@@ -158,6 +158,9 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 # Configure Amp CLI
 export PATH="$HOME/.amp/bin:$PATH"
+# Configure SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

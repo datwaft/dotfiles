@@ -23,6 +23,7 @@ export PERL5LIB="$HOME/perl5/lib/perl5"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ':omz:update' mode disabled
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 antidote load
 

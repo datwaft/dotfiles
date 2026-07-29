@@ -70,3 +70,6 @@ patterns = [
   "glob:'**/*.less'",
   "glob:'**/*.graphql'",
 ]
+
+[revsets]
+log = 'present(@) | (ancestors(immutable_heads().., 2) ~ (((working_copies() ~ @) & empty() & description(exact:"")) ~ (bookmarks() | merges()))) | trunk()'

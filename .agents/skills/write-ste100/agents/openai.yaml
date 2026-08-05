@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASD-STE100 Writer"
+  short_description: "Write precise Simplified Technical English"
+  default_prompt: "Use $write-ste100 to rewrite this technical text without changing its meaning."

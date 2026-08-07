@@ -155,6 +155,11 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 # Configure 1Password plugins
 [[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
+# Use the 1Password SSH agent from Windows
+if [[ "$OSTYPE" == linux* && -x "$HOME/.local/bin/start-1password-ssh-agent" ]]; then
+  "$HOME/.local/bin/start-1password-ssh-agent" >/dev/null 2>&1
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
 # Configure opam
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 # Configure Amp CLI

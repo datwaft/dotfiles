@@ -5,15 +5,12 @@ Global expectations for any agent operating on this machine. Treat this as the d
 ## Environment
 
 - Default shell is `zsh`.
-- Work happens inside `tmux`. Use `tmux capture-pane` or similar commands when you need to inspect other panes or scrollback.
-- The tools listed below are always installed and ready to use. If you rely on anything else, ask before installing or assuming availability.
 - Assume `jj-vcs` for all version control unless told otherwise. Load the skill proactively - don't check for `.jj` first.
 
 ## Tooling Access
 
 ### CLI Utilities
 
-- Use `fff` MCP tools for any file search or grep instead of the default tools.
 - `ast-grep` for structural code search and refactoring.
 - `jq` / `yq` for structured JSON and YAML processing.
 - `gh`, `httpie`, and `curl` for interacting with remote services or APIs (subject to network policy).
@@ -41,3 +38,19 @@ Global expectations for any agent operating on this machine. Treat this as the d
 - Organize code around clear ownership and keep shared modules limited to genuinely shared behavior. Do not create generic utility dumping grounds.
 - Prefer explicit classification and validation. Unknown input formats and values should fail loudly rather than silently falling through to a default.
 - Test observable behavior and public contracts rather than implementation details or every small helper.
+
+## Sub-agent Delegation
+
+Delegate work proactively when it does not require the main agent's broader context or full reasoning capability. Prefer delegation over spending main-agent compute on mechanical, repetitive, exploratory, or well-specified work.
+
+When spawning sub-agents:
+
+- Always use GPT-5.6 Luna.
+- Never use GPT-5.6 Sol or GPT-5.6 Terra as a sub-agent.
+- Always choose the reasoning effort explicitly for each sub-agent according to the work it is receiving.
+- Use lower reasoning effort freely for mechanical or repetitive work.
+- Increase reasoning effort when the delegated task genuinely requires more independent reasoning.
+- Run independent work concurrently when useful.
+- Keep architecture, high-level planning, difficult judgment calls, synthesis, and final review in the main agent when they benefit from Sol's capabilities.
+
+Over-delegation is preferable to wasting main-agent compute on work that Luna can perform reliably.

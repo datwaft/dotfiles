@@ -72,4 +72,4 @@ patterns = [
 ]
 
 [revsets]
-log = 'present(@) | (ancestors(immutable_heads().., 2) ~ (((working_copies() ~ @) & empty() & description(exact:"")) ~ (bookmarks() | merges()))) | trunk()'
+log = 'present(@) | ancestors((immutable_heads().. ~ (((working_copies() ~ @) & empty() & description(exact:"")) ~ (bookmarks() | merges()))), 2) | trunk()'

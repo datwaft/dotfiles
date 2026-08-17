@@ -1,8 +1,40 @@
 # Workflows and Patterns
 
-## Two Main Workflows: Squash vs Edit
+## Choosing a Workflow
 
-jj supports two primary mental models for daily work. Choose based on your preference.
+jj does not prescribe one universal workflow. Follow explicit user preferences and repository conventions. [Steve's real-world workflow guide](https://steveklabnik.github.io/jujutsu-tutorial/real-world-workflows/intro.html) presents Squash and Edit as two popular choices; Finish-and-advance is another practical pattern for bounded changes.
+
+### The Finish-and-Advance Workflow
+
+Use this as the default agent handoff for a change/build request when the current diff belongs entirely to the task and no other workflow is established. Recording the completed diff and advancing is part of delivery, even for a simple edit-and-show request that does not separately ask for a commit. This pattern begins and ends with an empty working-copy commit.
+
+```sh
+# Inspect first; do not mix in pre-existing work
+jj status
+jj diff --summary
+jj diff
+
+# If @ is clean but is not already based where the work should start
+jj new <base>
+
+# Make and test changes
+# ... edit files ...
+
+# Review and record all current changes
+jj diff --summary
+jj diff
+jj commit -m "feat: add feature X"
+
+# @ is now empty; the completed change is @-
+jj status
+jj log -r '@ | @-'
+```
+
+Without filesets or `-i`, `jj commit -m` is equivalent to `jj describe -m` followed by `jj new`. Do not end this workflow with only `jj describe`, because it leaves the working copy on the completed change. If the change was named before work with `jj new -m` or `jj describe -m`, finish and advance with `jj new` instead.
+
+Do not use this default for review, diagnosis, or inspection-only work, or when the user asks to leave changes uncommitted. A full `jj commit` records every current change. `jj commit <filesets>` keeps selected paths in `@-` but moves unselected changes to the new, non-empty `@`; use that behavior deliberately rather than expecting an empty handoff. If unrelated work overlaps the same files, stop for direction or use an isolated workspace.
+
+If `@` is already empty at the desired base, work there instead of creating another empty change. Do not run `jj new <base>` over unexplained dirty work: jj snapshots the old `@`, and that change may become a sibling of the newly based work.
 
 ### The Squash Workflow (index-like)
 
@@ -21,8 +53,7 @@ jj new
 # 4. Squash changes into the described commit
 jj squash
 
-# Repeat: make more changes, squash again
-# When done, jj new to start next feature
+# Repeat: make more changes in scratch space, then squash again
 ```
 
 **Key insight**: Like `git add -p && git commit --amend`, but on commits. `jj squash -i` opens a TUI for partial squashes.

@@ -26,16 +26,44 @@ jj is a Git-compatible VCS with a different mental model. Most LLMs are trained 
 
 ## Core workflow
 
-```sh
-# See current state
-jj status  # or jj st
-jj log     # view commit graph
-jj diff    # see working copy changes
+Inspect the current change before running a command that moves or records it:
 
-# Describe current commit (set message)
+```sh
+jj status          # or jj st
+jj log             # view commit graph
+jj diff --summary  # inventory changed paths
+jj diff            # review the full working-copy diff
+```
+
+### Default handoff for completed implementation work
+
+Follow explicit user and repository conventions. When a user asks you to change or build something, treat recording the completed, agent-owned diff and advancing to an empty `@` as part of delivery, even if they did not separately ask for a commit. Use this finish-and-advance handoff when the current diff belongs entirely to the task and no other workflow is established:
+
+```sh
+# Start from the requested base only when the current @ is clean
+jj new <base>  # for example: jj new main
+
+# Make and test changes, then review them
+jj diff --summary
+jj diff
+
+# Record all current changes and leave a fresh empty @
+jj commit -m "feat: describe the completed change"
+```
+
+Without filesets or `-i`, `jj commit` is equivalent to `jj describe` followed by `jj new`: the completed change becomes `@-`, and `@` is a fresh empty child. Do not finish this pattern with only `jj describe`; it updates metadata but leaves `@` on the completed change. Use `jj describe` alone when intentionally continuing to edit that change or changing metadata without advancing.
+
+This completion default includes simple edit-and-show requests. It does not apply to review, diagnosis, or inspection-only work. Do not commit if the user asks to leave changes uncommitted, repository instructions establish another workflow, or `@` includes pre-existing or unrelated changes. A partial `jj commit <filesets>` leaves unselected changes in the new `@`, so it intentionally does not produce an empty handoff.
+
+If `@` is already an empty change at the desired base, reuse it instead of stacking another empty change. Do not run `jj new <base>` over unexplained dirty work: jj snapshots that work into the old `@`, which may become a sibling rather than `@-`.
+
+### Common operations
+
+```sh
+# Name the current change without advancing
 jj describe -m "commit message"
 
-# Create new commit on top of current (signals "I'm done editing this commit")
+# Create a new empty change on top of current
 jj new
 jj new -m "message for the new commit"
 
@@ -58,9 +86,13 @@ jj absorb
 jj new branch1 branch2 -m "merge branches"
 ```
 
-### Two mental models: Squash vs Edit workflow
+### Choose a workflow
 
-**Squash workflow** (index-like): Describe commit → create empty child → work in child → `jj squash` into parent. Familiar if you liked git's staging area.
+The finish-and-advance pattern is a useful default for bounded agent work, not a universal jj rule. Preserve the user's preference and repository conventions.
+
+**Finish-and-advance workflow**: Start or reuse an empty change → work directly in it → use a full `jj commit -m` for an owned, bounded implementation diff. This ends on a new empty `@`.
+
+**Squash workflow** (index-like): Describe a target change → create an empty child → work in the child → `jj squash` into the parent. Familiar if you liked git's staging area.
 
 **Edit workflow** (direct): Work directly in commits → use `jj new -B @` to insert commits before → use `jj next --edit` to navigate. More natural for stack-based development.
 
@@ -166,7 +198,7 @@ Bookmarks are named pointers to commits (like git branches). They auto-move when
 
 ### Understanding @ vs @- for bookmarks
 
-After `jj new` or `jj commit`, your working copy (`@`) becomes an empty commit sitting on top of your actual changes (`@-`). When creating bookmarks for PRs:
+After a full `jj commit` without filesets or `-i`, your working copy (`@`) is a fresh empty commit on top of the completed change (`@-`). A partial commit instead leaves the unselected changes in `@`. When creating bookmarks for PRs after a full commit:
 
 - **Create bookmarks on `@-`** (the commit with your changes): `jj bookmark create feat/foo -r @-`
 - **Not on `@`** (the empty working copy)
@@ -227,10 +259,10 @@ jj op restore <op>   # Restore to specific operation
 
 ## Important flags for non-interactive use
 
-Always use message flags instead of opening editors:
-- `jj describe -m "message"` (not `jj describe` which opens editor)
-- `jj new -m "message"`
-- `jj commit -m "message"`
+Use message flags instead of opening editors:
+- `jj commit -m "message"` to finish-and-advance an owned implementation diff
+- `jj describe -m "message"` to update metadata without advancing
+- `jj new -m "message"` to start a named change
 
 Avoid `-i` (interactive) flags:
 - Do NOT use `jj squash -i` (interactive selection)
@@ -240,7 +272,7 @@ Avoid `-i` (interactive) flags:
 ## References
 
 For detailed information on specific operations, see the reference files in `references/`:
-- [workflows.md](references/workflows.md) - Squash vs Edit workflows, anonymous branches, multi-parent merges, simultaneous branch editing
+- [workflows.md](references/workflows.md) - Finish-and-advance, Squash, and Edit workflows; anonymous branches; multi-parent merges
 - [cli-options.md](references/cli-options.md) - Understanding `-r`, `-s`, `-o`, `-A`, `-B`, `--from`, `--to` flag patterns
 - [bookmarks.md](references/bookmarks.md) - Bookmarks, tags, remote operations, GitHub/GitLab workflows
 - [multiple-remotes.md](references/multiple-remotes.md) - Fork workflows, upstream integration, tracking configuration

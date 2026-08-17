@@ -33,9 +33,9 @@ Quick reference for translating Git commands to jj equivalents.
 | Add file | `touch file; git add file` | `touch file` (auto-tracked) |
 | Remove file | `git rm file` | `rm file` |
 | Untrack file | `git rm --cached file` | `jj file untrack file` |
-| Commit all | `git commit -a -m "msg"` | `jj commit -m "msg"` |
-| Commit (start new change) | `git commit` | `jj new` or `jj commit` |
-| Set commit message | N/A | `jj describe -m "msg"` |
+| Finish current change and start an empty child | `git commit -a -m "msg"` | `jj commit -m "msg"` |
+| Start a new empty change | N/A | `jj new <parent>` |
+| Set current change message without advancing | N/A | `jj describe -m "msg"` |
 | Amend | `git commit --amend` | `jj squash` (moves @ into parent) |
 | Amend message only | `git commit --amend --only` | `jj describe @- -m "new msg"` |
 

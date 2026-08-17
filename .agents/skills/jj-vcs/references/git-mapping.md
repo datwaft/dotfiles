@@ -45,8 +45,8 @@ Quick reference for translating Git commands to jj equivalents.
 |----------|-----|-----|
 | Amend older commit | `git commit --fixup=X; git rebase -i --autosquash` | `jj squash --into X` |
 | Interactive rebase | `git rebase -i` | Use `jj squash`, `jj split`, `jj rebase` |
-| Rebase onto | `git rebase B A` | `jj rebase -b A -d B` |
-| Cherry-pick | `git cherry-pick <src>` | `jj duplicate <src> -d <dest>` |
+| Rebase onto | `git rebase B A` | `jj rebase -b A -o B` |
+| Cherry-pick | `git cherry-pick <src>` | `jj duplicate <src> -o <dest>` |
 | Revert commit | `git revert <rev>` | `jj revert -r <rev> -B @` |
 | Reset hard | `git reset --hard` | `jj abandon` (abandon @, get new empty commit) |
 | Reset soft | `git reset --soft HEAD~` | `jj squash --from @-` |
@@ -73,11 +73,12 @@ Quick reference for translating Git commands to jj equivalents.
 |----------|-----|-----|
 | Fetch | `git fetch` | `jj git fetch` |
 | Fetch specific remote | `git fetch <remote>` | `jj git fetch --remote <remote>` |
-| Pull | `git pull` | `jj git fetch && jj rebase -d main` |
-| Push all | `git push --all` | `jj git push --all` |
+| Pull | `git pull` | `jj git fetch && jj rebase -o main` |
+| Push all branches | `git push --all` | `jj git push --bookmark '*'` |
+| Push all branches and tags | `git push --all; git push --tags` | `jj git push --all` |
 | Push specific branch | `git push origin <name>` | `jj git push --bookmark <name>` |
 | Push and set upstream | `git push -u origin <name>` | `jj git push --bookmark <name>` (auto-tracks) |
-| Track remote branch | `git branch --set-upstream-to` | `jj bookmark track <name>@<remote>` |
+| Track remote branch | `git branch --set-upstream-to` | `jj bookmark track <name> --remote=<remote>` |
 
 ## Stashing
 

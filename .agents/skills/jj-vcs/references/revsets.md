@@ -1,6 +1,6 @@
 # Revsets Reference
 
-Complete reference for jj's revset language - a functional language for selecting commits.
+Common reference for jj's revset language - a functional language for selecting commits.
 
 ## Symbols
 
@@ -8,7 +8,7 @@ Complete reference for jj's revset language - a functional language for selectin
 |--------|---------|
 | `@` | Working copy commit (current workspace) |
 | `<workspace>@` | Working copy in another workspace |
-| `<name>@<remote>` | Remote-tracking bookmark (e.g., `main@origin`) |
+| `<name>@<remote>` | Remote bookmark or tag (e.g., `main@origin`) |
 | `<change-id>` | Commit by change ID (stable across rewrites) |
 | `<commit-id>` | Commit by commit ID (SHA prefix) |
 | `<bookmark>` | Bookmark name |
@@ -19,8 +19,9 @@ Complete reference for jj's revset language - a functional language for selectin
 When a name could match multiple things, jj resolves in this order:
 1. Tag name
 2. Bookmark name
-3. Git ref
-4. Commit ID or change ID
+3. Commit ID or change ID
+
+Git-like ref names such as `refs/heads/main` are not revset symbols. Use a bookmark such as `main@origin` or a function such as `remote_bookmarks()`.
 
 To force a specific interpretation:
 ```sh
@@ -61,7 +62,7 @@ Listed in order of binding strength (strongest first).
 | `..x` | Ancestors of x, excluding root | Same as `::x ~ root()` |
 | `x..` | Non-ancestors of x | Same as `~::x` |
 | `x..y` | Ancestors of y, not ancestors of x | Like Git's `x..y` |
-| `::` | All visible commits | Same as `all()` |
+| `::` | All visible commits, plus ancestors of explicitly mentioned hidden commits | Same as `all()` |
 | `..` | All visible commits except root | Same as `~root()` |
 
 ### Set operators
@@ -109,7 +110,7 @@ o root()
 
 | Function | Description |
 |----------|-------------|
-| `all()` | All visible commits |
+| `all()` | All visible commits, plus ancestors of explicitly mentioned hidden commits |
 | `none()` | Empty set |
 | `root()` | Virtual root commit (ancestor of all) |
 | `visible_heads()` | All visible head commits |
@@ -139,8 +140,10 @@ o root()
 | `connected(x)` | Same as `x::x` (connects disconnected parts) |
 | `reachable(srcs, domain)` | All commits reachable from srcs within domain |
 | `fork_point(x)` | Common ancestor(s) of all commits in x |
+| `merge_point(x)` | Common descendant(s) of all commits in x |
 | `latest(x, [count])` | Latest count commits by committer date (default: 1) |
 | `bisect(x)` | Commits where ~half of x are descendants (for binary search) |
+| `forks()` | Commits with more than one child |
 
 ### Bookmarks and tags
 
@@ -151,6 +154,7 @@ o root()
 | `tracked_remote_bookmarks([pattern], [remote=pattern])` | Tracked remote bookmarks |
 | `untracked_remote_bookmarks([pattern], [remote=pattern])` | Untracked remote bookmarks |
 | `tags([pattern])` | Tag targets |
+| `remote_tags([pattern], [remote=pattern])` | Remote tag targets |
 
 Examples:
 ```sh
@@ -159,6 +163,7 @@ jj log -r 'bookmarks(feat/*)'              # Bookmarks matching glob
 jj log -r 'remote_bookmarks(main, origin)' # main@origin
 jj log -r 'remote_bookmarks(remote=origin)'# All bookmarks on origin
 jj log -r 'tags(v1.*)'                     # Tags matching v1.*
+jj log -r 'remote_tags(v1.*, origin)'      # Remote tags matching v1.* on origin
 ```
 
 ### ID functions
@@ -191,16 +196,21 @@ jj log -r 'tags(v1.*)'                     # Tags matching v1.*
 |----------|-------------|
 | `empty()` | Commits with no file changes |
 | `files(expression)` | Commits modifying paths matching fileset |
-| `diff_contains(text, [files])` | Commits with diffs containing text |
+| `diff_lines(text, [files])` | Commits with added or removed lines matching text |
+| `diff_lines_added(text, [files])` | Commits with added lines matching text |
+| `diff_lines_removed(text, [files])` | Commits with removed lines matching text |
 | `conflicts()` | Commits with unresolved conflicts |
+| `divergent()` | Commits that share a change ID with another visible commit |
 | `merges()` | Merge commits (multiple parents) |
 
 Examples:
 ```sh
 jj log -r 'files(src/)'                     # Changed files under src/
-jj log -r 'diff_contains("TODO")'           # Diffs mentioning TODO
-jj log -r 'diff_contains("bug", "*.rs")'    # "bug" in Rust file diffs
+jj log -r 'diff_lines("*TODO*")'                 # Added or removed lines containing TODO
+jj log -r 'diff_lines("*bug*", glob:"**/*.rs")' # Matching lines in Rust file diffs
+jj log -r 'diff_lines_added("*TODO*")'           # Added lines containing TODO
 jj log -r 'conflicts()'                     # Conflicted commits
+jj log -r 'divergent()'                     # Divergent commits
 ```
 
 ### Utility functions
@@ -273,7 +283,7 @@ These are defined by default and can be overridden in config.
 | Alias | Default Definition |
 |-------|-------------------|
 | `trunk()` | Default branch of default remote (main, master, or trunk) |
-| `immutable_heads()` | `present(trunk()) \| tags() \| untracked_remote_bookmarks()` |
+| `immutable_heads()` | `trunk() \| tags() \| untracked_remote_bookmarks()` |
 | `immutable()` | `::(immutable_heads() \| root())` |
 | `mutable()` | `~immutable()` |
 | `visible()` | `::visible_heads()` |
@@ -348,15 +358,15 @@ jj log -r 'roots(trunk()..@)'
 # Commits between trunk and my bookmarks
 jj log -r 'trunk()..bookmarks()'
 
-# Rebase ALL branches onto updated trunk (use with jj rebase -s)
-# all: prefix required for multiple revisions
-jj rebase -s 'all:roots(trunk..@)' -d trunk
+# Rebase all roots of the current stack onto updated trunk
+# -s accepts the multiple roots selected by the revset
+jj rebase -s 'roots(trunk()..@)' -o 'trunk()'
 ```
 
 ### Branch analysis
 
 ```sh
-# All anonymous branch heads (working on multiple features)
+# All visible heads
 jj log -r 'heads(all())'
 
 # Heads of just my mutable work

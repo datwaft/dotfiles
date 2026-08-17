@@ -15,14 +15,14 @@ jj uses consistent CLI option patterns across commands. Understanding these patt
 
 **`-r` (revision)**: Most common. Operates on exactly what you specify.
 ```sh
-jj log -r @::         # Show these exact commits
+jj log -r @           # Show this exact commit
 jj split -r xyz       # Split this one commit
 jj abandon -r 'empty()'  # Abandon these commits
 ```
 
 **`-s` (source)**: When the operation must include descendants. The command enforces this because leaving descendants behind would be problematic.
 ```sh
-jj rebase -s xyz -d main   # Rebase xyz AND all descendants
+jj rebase -s xyz -o main   # Rebase xyz AND all descendants
 jj fix -s xyz              # Fix xyz AND all descendants
 ```
 
@@ -35,8 +35,8 @@ jj squash --from A --into B  # Move changes from A into B
 
 **`-b` (branch)**: Convenience for rebasing a topological branch. Rebases all commits reachable from the revision but not from the destination.
 ```sh
-jj rebase -b @ -d main     # Rebase current branch onto main
-# Equivalent to: jj rebase -s roots(main..@) -d main
+jj rebase -b @ -o main     # Rebase current branch onto main
+# Equivalent to: jj rebase -s 'roots(main..@)' -o main
 ```
 
 ## Destination Options (where to put things)
@@ -52,10 +52,10 @@ Used when commands need both source and destination.
 
 ### Destination behaviors
 
-**`-d` / `--onto` (`-o`)**: Place as children of destination.
+**`-o` / `--onto`**: Place as children of destination. `-d` / `--destination` are compatibility aliases.
 ```sh
-jj rebase -r xyz -d main   # xyz becomes child of main
-jj duplicate abc -d main   # Copy abc as child of main
+jj rebase -r xyz -o main   # xyz becomes child of main
+jj duplicate abc -o main   # Copy abc as child of main
 ```
 
 **`-A` (insert-after)**: Insert between a revision and its children. The revision's current children become children of the inserted commit.
@@ -74,13 +74,13 @@ jj revert -r bad -B @        # Create revert commit as parent of @
 Given: `A -> B -> C`
 
 ```sh
-# -d / --onto: D becomes child of B
-jj rebase -r D -d B
+# -o / --onto: D becomes child of B
+jj rebase -r D -o B
 # Result: A -> B -> C
 #              \-> D
 
 # -A (insert-after): D inserted after B, C becomes child of D
-jj rebase -r D -A B  
+jj rebase -r D -A B
 # Result: A -> B -> D -> C
 
 # -B (insert-before): D inserted before C, D becomes parent of C
@@ -130,16 +130,16 @@ jj split -r xyz src/     # Split xyz, only moving src/ to new commit
 The `-b` flag is a convenience for rebasing a "topological branch" - all commits between the destination and the specified revision.
 
 ```sh
-jj rebase -b @ -d main
+jj rebase -b @ -o main
 # Equivalent to:
-jj rebase -s roots(main..@) -d main
+jj rebase -s 'roots(main..@)' -o main
 # Also equivalent to:
-jj rebase -r '(main..@)::' -d main
+jj rebase -r '(main..@)::' -o main
 ```
 
 This is so common that `-b @` is the default source for rebase:
 ```sh
-jj rebase -d main        # Implicitly uses -b @
+jj rebase -o main        # Implicitly uses -b @
 ```
 
 ### `jj git push -c` (change)
@@ -161,7 +161,7 @@ jj restore -c xyz file   # Remove changes to file in xyz
 
 | Operation Type | Source Flag | Destination Flag |
 |---------------|-------------|------------------|
-| Move/rebase revisions | `-r`, `-s`, `-b` | `-d`, `-A`, `-B` |
+| Move/rebase revisions | `-r`, `-s`, `-b` | `-o`, `-A`, `-B` |
 | Move contents/changes | `--from` | `--to`, `--into` |
 | View/operate on revision | `-r` | N/A |
 | View/compare contents | `--from`, `--to` | N/A |

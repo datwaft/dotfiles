@@ -101,11 +101,11 @@ jj new main -m "feature B"  # Creates sibling, not child
 ### Finding all branch heads
 
 ```sh
-# Show heads of all anonymous branches
+# Show all visible heads
 jj log -r 'heads(all())'
 
-# Show heads excluding remote branches
-jj log -r 'heads(mine())'
+# Show heads of mutable work
+jj log -r 'heads(mutable())'
 ```
 
 ### When to use bookmarks
@@ -129,7 +129,7 @@ jj new A B C D -m "merge all features"
 jj new abc xyz -m "merge two changes"
 ```
 
-`jj merge` is deprecated - use `jj new` with multiple parents instead.
+There is no `jj merge` command. Use `jj new` with multiple parents instead.
 
 ## Working on Multiple Branches Simultaneously
 
@@ -169,13 +169,13 @@ When upstream changes:
 ```sh
 jj git fetch
 
-# Rebase ALL your branches onto updated trunk
-jj rebase -s 'all:roots(trunk..@)' -d trunk
+# Rebase all roots of the current stack onto updated trunk
+jj rebase -s 'roots(trunk()..@)' -o 'trunk()'
 
 # Explanation:
-# - trunk..@ : all commits between trunk and working copy
+# - trunk()..@ : commits in @'s ancestry that are not in trunk's ancestry
 # - roots()  : just the root commits (your branch bases)
-# - all:     : allow multiple revisions (required for multi-parent rebase)
+# - -s accepts the multiple roots selected by the revset
 ```
 
 ## Automatic Rebasing Behavior
@@ -255,7 +255,7 @@ jj next           # Creates new empty commit on child
 jj next --edit    # Edits child directly
 
 # Move to parent commit
-jj prev           # Creates new empty commit on parent  
+jj prev           # Creates new empty commit on parent
 jj prev --edit    # Edits parent directly
 
 # Jump multiple levels
@@ -267,9 +267,8 @@ jj next --conflict
 jj prev --conflict
 ```
 
-Configure default behavior:
+Configure default behavior with `jj config edit --user` (the preferred user config is `~/.config/jj/config.toml`):
 ```toml
-# In ~/.jjconfig.toml
 [ui.movement]
 edit = true  # Makes --edit the default
 ```

@@ -20,6 +20,9 @@ jj absorb -f <revision>
 
 # Absorb into a limited set of destinations (default: mutable())
 jj absorb -t 'trunk()..@'
+
+# Interactively choose which hunks to consider (human-driven use only)
+jj absorb -i
 ```
 
 ### How it works
@@ -78,10 +81,10 @@ Create copies of commits at a new location (like `git cherry-pick`).
 
 ```sh
 # Duplicate a commit onto a destination
-jj duplicate <revision> -d <destination>
+jj duplicate <revision> -o <destination>
 
 # Duplicate onto current working copy parent
-jj duplicate <revision> -d @-
+jj duplicate <revision> -o @-
 
 # Insert after a specific commit
 jj duplicate <revision> -A <after>
@@ -90,7 +93,7 @@ jj duplicate <revision> -A <after>
 jj duplicate <revision> -B <before>
 
 # Duplicate multiple commits (preserves internal structure)
-jj duplicate 'A | B | C' -d main
+jj duplicate 'A | B | C' -o main
 ```
 
 ### Key differences from git cherry-pick
@@ -103,7 +106,7 @@ jj duplicate 'A | B | C' -d main
 
 ```sh
 # Duplicate a fix from main onto a release branch
-jj duplicate <fix-change-id> -d release-1.0
+jj duplicate <fix-change-id> -o release-1.0
 jj bookmark move release-1.0 --to <new-change-id>
 ```
 
@@ -244,6 +247,20 @@ jj bisect run --range 'v1.0..main' -- bash -c '
 jj bisect run --range 'v1.0..main' -- bash
 # In the shell: test manually, then `exit 0` (good) or `exit 1` (bad)
 ```
+
+## jj run
+
+Run a command in isolated working copies across a set of revisions. Successful file changes amend the selected mutable revisions, then descendants are rebased.
+
+```sh
+# Format every revision in the current stack (rewrites those revisions)
+jj run -r 'trunk()..@' -j 4 -- cargo fmt
+
+# Run checks without saving any file changes
+jj run -r 'trunk()..@' --ignore-changes -- cargo test
+```
+
+Use `--restore-descendants` when descendants should keep their content instead of preserving their diffs. Use `--ignore-errors` only when successful revisions should still be updated despite failures elsewhere.
 
 ## jj parallelize
 

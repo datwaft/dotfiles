@@ -39,10 +39,10 @@ jj config set --repo git.fetch '["upstream", "origin"]'
 jj config set --repo git.push origin
 
 # Track both remote bookmarks
-jj bookmark track main@upstream
-jj bookmark track main@origin
+jj bookmark track main --remote=upstream
+jj bookmark track main --remote=origin
 
-# Set upstream as the trunk (for immutability and rebasing)
+# Set upstream as the trunk (for immutability and default log context)
 jj config set --repo 'revset-aliases."trunk()"' main@upstream
 ```
 
@@ -91,8 +91,8 @@ jj config set --repo git.fetch '["origin"]'
 jj config set --repo git.push origin
 
 # Track only origin's main
-jj bookmark track main@origin
-jj bookmark untrack main@upstream
+jj bookmark track main --remote=origin
+jj bookmark untrack main --remote=upstream
 
 # Your origin defines the trunk
 jj config set --repo 'revset-aliases."trunk()"' main@origin
@@ -108,10 +108,10 @@ jj new main@origin main@upstream -m "merge upstream"
 jj bookmark move main --to @
 
 # Option 2: Rebase your changes onto upstream
-jj rebase -b main -d main@upstream
+jj rebase -b main -o main@upstream
 
 # Option 3: Cherry-pick specific commits
-jj duplicate <upstream-change> -d main
+jj duplicate <upstream-change> -o main
 ```
 
 ## Configuration reference
@@ -146,11 +146,11 @@ Tracking links a local bookmark to a remote bookmark. When the remote changes (v
 
 ```sh
 # Track a remote bookmark
-jj bookmark track main@origin
-jj bookmark track main@upstream
+jj bookmark track main --remote=origin
+jj bookmark track main --remote=upstream
 
 # Untrack (stop syncing)
-jj bookmark untrack main@upstream
+jj bookmark untrack main --remote=upstream
 
 # List tracked bookmarks
 jj bookmark list --tracked
@@ -166,7 +166,7 @@ jj bookmark track main --remote=origin
 
 ### `trunk()` alias
 
-The `trunk()` revset determines what's considered immutable and is the default rebase target.
+The `trunk()` revset identifies the repository's mainline. It contributes to the default immutable history and appears in the built-in log view. Rebase destinations are explicit; use `-o 'trunk()'` when that is the desired target.
 
 ```sh
 # Set trunk to upstream (for fork workflow)
@@ -192,14 +192,14 @@ jj git fetch --all-remotes
 jj git push --remote upstream --bookmark release
 
 # See all remote bookmarks
-jj bookmark list --all
+jj bookmark list --all-remotes
 
 # Compare local vs remote
 jj log -r 'main | main@origin | main@upstream'
 
 # Commits on upstream not in origin
-jj log -r 'main@upstream ~ main@origin'
+jj log -r 'main@origin..main@upstream'
 
-# Your commits not yet upstream
-jj log -r 'main@origin ~ main@upstream'
+# Commits on origin not in upstream
+jj log -r 'main@upstream..main@origin'
 ```

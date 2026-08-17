@@ -18,7 +18,7 @@ jj is a Git-compatible VCS with a different mental model. Most LLMs are trained 
 
 3. **No staging area** - Files are automatically tracked. Use `.gitignore` (jj uses git's ignore format) and `jj file untrack <path>` to untrack.
 
-4. **Commits are mutable** - You can freely rewrite any commit. Rewriting pushed commits requires force push (`jj git push` handles this automatically with lease protection). Conflicts don't block operations - they're stored in the commit.
+4. **Commits are usually mutable** - jj prevents rewriting `immutable()` (by default, root and the ancestors of trunk, tags, and untracked remote bookmarks). `--ignore-immutable` overrides that check except for root. Mutable pushed commits can be rewritten; `jj git push` applies lease-like safety checks. Conflicts don't block operations - they're stored in commits.
 
 5. **Bookmarks, not branches** - jj uses "bookmarks" instead of git branches. They map 1:1 to git branches when pushing/fetching.
 
@@ -108,22 +108,22 @@ Revsets are expressions for selecting commits. Use change IDs, not commit IDs.
 
 ```sh
 # Rebase single commit to new destination
-jj rebase -r '<revision>' -d '<destination>'
+jj rebase -r '<revision>' -o '<destination>'
 
 # Rebase commit and all descendants
-jj rebase -s '<source>' -d '<destination>'
+jj rebase -s '<source>' -o '<destination>'
 
 # Rebase entire branch (all commits reachable from <branch> but not from <destination>)
-jj rebase -b '<branch>' -d '<destination>'
+jj rebase -b '<branch>' -o '<destination>'
 ```
 
 Examples:
 ```sh
 # Move current commit onto main
-jj rebase -r @ -d main
+jj rebase -r @ -o main
 
 # Move a feature branch onto latest trunk
-jj rebase -s feature-start -d trunk()
+jj rebase -s feature-start -o 'trunk()'
 ```
 
 ## Filesets (selecting files)
@@ -195,7 +195,7 @@ jj git push -c @-
 
 Shorthand: `jj b` = `jj bookmark`, subcommands have single-letter shortcuts (`jj b c` = `jj bookmark create`).
 
-Note: `jj git push --all` pushes all **bookmarks**, not all commits. Use `jj git push -c <change>` to auto-create and push a bookmark.
+Note: `jj git push --all` pushes all bookmarks and tags, including new ones; it does not push unreferenced commits. Plain `jj git push` selects eligible tracked bookmarks and tags. Use `jj git push -c <change>` to auto-create and push a bookmark.
 
 ## Fetching and updating (no git pull)
 
@@ -205,11 +205,11 @@ There is no `jj git pull`. Instead, fetch and rebase separately:
 # Fetch latest from remote
 jj git fetch
 
-# Update your work onto latest main (local bookmark syncs with remote on fetch)
-jj rebase -d main
+# Update your work onto latest main (a tracked local bookmark syncs on fetch)
+jj rebase -o main
 
 # Or rebase a specific branch
-jj rebase -b my-feature -d main
+jj rebase -b my-feature -o main
 
 # If starting fresh with no local changes, just create new commit on main
 jj new main
@@ -235,15 +235,16 @@ Always use message flags instead of opening editors:
 Avoid `-i` (interactive) flags:
 - Do NOT use `jj squash -i` (interactive selection)
 - Do NOT use `jj split -i`
+- Do NOT use `jj absorb -i`
 
 ## References
 
 For detailed information on specific operations, see the reference files in `references/`:
 - [workflows.md](references/workflows.md) - Squash vs Edit workflows, anonymous branches, multi-parent merges, simultaneous branch editing
-- [cli-options.md](references/cli-options.md) - Understanding `-r`, `-s`, `-d`, `-A`, `-B`, `--from`, `--to` flag patterns
-- [bookmarks.md](references/bookmarks.md) - Bookmarks, remote operations, GitHub/GitLab workflows
+- [cli-options.md](references/cli-options.md) - Understanding `-r`, `-s`, `-o`, `-A`, `-B`, `--from`, `--to` flag patterns
+- [bookmarks.md](references/bookmarks.md) - Bookmarks, tags, remote operations, GitHub/GitLab workflows
 - [multiple-remotes.md](references/multiple-remotes.md) - Fork workflows, upstream integration, tracking configuration
 - [troubleshooting.md](references/troubleshooting.md) - Debugging with `jj evolog`, divergent changes, conflicted bookmarks, recovery patterns
 - [git-mapping.md](references/git-mapping.md) - Git to jj command mapping table
-- [advanced-commands.md](references/advanced-commands.md) - Power commands: absorb, revert, duplicate, bisect, next/prev
-- [revsets.md](references/revsets.md) - Complete revsets reference with all operators, functions, and patterns
+- [advanced-commands.md](references/advanced-commands.md) - Power commands: absorb, revert, duplicate, run, bisect, next/prev
+- [revsets.md](references/revsets.md) - Common revsets reference with operators, functions, and patterns

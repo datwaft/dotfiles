@@ -70,19 +70,23 @@ jj restore --from <commit> <file>
 
 ## Commit not visible in `jj log`
 
-By default, `jj log` only shows local commits and their immediate parents. Remote commits are often hidden.
+By default, `jj log` evaluates `revsets.log` (normally `builtin_log()`), which shows the working copy, mutable history with limited context, and trunk. Other visible commits may be omitted from that view.
 
 ```sh
-# See ALL commits in the repo
+# See all visible commits
 jj log -r 'all()'
 # or equivalently
-jj log -r ..
+jj log -r '::'
 
-# Check if a specific commit exists (even if hidden/abandoned)
+# See all visible commits except root
+jj log -r '..'
+
+# Check a specific hidden or abandoned revision
 jj log -r <commit-id>
+jj log -r '<change-id>/<offset>'
 ```
 
-If a commit was abandoned (via `jj abandon`, rebase, etc.), it will show as "hidden" but is still accessible by commit ID.
+If a commit was abandoned (via `jj abandon`, rebase, etc.), it becomes hidden but remains addressable by commit ID or by a change ID with an offset such as `xyz/1`.
 
 ## Viewing change history with `jj evolog`
 
@@ -104,7 +108,7 @@ This is useful for:
 - Understanding how a change was modified over time
 - Recovery after accidental edits
 
-Hidden commits in evolog can be referenced by their commit ID (not change ID).
+Hidden or divergent revisions can be referenced by commit ID or by a change ID with an offset such as `xyz/1`. A plain change ID works only when it resolves uniquely among visible commits.
 
 ## Divergent changes
 

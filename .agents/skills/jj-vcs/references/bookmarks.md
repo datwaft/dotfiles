@@ -19,12 +19,16 @@ jj bookmark create feat/foo -r @-
 
 # List bookmarks
 jj bookmark list           # local bookmarks
-jj bookmark list --all     # include remote bookmarks
+jj bookmark list --all-remotes  # include remote bookmarks
 jj b l -a                  # shorthand
 
 # Move bookmark to different commit
 jj bookmark move <name> --to <revision>
 jj b m <name> --to @-
+
+# Advance the closest ancestor bookmark(s) to a descendant
+jj bookmark advance --to <revision>
+jj bookmark advance <name> --to <revision>
 
 # Delete bookmark
 jj bookmark delete <name>
@@ -43,10 +47,10 @@ Remote bookmarks are stored as `<name>@<remote>` (e.g., `main@origin`).
 jj new main@origin
 
 # Track a remote bookmark (sync on fetch)
-jj bookmark track <name>@<remote>
+jj bookmark track <name> --remote=<remote>
 
 # Untrack a remote bookmark
-jj bookmark untrack <name>@<remote>
+jj bookmark untrack <name> --remote=<remote>
 
 # List tracked bookmarks
 jj bookmark list --tracked
@@ -58,8 +62,11 @@ jj bookmark list --tracked
 # Push specific bookmark (explicit, safe for automation)
 jj git push --bookmark <name>
 
-# Push all tracked bookmarks that have changes
+# Push eligible tracked bookmarks and tags that have changes
 jj git push
+
+# Push all bookmarks and tags, including new ones
+jj git push --all
 
 # Create bookmark from change ID and push (auto-generates name like "push-mwmpwkwknuz")
 jj git push -c <change-id>
@@ -69,7 +76,7 @@ jj git push -c @-  # common: push parent of working copy
 jj git push --remote origin --bookmark feat/foo
 ```
 
-Push safety: `jj git push` has built-in `--force-with-lease` behavior - it checks the remote state matches jj's record before pushing.
+Push safety: `jj git push` performs safety checks similar to Git's `--force-with-lease`: the remote reference must still match the state jj last fetched.
 
 ## Fetching from remotes
 
@@ -84,7 +91,18 @@ jj git fetch --remote upstream
 jj git fetch --all-remotes
 ```
 
-Note: There's no `jj git pull`. Use `jj git fetch` then `jj rebase -d main@origin` to update.
+Note: There's no `jj git pull`. Use `jj git fetch` then `jj rebase -o main@origin` to update.
+
+## Tags
+
+Tags can be listed, set, tracked, and pushed in jj 0.44:
+
+```sh
+jj tag list --all-remotes
+jj tag set v1.0 -r <revision>
+jj tag track v1.0 --remote=origin
+jj git push --tag v1.0
+```
 
 ## GitHub/GitLab workflow
 
@@ -146,12 +164,18 @@ jj git push --bookmark feat/my-feature
 If local and remote bookmarks diverge, you'll see `main??` in the log.
 
 ```sh
-# Resolve by fetching and rebasing
-jj git fetch
-jj rebase -d main@origin
+# Inspect every candidate target
+jj bookmark list --conflicted
 
-# Or force move the bookmark
-jj bookmark move main --to <revision>
+# Resolve a local bookmark by choosing the desired target
+jj bookmark move main --to <revision> --allow-backwards
+
+# Or merge/rebase the candidate targets first, then move the bookmark
+jj new main -m "merge conflicted main targets"
+jj bookmark move main --to @ --allow-backwards
+
+# Fetch resolves a conflict in a remote bookmark such as main@origin
+jj git fetch --remote origin
 ```
 
 ## Useful revsets for bookmarks

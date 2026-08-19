@@ -167,6 +167,11 @@ export PATH="$HOME/.amp/bin:$PATH"
 # Configure SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Configure pnpm
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+  export PATH="$PNPM_HOME/bin:$PATH"
+fi
 
 # Use Neovim as $EDITOR
 export EDITOR='nvim'

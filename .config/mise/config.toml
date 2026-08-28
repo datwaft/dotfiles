@@ -6,5 +6,6 @@ lua = "5.1.5"
 node = "24"
 
 [settings]
+env_file = ".env"
 idiomatic_version_file_enable_tools = []
 auto_update = true

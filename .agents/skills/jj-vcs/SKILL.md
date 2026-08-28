@@ -37,7 +37,7 @@ jj diff            # review the full working-copy diff
 
 ### Default handoff for completed implementation work
 
-Follow explicit user and repository conventions. When a user asks you to change or build something, treat recording the completed, agent-owned diff and advancing to an empty `@` as part of delivery, even if they did not separately ask for a commit. Use this finish-and-advance handoff when the current diff belongs entirely to the task and no other workflow is established:
+Follow explicit user and repository conventions. For substantial work that the agent owns from start to finish, committing the completed change and advancing to a new empty `@` is part of delivery, even when the user does not explicitly ask for a commit. This default does not apply to small requested edits, simple edit-and-show requests, or inspection-only work. Use this finish-and-advance handoff when the current diff belongs entirely to the task and no other workflow is established:
 
 ```sh
 # Start from the requested base only when the current @ is clean
@@ -53,7 +53,7 @@ jj commit -m "feat: describe the completed change"
 
 Without filesets or `-i`, `jj commit` is equivalent to `jj describe` followed by `jj new`: the completed change becomes `@-`, and `@` is a fresh empty child. Do not finish this pattern with only `jj describe`; it updates metadata but leaves `@` on the completed change. Use `jj describe` alone when intentionally continuing to edit that change or changing metadata without advancing.
 
-This completion default includes simple edit-and-show requests. It does not apply to review, diagnosis, or inspection-only work. Do not commit if the user asks to leave changes uncommitted, repository instructions establish another workflow, or `@` includes pre-existing or unrelated changes. A partial `jj commit <filesets>` leaves unselected changes in the new `@`, so it intentionally does not produce an empty handoff.
+This completion default does not apply to small requested edits, simple edit-and-show requests, review, diagnosis, or inspection-only work. Do not commit if the user asks to leave changes uncommitted, repository instructions establish another workflow, or `@` includes pre-existing or unrelated changes. A partial `jj commit <filesets>` leaves unselected changes in the new `@`, so it intentionally does not produce an empty handoff.
 
 If `@` is already an empty change at the desired base, reuse it instead of stacking another empty change. Do not run `jj new <base>` over unexplained dirty work: jj snapshots that work into the old `@`, which may become a sibling rather than `@-`.
 

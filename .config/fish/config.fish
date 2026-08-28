@@ -56,8 +56,6 @@ if status is-interactive
     type -q /opt/homebrew/bin/brew && eval (/opt/homebrew/bin/brew shellenv)
     # asdf
     type -q asdf && source (brew --prefix asdf)/libexec/asdf.fish
-    # direnv
-    type -q direnv && direnv hook fish | source
   # ==================
   # PATH configuration
   # ==================

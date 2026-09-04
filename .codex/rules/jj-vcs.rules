@@ -26,3 +26,100 @@ prefix_rule(
         "jj workspace rename feature",
     ],
 )
+
+# These commands are either read-only or mutate only local, recoverable jj
+# history. Allowing them outside the sandbox avoids approval prompts caused by
+# Codex protecting writes to VCS metadata such as .jj.
+prefix_rule(
+    pattern = [
+        "jj",
+        [
+            "status",
+            "st",
+            "log",
+            "diff",
+            "show",
+            "evolog",
+            "interdiff",
+            "describe",
+            "new",
+            "commit",
+            "squash",
+            "split",
+            "rebase",
+            "abandon",
+            "absorb",
+            "duplicate",
+            "edit",
+            "next",
+            "prev",
+            "restore",
+            "revert",
+            "simplify-parents",
+            "undo",
+            "redo",
+        ],
+    ],
+    decision = "allow",
+    match = [
+        "jj status",
+        "jj log -r @::",
+        "jj diff",
+        "jj describe -m 'Describe the change'",
+        "jj new main",
+        "jj commit -m 'Finish the change'",
+        "jj rebase -r @ -o main",
+        "jj undo",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "file", ["list", "show", "annotate", "track", "untrack"]],
+    decision = "allow",
+    match = [
+        "jj file list",
+        "jj file annotate src/main.rs",
+        "jj file untrack generated.txt",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "bookmark", ["list", "create", "move", "delete", "rename", "forget", "track", "untrack"]],
+    decision = "allow",
+    match = [
+        "jj bookmark list",
+        "jj bookmark create feature -r @",
+        "jj bookmark move feature --to @-",
+        "jj bookmark delete feature",
+    ],
+)
+
+prefix_rule(
+    pattern = ["jj", "tag", ["list", "set", "delete"]],
+    decision = "allow",
+    match = ["jj tag list", "jj tag set v1 -r @", "jj tag delete v1"],
+)
+
+prefix_rule(
+    pattern = ["jj", "op", ["log", "show", "diff", "restore"]],
+    decision = "allow",
+    match = ["jj op log", "jj op show", "jj op restore abc123"],
+)
+
+prefix_rule(
+    pattern = ["jj", "git", "fetch"],
+    decision = "allow",
+    match = ["jj git fetch", "jj git fetch --remote upstream", "jj git fetch --all-remotes"],
+)
+
+prefix_rule(
+    pattern = ["jj", "git", "remote", "list"],
+    decision = "allow",
+    match = ["jj git remote list"],
+)
+
+prefix_rule(
+    pattern = ["jj", "util", "snapshot"],
+    decision = "allow",
+    match = ["jj util snapshot"],
+)

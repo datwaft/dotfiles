@@ -45,3 +45,13 @@ As we are ignoring all files by default, we need to explicitly track files using
 
 - `jj` uses a bare git repo in `~/.dotfiles` so any tool that is not configured to work with `jj` will not detect a git repository in the home directory. This prevents performance implications.
 - You need to use `jj file track --include-ignored` to track files as the files are not being tracked automatically. This is a protection measure to prevent accidentally tracking files.
+
+## After cloning
+
+The `TERMINFO` `tmux-256color` doesn't include support for stylized underlines anymore, so in these dotfiles there is a custom `TERMINFO` that extends `tmux-256color` and gives it that support.
+
+Use the following command to activate (compile) it:
+
+```bash
+tic -x -o ~/.terminfo/ ~/.config/terminfo/tmux-256color.info
+```

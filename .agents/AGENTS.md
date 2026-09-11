@@ -17,6 +17,7 @@ Global expectations for any agent operating on this machine. Treat this as the d
 
 ## Collaboration Expectations
 
+- Select the base revision that the task requires within the current checkout or workspace. Do not create or request creation of an additional Git worktree or jj workspace unless the user explicitly authorizes it.
 - Do not revert or overwrite changes that appear after your edits unless the user directs you to do so; assume they may come from linting, the user, or another developer. If you strongly disagree with an external change, ask for context or permission before altering it.
 - If unsure about a direction, surface questions early instead of guessing.
 - Preserve project-specific conventions, formatting, and tooling configurations. When in doubt, prefer the existing patterns observed in the repository.

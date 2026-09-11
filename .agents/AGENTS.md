@@ -42,16 +42,17 @@ Global expectations for any agent operating on this machine. Treat this as the d
 
 ## Sub-agent Delegation
 
-Delegate work proactively when it does not require the main agent's broader context or full reasoning capability. Prefer delegation over spending main-agent compute on mechanical, repetitive, exploratory, or well-specified work.
+Use sub-agents when delegation can improve speed or quality. Decide based on the work's complexity, independence, context needs, and coordination cost. A fresh context can itself improve quality by isolating noisy work or providing an independent perspective. Run independent work concurrently when useful.
 
-When spawning sub-agents:
+Choose the model based on the role:
 
-- Always use GPT-5.6 Luna.
-- Never use GPT-5.6 Sol or GPT-5.6 Terra as a sub-agent.
-- Always choose the reasoning effort explicitly for each sub-agent according to the work it is receiving.
-- Use lower reasoning effort freely for mechanical or repetitive work.
-- Increase reasoning effort when the delegated task genuinely requires more independent reasoning.
-- Run independent work concurrently when useful.
-- Keep architecture, high-level planning, difficult judgment calls, synthesis, and final review in the main agent when they benefit from Sol's capabilities.
+- Use GPT-5.6 Luna for bounded execution and support work that does not require stronger judgment.
+- A Sol agent keeps planning, architecture, difficult judgment, synthesis, and final review in its main thread and delegates suitable execution work to Luna.
+- A Luna agent may coordinate the task in its main thread. It creates Luna sub-agents only to parallelize independent work and delegates bounded planning, difficult judgment, or review to GPT-5.6 Sol when stronger reasoning would materially improve the outcome.
+- Do not use Sol when Luna can perform the delegated task reliably.
 
-Over-delegation is preferable to wasting main-agent compute on work that Luna can perform reliably.
+Choose each sub-agent's reasoning effort explicitly and proportionately. Use lower effort for straightforward work and increase it when the delegated task requires deeper independent reasoning.
+
+Pass only the context the sub-agent needs. Include broader or recent conversation context when the task depends on prior decisions, user constraints, or surrounding work. Omit inherited context for self-contained tasks and state the objective, constraints, and expected result directly in the delegation prompt.
+
+The delegating agent remains responsible for integrating the results and completing the user's task.

@@ -13,21 +13,24 @@ fi
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
 eval "$("$HOMEBREW_BIN" shellenv)"
-export CC="$(brew --prefix llvm)/bin/clang"
-export CXX="$(brew --prefix llvm)/bin/clang++"
-[[ "$OSTYPE" == darwin* ]] && export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
-export LDFLAGS="-L$(brew --prefix)/lib"
-export CPPFLAGS="-I$(brew --prefix)/include"
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+# `brew shellenv` emits nothing if Homebrew's `bin` and `sbin` lead `$PATH`.
+# Set `$HOMEBREW_PREFIX` from `$HOMEBREW_BIN` if it was not inherited.
+export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-${HOMEBREW_BIN:h:h}}"
+export CC="$HOMEBREW_PREFIX/opt/llvm/bin/clang"
+export CXX="$HOMEBREW_PREFIX/opt/llvm/bin/clang++"
+[[ "$OSTYPE" == darwin* ]] && export DYLD_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
+export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
+export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/lib"
 export PERL5LIB="$HOME/perl5/lib/perl5"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':omz:update' mode disabled
-source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
+source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
 antidote load
 
-# Set colorscheme for $LS_COLORS
+# Set colorscheme for `$LS_COLORS`
 which vivid &> /dev/null && export LS_COLORS="$(vivid generate rose-pine)"
 
 # Support unlimited number of file descriptors
@@ -132,13 +135,13 @@ function zvm_after_init() {
   export WORDCHARS=''
 }
 
-# Use user $TERMINFO
+# Use user `$TERMINFO`
 export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
-# Add user binaries to $PATH
+# Add user binaries to `$PATH`
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/perl5/bin"
-# Add some macOS apps to $PATH
+# Add some macOS apps to `$PATH`
 if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
@@ -151,8 +154,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Configure Bob (Neovim)
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # Configure GCP SDK
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
+source "$HOMEBREW_PREFIX/share/google-cloud-sdk/path.zsh.inc" 2> /dev/null
+source "$HOMEBREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc" 2> /dev/null
 # Configure 1Password plugins
 [[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
 # Use the 1Password SSH agent from Windows
@@ -173,10 +176,10 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="$PNPM_HOME/bin:$PATH"
 fi
 
-# Use Neovim as $EDITOR
+# Use Neovim as `$EDITOR`
 export EDITOR='nvim'
 export VISUAL='nvim'
-# Use Neovim as $MANPAGER
+# Use Neovim as `$MANPAGER`
 export MANPAGER='nvim +Man!'
 
 # Use UTF-8 locale

@@ -185,6 +185,3 @@ export LC_CTYPE='en_US.UTF-8'
 
 # Add a way to ask codex for commands
 source ~/.zsh/ask-terminal-commands.zsh
-
-# An small speedup
-zcompile -R ~/.zshrc ~/.zshrc.zwc 2>/dev/null

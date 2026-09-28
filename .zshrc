@@ -174,6 +174,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="$PNPM_HOME/bin:$PATH"
 fi
 
+# Make `mise` tools available before deferred activation
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 # Use Neovim as `$EDITOR`
 export EDITOR='nvim'
 export VISUAL='nvim'

@@ -147,8 +147,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="$PATH:/Applications/kitty.app/Contents/MacOS"
   export PATH="$PATH:/Applications/Neovide.app/Contents/MacOS"
 fi
-# Configure luarocks
-which luarocks &> /dev/null && zsh-defer -c 'eval $(luarocks path --bin)'
 # Configure cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 # Configure Bob (Neovim)

@@ -5,13 +5,29 @@
 
 typeset -g _jj_vcs_display=""
 typeset -g _jj_vcs_workspace=""
+typeset -g _jj_vcs_cached_pwd=""
+typeset -g _jj_vcs_cached_workspace=""
+typeset -gi _jj_vcs_cached_status=1
+
+# Cache `jj workspace root` across redraws at the same `$PWD`.
+# A command can create or remove a `jj` workspace without changing `$PWD`.
+autoload -Uz add-zsh-hook
+_jj_vcs_invalidate_workspace_cache() { _jj_vcs_cached_pwd=""; }
+add-zsh-hook preexec _jj_vcs_invalidate_workspace_cache
+add-zsh-hook chpwd _jj_vcs_invalidate_workspace_cache
 
 prompt_jj_vcs() {
   local workspace
 
   # Here we verify that jj is installed and that we are in a jj workspace
   command -v jj >/dev/null 2>&1 || return
-  if workspace=$(jj workspace root 2>/dev/null); then
+  if [[ $_jj_vcs_cached_pwd != "$PWD" ]]; then
+    _jj_vcs_cached_pwd=$PWD
+    _jj_vcs_cached_workspace=$(jj workspace root 2>/dev/null)
+    _jj_vcs_cached_status=$?
+  fi
+  workspace=$_jj_vcs_cached_workspace
+  if (( _jj_vcs_cached_status == 0 )); then
     p10k display "*/jj-vcs=show"
     p10k display "*/vcs=hide"
   else
@@ -172,15 +188,18 @@ _jj_vcs_async() {
 
 # Async callback function
 # This function is called when the async job is done
-# It updates the display variable and triggers a prompt redraw
+# It updates the display variable and redraws when the text changes
 _jj_vcs_callback() {
   local job_name=$1 exit_code=$2 output=$3 execution_time=$4 stderr=$5 next_pending=$6
+  local display
   if [[ $exit_code == 0 ]]; then
-    _jj_vcs_display=$output
+    display=$output
   else
     # Fallback on error
-    _jj_vcs_display="%F{red}err%f"
+    display="%F{red}err%f"
   fi
+  [[ $_jj_vcs_display == "$display" ]] && return
+  _jj_vcs_display=$display
   p10k display -r
 }
 

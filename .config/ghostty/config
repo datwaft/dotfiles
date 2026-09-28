@@ -1,5 +1,6 @@
 font-family = Iosevka Term
 theme = light:Rose Pine Dawn,dark:Rose Pine
+cursor-style = bar
 cursor-opacity = 0.60
 adjust-cell-height = 15%
 adjust-icon-height = -40%

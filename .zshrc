@@ -133,6 +133,8 @@ function zvm_after_init() {
   bindkey -M isearch ' ' magic-space '^ ' abbr-expand-and-insert
   # Configure what characters constitute a word
   export WORDCHARS=''
+  # Apply the initial cursor shape even when `zsh-defer` suppresses stdout.
+  zvm_update_cursor > /dev/tty
 }
 
 # Use user `$TERMINFO`

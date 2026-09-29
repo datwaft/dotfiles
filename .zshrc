@@ -78,6 +78,8 @@ fi
 ZOXIDE_CMD_OVERRIDE=cd
 # Suggest first from history and then from completion
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# Rebind widgets during initialization instead of on every `precmd`.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # Always use xterm-256color when SSHing into another machine
 alias ssh="TERM=xterm-256color ssh"
 
@@ -191,3 +193,6 @@ export LC_CTYPE='en_US.UTF-8'
 
 # Add a way to ask codex for commands
 source ~/.zsh/ask-terminal-commands.zsh
+
+# Include widgets installed by deferred plugins in `autosuggestions`.
+zsh-defer _zsh_autosuggest_bind_widgets

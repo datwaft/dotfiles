@@ -26,6 +26,8 @@ export PERL5LIB="$HOME/perl5/lib/perl5"
 
 # We are using `antidote` as our plugin manager
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+# Let `zle` process input between deferred plugin initializations.
+zstyle ':antidote:bundle:*' defer-options '-t 0.01'
 zstyle ':omz:update' mode disabled
 source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
 antidote load
@@ -195,4 +197,4 @@ export LC_CTYPE='en_US.UTF-8'
 source ~/.zsh/ask-terminal-commands.zsh
 
 # Include widgets installed by deferred plugins in `autosuggestions`.
-zsh-defer _zsh_autosuggest_bind_widgets
+zsh-defer -t 0.01 _zsh_autosuggest_bind_widgets

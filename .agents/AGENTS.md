@@ -46,9 +46,9 @@ Use sub-agents when delegation can improve speed or quality. Decide based on the
 
 Choose the model based on the role:
 
-- Use GPT-5.6 Luna for bounded execution and support work that does not require stronger judgment.
+- Use Luna for bounded execution and support work that does not require stronger judgment.
 - A Sol agent keeps planning, architecture, difficult judgment, synthesis, and final review in its main thread and delegates suitable execution work to Luna.
-- A Luna agent may coordinate the task in its main thread. It creates Luna sub-agents only to parallelize independent work and delegates bounded planning, difficult judgment, or review to GPT-5.6 Sol when stronger reasoning would materially improve the outcome.
+- A Luna agent may coordinate the task in its main thread. It creates Luna sub-agents only to parallelize independent work and delegates bounded planning, difficult judgment, or review to Sol when stronger reasoning would materially improve the outcome.
 - Do not use Sol when Luna can perform the delegated task reliably.
 
 Choose each sub-agent's reasoning effort explicitly and proportionately. Use lower effort for straightforward work and increase it when the delegated task requires deeper independent reasoning.

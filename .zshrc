@@ -24,6 +24,7 @@ export CXX="$HOMEBREW_PREFIX/opt/llvm/bin/clang++"
 export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
 export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
 export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/lib"
+export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 export PERL5LIB="$HOME/perl5/lib/perl5"
 
 # We are using `antidote` as our plugin manager

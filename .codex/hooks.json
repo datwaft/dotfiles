@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/zsh ~/.codex/hooks/jj-snapshot-after-edit.zsh",
+            "command": "/bin/zsh ~/.agents/hooks/jj-snapshot-after-edit.zsh",
             "timeout": 30,
             "statusMessage": "Snapshotting jj working copy"
           }

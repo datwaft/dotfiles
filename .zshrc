@@ -179,6 +179,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PNPM_HOME="$HOME/Library/pnpm"
   export PATH="$PNPM_HOME/bin:$PATH"
 fi
+# Refuse `pip install` outside of a virtual environment
+export PIP_REQUIRE_VIRTUALENV=1
 
 # Make `mise` tools available before deferred activation
 export PATH="$HOME/.local/share/mise/shims:$PATH"

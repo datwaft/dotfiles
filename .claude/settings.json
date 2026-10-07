@@ -139,6 +139,10 @@
       "Version control is jj (Jujutsu), usually colocated with git. Local history edits (jj describe, new, squash, split, rebase, abandon, edit, restore) are recoverable with jj undo or jj op restore, so they are not destructive. jj git push mutates a remote.",
       "The home directory is a jj repository for dotfiles (git backend in ~/.dotfiles, ignore-all .gitignore with explicitly tracked files), so edits to tracked dotfiles are versioned and recoverable."
     ],
+    "allow": [
+      "$defaults",
+      "Package Uninstalls: Uninstalling packages, runtimes, taps or tools through a package manager (brew, mise, uv, cargo, npm, pnpm, bob) is reversible by reinstalling and is not Irreversible Deletion, when the user agreed in this conversation to remove them."
+    ],
     "soft_deny": [
       "$defaults",
       "Mutating Jira or Confluence through jira or acli (create, edit, transition, assign, comment, link, delete) unless the user asked for that specific change.",

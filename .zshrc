@@ -12,6 +12,8 @@ fi
 [[ -n "$HOMEBREW_BIN" && -x "$HOMEBREW_BIN" ]] || return
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
+# Let casks with `auto_updates true` update themselves instead of `brew upgrade`
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 eval "$("$HOMEBREW_BIN" shellenv)"
 # `brew shellenv` emits nothing if Homebrew's `bin` and `sbin` lead `$PATH`.
 # Set `$HOMEBREW_PREFIX` from `$HOMEBREW_BIN` if it was not inherited.

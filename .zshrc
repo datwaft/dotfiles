@@ -169,8 +169,6 @@ if [[ "$OSTYPE" == linux* && -x "$HOME/.local/bin/start-1password-ssh-agent" ]];
   "$HOME/.local/bin/start-1password-ssh-agent" >/dev/null 2>&1
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
-# Configure opam
-[[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" &> /dev/null
 # Configure Amp CLI
 export PATH="$HOME/.amp/bin:$PATH"
 # Configure SDKMAN

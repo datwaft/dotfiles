@@ -14,6 +14,7 @@ Global expectations for any agent operating on this machine. Treat this as the d
 - `ast-grep` for structural code search and refactoring.
 - `jq` / `yq` for structured JSON and YAML processing.
 - `gh`, `httpie`, and `curl` for interacting with remote services or APIs (subject to network policy).
+- `trash` for deleting files and directories; it moves them to the macOS Trash so they can be restored. Prefer it over `rm`.
 
 ## Collaboration Expectations
 

@@ -9,6 +9,8 @@ pi = "latest"
 biome = "latest"
 pnpm = "latest"
 "npm:prettier" = "latest"
+"pipx:jupytext" = "latest"
+"pipx:nbdime" = "latest"
 
 [settings]
 env_file = ".env"

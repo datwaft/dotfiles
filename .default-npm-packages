@@ -1,11 +1,6 @@
-@biomejs/biome
 @commitlint/cli
 @commitlint/config-conventional
-@openai/codex
 husky
 neovim
-pnpm
-prettier
-tree-sitter-cli
 tsx
 typescript

@@ -4,6 +4,11 @@ go = "1.23"
 ruby = "latest"
 lua = "5.1.5"
 node = "24"
+codex = "latest"
+pi = "latest"
+biome = "latest"
+pnpm = "latest"
+"npm:prettier" = "latest"
 
 [settings]
 env_file = ".env"

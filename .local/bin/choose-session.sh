@@ -18,7 +18,10 @@ sesh connect "$("${command_tmux[@]}" | fzf --tmux 55%,60% \
   --preview=$'
     f() {
       set -- $(eval echo "$@")
-      [ $# -eq 0 ] || tmux capture-pane -e -p -t "=$@:" 2> /dev/null \
+      [ $# -eq 0 ] || {
+        pane=$(tmux display-message -p -t "=$@:" "#{?pane_floating_flag,#{window_id}.!,#{pane_id}}") &&
+          tmux capture-pane -e -p -t "$pane"
+      } 2> /dev/null \
                    || eza -I $\'Icon\r\' --color=always -1 "$@"
     }; f {}
   ' \

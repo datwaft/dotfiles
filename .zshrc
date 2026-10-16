@@ -110,18 +110,21 @@ function zvm_after_init() {
   # Search history with <Up> and <Down>
   bindkey '^[[A' history-substring-search-up '^[[B' history-substring-search-down
   # Move to start and end of line with <Home> and <End>
-  bindkey '^[[1~' beginning-of-line '^[OH' beginning-of-line
-  bindkey '^[[4~' end-of-line '^[OF' end-of-line
+  bindkey '^[[1~' beginning-of-line '^[OH' beginning-of-line '^[[H' beginning-of-line
+  bindkey '^[[4~' end-of-line '^[OF' end-of-line '^[[F' end-of-line
   # Move between words with <M-Left> and <M-Right>
   bindkey '^[[1;3D' backward-subword '^[[1;3C' forward-subword
   # Remove words using <M-Backspace> and <C-w>
   bindkey '^W' backward-kill-subword '^[^?' backward-kill-subword
+  # Remove the whole line using <C-u>
+  bindkey '^U' backward-kill-line
   # Use <Tab> and <S-Tab> for completion
   bindkey '^I' menu-complete '^[[Z' reverse-menu-complete
   # Restore arrows in completion mode
   bindkey -M menuselect '^[[D' .backward-char '^[[C' .forward-char
   bindkey -M menuselect '^[[A' .history-substring-search-up '^[[B' .history-substring-search-down
-  bindkey -M menuselect '^[[1~' .beginning-of-line '^[[4~' .end-of-line
+  bindkey -M menuselect '^[[1~' .beginning-of-line '^[[H' .beginning-of-line
+  bindkey -M menuselect '^[[4~' .end-of-line '^[[F' .end-of-line
   bindkey -M menuselect '^[[1;3D' .backward-word '^[[1;3C' .forward-word
   # Completion configuration
   bindkey -M menuselect '^[' undo '^M' .accept-line ' ' accept-search

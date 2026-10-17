@@ -62,7 +62,7 @@ rex.action({
         required = { "direction" },
         additionalProperties = false
     },
-    run = function (ctx, args)
+    run = function (_, args)
         local view = assert(rex.session.view({}))
         local result = assert(rex.session.focus_direction({
                 direction = args.direction,

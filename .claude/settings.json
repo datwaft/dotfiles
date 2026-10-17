@@ -172,6 +172,26 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-context.zsh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-context.zsh",
+            "timeout": 5
+          }
+        ]
       }
     ]
   }

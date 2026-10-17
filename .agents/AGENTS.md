@@ -5,7 +5,6 @@ Global expectations for any agent operating on this machine. Treat this as the d
 ## Environment
 
 - Default shell is `zsh`.
-- Assume `jj-vcs` for all version control unless told otherwise. Load the skill proactively - don't check for `.jj` first.
 
 ## Tooling Access
 

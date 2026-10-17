@@ -44,6 +44,9 @@ rex.bind("navigate/h", "pane.focus", { direction = "left", wrap = false })
 rex.bind("navigate/j", "pane.focus", { direction = "down", wrap = false })
 rex.bind("navigate/k", "pane.focus", { direction = "up", wrap = false })
 rex.bind("navigate/l", "pane.focus", { direction = "right", wrap = false })
+-- And split panes with s and v
+rex.bind("navigate/s", "pane.split", { direction = "down" })
+rex.bind("navigate/v", "pane.split", { direction = "right" })
 -- <C-w>w and <C-w><C-w> pass <C-w> through
 rex.bind("navigate/w", "pane.send_key", { key = "ctrl+w" })
 rex.bind("navigate/ctrl+w", "pane.send_key", { key = "ctrl+w" })

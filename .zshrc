@@ -113,7 +113,8 @@ function zvm_after_init() {
   bindkey '^[[1~' beginning-of-line '^[OH' beginning-of-line '^[[H' beginning-of-line
   bindkey '^[[4~' end-of-line '^[OF' end-of-line '^[[F' end-of-line
   # Move between words with <M-Left> and <M-Right>
-  bindkey '^[[1;3D' backward-subword '^[[1;3C' forward-subword
+  bindkey '^[[1;3D' backward-subword '^[b' backward-subword
+  bindkey '^[[1;3C' forward-subword '^[f' forward-subword
   # Remove words using <M-Backspace> and <C-w>
   bindkey '^W' backward-kill-subword '^[^?' backward-kill-subword
   # Remove the whole line using <C-u>
@@ -125,7 +126,8 @@ function zvm_after_init() {
   bindkey -M menuselect '^[[A' .history-substring-search-up '^[[B' .history-substring-search-down
   bindkey -M menuselect '^[[1~' .beginning-of-line '^[[H' .beginning-of-line
   bindkey -M menuselect '^[[4~' .end-of-line '^[[F' .end-of-line
-  bindkey -M menuselect '^[[1;3D' .backward-word '^[[1;3C' .forward-word
+  bindkey -M menuselect '^[[1;3D' .backward-word '^[b' .backward-word
+  bindkey -M menuselect '^[[1;3C' .forward-word '^[f' .forward-word
   # Completion configuration
   bindkey -M menuselect '^[' undo '^M' .accept-line ' ' accept-search
   # Edit command line with <C-f>

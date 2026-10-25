@@ -11,6 +11,7 @@ pnpm = "latest"
 "npm:prettier" = "latest"
 "pipx:jupytext" = "latest"
 "pipx:nbdime" = "latest"
+jactionlint = "latest"
 
 [settings]
 env_file = ".env"
